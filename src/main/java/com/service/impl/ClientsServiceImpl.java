@@ -1,11 +1,12 @@
 package com.service.impl;
 
-import com.model.ClientsEntity;
+import com.model.Client;
 import com.service.ClientsService;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,11 +18,10 @@ import java.util.List;
  */
 @Service
 public class ClientsServiceImpl implements ClientsService {
-    static Logger log = Logger.getLogger(
-            ClientsServiceImpl.class.getName());
+    static Logger log = Logger.getLogger(ClientsServiceImpl.class.getName());
     @Transactional
-    public List<ClientsEntity> getAllClientsList() {
+    public List<Client> getAllClientsList() {
         log.info("getAllClients: ->");
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return new ArrayList<Client>();  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

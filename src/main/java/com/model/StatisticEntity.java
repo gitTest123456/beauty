@@ -21,7 +21,7 @@ public class StatisticEntity {
     private Date dateVisit;
     private Time timeVisit;
     private EmployeerEntity employeerByEmployeerId;
-    private ClientsEntity clientsByClientId;
+    private Client clientByClientId;
 
     @javax.persistence.Column(name = "visit_id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id
@@ -87,11 +87,11 @@ public class StatisticEntity {
 
     @ManyToOne
     @javax.persistence.JoinColumn(name = "client_id", referencedColumnName = "client_id", nullable = false)
-    public ClientsEntity getClientsByClientId() {
-        return clientsByClientId;
+    public Client getClientByClientId() {
+        return clientByClientId;
     }
 
-    public void setClientsByClientId(ClientsEntity clientsByClientId) {
-        this.clientsByClientId = clientsByClientId;
+    public void setClientByClientId(Client clientByClientId) {
+        this.clientByClientId = clientByClientId;
     }
 }

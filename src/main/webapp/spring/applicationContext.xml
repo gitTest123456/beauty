@@ -17,12 +17,12 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-<mvc:annotation-driven/>
-<mvc:resources mapping="/resources/**" location="/"/>
+    <mvc:annotation-driven/>
+    <mvc:resources mapping="/resources/**" location="/"/>
 
-<context:annotation-config/>
+    <context:annotation-config/>
 
-<context:component-scan base-package="com" />
+    <context:component-scan base-package="com"/>
 
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
@@ -34,7 +34,7 @@
 
 
     <bean id="sessionFactory"
-        class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"></property>
         <property name="hibernateProperties">
             <props>
@@ -47,10 +47,9 @@
     </bean>
 
 
-
-<tx:annotation-driven />
-<bean id="transactionManager"
-      class="org.springframework.orm.hibernate3.HibernateTransactionManager">
-    <property name="sessionFactory" ref="sessionFactory" />
-</bean>
+    <tx:annotation-driven/>
+    <bean id="transactionManager"
+          class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
 </beans>

@@ -15,7 +15,7 @@ import java.util.Collection;
  */
 @javax.persistence.Table(name = "clients", schema = "", catalog = "beauty_salon")
 @Entity
-public class ClientsEntity {
+public class Client {
     private int clientId;
     private String firstName;
     private String surName;
@@ -78,7 +78,7 @@ public class ClientsEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ClientsEntity that = (ClientsEntity) o;
+        Client that = (Client) o;
 
         if (clientId != that.clientId) return false;
         if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
@@ -106,5 +106,16 @@ public class ClientsEntity {
 
     public void setStatisticsByClientId(Collection<StatisticEntity> statisticsByClientId) {
         this.statisticsByClientId = statisticsByClientId;
+    }
+
+    @Override
+    public String toString() {
+        return "Contact{" +
+                "clientId=" + clientId +
+                ", firstName='" + firstName + '\'' +
+                ", surName='" + surName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", telephone='" + telephone + '\'' +
+                '}';
     }
 }

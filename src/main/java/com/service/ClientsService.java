@@ -1,5 +1,5 @@
 package com.service;
-import com.model.ClientsEntity;
+import com.model.Client;
 
 import java.util.List;
 
@@ -11,5 +11,5 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public interface ClientsService {
-    List<ClientsEntity> getAllClientsList();
+    List<Client> getAllClientsList();
 }

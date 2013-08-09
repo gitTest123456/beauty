@@ -1,92 +1,127 @@
-<!--<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>Beauty salon</title>
-
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link href="css/style.css" rel="stylesheet"/>
-    <link href="css/bootstrap.css" rel="stylesheet"/>
+    <title>Clients List</title>
+    <!-- Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="css/bootstrap-responsive.css" rel="stylesheet"/>
-    <link href="css/jquery.fancybox.css" rel="stylesheet"/>
-    <script src="js/jquery-2.0.3.js"></script>
-    <script src="js/jquery.jplayer.min.js"></script>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <style type="text/css">
         body {
             padding-top: 60px;
             padding-bottom: 40px;
-            background: #373737;
-        }
-    </style>
-</head>
-<body>
-    <!-- Navigation bar -->
-
-
-<!--    <script src="js/underscore-1.5.1.js"></script>
-    <script src="js/json2.js"></script>
-    <script src="js/backbone-1.0.0.js"></script>
-    <script src="js/bootstrap.js"></script>
-    <script src="js/jquery.fancybox.js"></script>
-</body>
-</html>   -->
-
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<html xmlns:form="http://www.w3.org/1999/xhtml"
-      xmlns:c="http://www.w3.org/1999/XSL/Transform">
-<head>
-    <title>Spring 3 MVC Series - Contact Manager</title>
-    <style type="text/css">
-        body {
-            font-family: sans-serif;
-        }
-        .data, .data td {
-            border-collapse: collapse;
-            width: 100%;
-            border: 1px solid #aaa;
-            margin: 2px;
-            padding: 2px;
-        }
-        .data th {
-            font-weight: bold;
-            background-color: #5C82FF;
-            color: white;
         }
     </style>
 </head>
 <body>
 
-<h2>Contact Manager</h2>
 
-<form:form method="post" action="add.html" commandName="client">
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <a class="brand" href="#!/clients">Clients list</a>
 
-    <table>
-        <tr>
-            <td><form:label path="firstname">firstName</form:label></td>
-            <td><form:input path="firstname" /></td>
-        </tr>
-        <tr>
-            <td><form:label path="lastname">LastName</form:label></td>
-            <td><form:input path="lastname" /></td>
-        </tr>
-        <tr>
-            <td><form:label path="email">Email</form:label></td>
-            <td><form:input path="email" /></td>
-        </tr>
-        <tr>
-            <td><form:label path="telephone">telephone</form:label></td>
-            <td><form:input path="telephone" /></td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <input type="submit" value="addContact"/>"/>
-            </td>
-        </tr>
-    </table>
-</form:form>
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li><a href="#!/add">Add</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="span2">
+            <h3 class="pagination-centered">Clients:</h3>
+        </div>
+        <!--<div class="span10">
+            <h3 class="pagination-centered">Contact Details:</h3>
+        </div>  -->
+
+    </div>
+
+    <div class="row">
+
+        <div class="span2">
+
+            <ul class="nav nav-pills nav-stacked" id="client-list-block">
+                <!-- Contact list would be injected here by Backbone.js -->
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/json2.js"></script>
+<script src="js/underscore.js"></script>
+<script src="js/backbone.js"></script>
+<script src="js/backbone.localstorage.js"></script>
+<script src="js/backbone.validation.js"></script>
+<script src="js/clients.js"></script>
+
+
+<script type="text/template" id="client-list-template" >
+    <% _.each(client, function(entry) { %>
+    <li><a href="#!/client/<%= entry.clientId %>" class="entry" ><%= entry.firstName %></a></li>
+    <% });%>
+</script>
+
+<script type="text/template" id="contact-details-template">
+
+    <div class="control-group">
+        <label class="control-label" for="inputName">Name:</label>
+
+        <div class="controls ">
+            <div class="input-prepend  ">
+                <span class="add-on"><i class="icon-user"></i></span>
+                <input type="text" id="inputName" placeholder="Name" value="<%=client.firstName%>">
+                <input type="hidden" name="clientId" id="contactId" value="<%=client.clientId%>" />
+            </div>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="inputEmail">Email:</label>
+
+        <div class="controls">
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-envelope"></i></span>
+                <input type="text" id="inputEmail" placeholder="Email" value="<%=contact.email%>">
+            </div>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="inputPhone">Phone:</label>
+
+        <div class="controls">
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-th"></i></span>
+                <input type="text" id="inputPhone" placeholder="Phone" class="error" value="<%=contact.phone%>">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+            <button class="btn btn-primary" id="form-btn" type="button">Save</button>
+            <button class="btn btn-danger" id="form-btn-remove" type="button">Remove</button>
+        </div>
+        <div class="controls">
+
+        </div>
+    </div>
+
+
+</script>
 
 </body>
 </html>
