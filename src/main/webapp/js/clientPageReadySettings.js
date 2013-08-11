@@ -5,3 +5,6 @@
  * Time: 19:14
  * To change this template use File | Settings | File Templates.
  */
+ $(document).ready(function(){
+ 	  $("#client-list-block").tablesorter();
+ 	});
