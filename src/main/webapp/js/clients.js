@@ -53,7 +53,7 @@ $(function () {
             model: Client,
             url: "/beauty/clients",
             parse: function (response) {
-                console.log('Parsing list of the artists:' + response);
+                console.log('Parsing list of the clients:' + response);
                 clientCollection = response;
                 clientListView.collection = clientCollection;
                 clientListView.render();
