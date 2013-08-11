@@ -18,14 +18,13 @@ $(function () {
             // Default attributes for the Contact item
             defaults: function () {
                 return {
-                    clientId: '',
-                    firstName: '',
-                    surName: '',
-                    lastName: '',
-                    telephone: ''
+                    clientId: null,
+                    firstName: null,
+                    surName: null,
+                    lastName: null,
+                    telephone: null
                 };
-            },
-
+            } ,
             validation: {
                 firstName: {
                     minLength: 5,
@@ -53,9 +52,12 @@ $(function () {
         {
             model: Client,
             url: "/beauty/clients",
-
-            comparator: function (client) {
-                return client.get("firstName");
+            parse: function (response) {
+                console.log('Parsing list of the artists:' + response);
+                clientCollection = response;
+                clientListView.collection = clientCollection;
+                clientListView.render();
+                return response;
             }
         }
     );
@@ -70,16 +72,10 @@ $(function () {
 
             template: _.template($('#client-list-template').html()),
 
-            initialize: function () {
-                this.model.on('all', this.render, this);
-            },
-
             render: function () {
-                $(this.el).html(this.template({client: this.model.toJSON()}));
+                $(this.el).html(this.template({client: this.collection}));
                 return this;
             }
-
-
         }
     );
 
@@ -93,19 +89,12 @@ $(function () {
         },
 
         list: function () {
-//            if (this.client) {
-//                this.contactView.close();
-//            }
-            alert("inside");
             clientCollection.fetch();
-
         }
     });
 
     var clientCollection = new ClientCollection();
-    clientCollection.reset(clientCollection.toJSON());
-
-    var clientListView = new ClientListView({model: clientCollection});
+    var clientListView = new ClientListView({collection: clientCollection});
     clientListView.render();
 
     var controller = new Controller();

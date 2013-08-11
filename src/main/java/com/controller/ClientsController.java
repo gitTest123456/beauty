@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -44,12 +44,11 @@ public class ClientsController {
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/clients")
-    public
     @ResponseBody
-    java.util.List<Client> getContacts() {
-        ArrayList list = (ArrayList) service.getAllClientsList();
+    public List<Client> getContacts() {
         log.info("START get list of Contacts");
-        return list;
+        List<Client> clients = service.getAllClientsList();
+        return clients;
 
     }
 

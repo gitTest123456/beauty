@@ -21,8 +21,8 @@
     <mvc:resources mapping="/resources/**" location="/"/>
 
     <context:annotation-config/>
-
     <context:component-scan base-package="com"/>
+
 
 
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
@@ -34,8 +34,13 @@
 
 
     <bean id="sessionFactory"
-          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource"></property>
+          class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="annotatedClasses">
+            <list>
+                <value>com.model.Client</value>
+            </list>
+        </property>
         <property name="hibernateProperties">
             <props>
                 <prop key="dialect">org.hibernate.dialect.MySQLDialect</prop>

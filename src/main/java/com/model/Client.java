@@ -1,9 +1,11 @@
 package com.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import java.util.Collection;
 
 /**
@@ -22,6 +24,17 @@ public class Client {
     private String lastName;
     private String telephone;
     private Collection<StatisticEntity> statisticsByClientId;
+
+    public Client(int id, String firstName, String surName, String lastName, String telephone) {
+        this.clientId = id;
+        this.firstName = firstName;
+        this.surName = surName;
+        this.lastName = lastName;
+        this.telephone = telephone;
+    }
+
+    public Client() {
+    }
 
     @javax.persistence.Column(name = "client_id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id
@@ -89,33 +102,27 @@ public class Client {
         return true;
     }
 
-    @Override
-    public int hashCode() {
-        int result = clientId;
-        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
-        result = 31 * result + (surName != null ? surName.hashCode() : 0);
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
-        result = 31 * result + (telephone != null ? telephone.hashCode() : 0);
-        return result;
-    }
-
-    @OneToMany(mappedBy = "clientsByClientId")
-    public Collection<StatisticEntity> getStatisticsByClientId() {
-        return statisticsByClientId;
-    }
-
-    public void setStatisticsByClientId(Collection<StatisticEntity> statisticsByClientId) {
-        this.statisticsByClientId = statisticsByClientId;
-    }
+//    @OneToMany(mappedBy = "clientsByClientId")
+//    public Collection<StatisticEntity> getStatisticsByClientId() {
+//        return statisticsByClientId;
+//    }
+//
+//    public void setStatisticsByClientId(Collection<StatisticEntity> statisticsByClientId) {
+//        this.statisticsByClientId = statisticsByClientId;
+//    }
 
     @Override
     public String toString() {
-        return "Contact{" +
-                "clientId=" + clientId +
-                ", firstName='" + firstName + '\'' +
-                ", surName='" + surName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", telephone='" + telephone + '\'' +
-                '}';
+        JSONObject json = new JSONObject();
+        try {
+            json.put("clientId", clientId);
+            json.put("firstName", firstName);
+            json.put("surName", surName);
+            json.put("lastName", lastName);
+            json.put("telephone", telephone);
+        } catch (JSONException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return json.toString();
     }
 }

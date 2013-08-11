@@ -1,12 +1,13 @@
 package com.service.impl;
 
+import com.dao.ClientDao;
 import com.model.Client;
 import com.service.ClientsService;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,11 +18,15 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Service
+@Transactional(rollbackFor = Exception.class)
 public class ClientsServiceImpl implements ClientsService {
     static Logger log = Logger.getLogger(ClientsServiceImpl.class.getName());
-    @Transactional
+
+    @Autowired
+    ClientDao serviceDao;
+
     public List<Client> getAllClientsList() {
-        log.info("getAllClients: ->");
-        return new ArrayList<Client>();  //To change body of implemented methods use File | Settings | File Templates.
+        log.info("[DAO] = " + serviceDao);
+        return serviceDao.getAllClients();  //To change body of implemented methods use File | Settings | File Templates.
     }
 }

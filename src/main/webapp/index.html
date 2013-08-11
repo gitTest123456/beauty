@@ -47,9 +47,9 @@
 
         <div class="span2">
 
-            <ul class="nav nav-pills nav-stacked" id="client-list-block">
-                <!-- Contact list would be injected here by Backbone.js -->
-            </ul>
+            <table class="nav nav-pills nav-stacked" id="client-list-block">
+
+            </table>
 
         </div>
 
@@ -67,9 +67,28 @@
 <script src="js/clients.js"></script>
 
 
-<script type="text/template" id="client-list-template" >
-    <% _.each(client, function(entry) { %>
-    <li><a href="#!/client/<%= entry.clientId %>" class="entry" ><%= entry.firstName %></a></li>
+<script type="text/template" id="client-list-template">
+    <tr>
+        <td>Name</td>
+        <td>SurName</td>
+        <td>LastName</td>
+        <td>Telephone</td>
+    </tr>
+    <% _.each(client, function(entry){ alert(entry);%>
+    <tr>
+        <td>
+            <%=entry.firstName%>
+        </td>
+        <td>
+            <%=entry.surName%>
+        </td>
+        <td>
+            <%=entry.lastName%>
+        </td>
+        <td>
+            <%=entry.telephone%>
+        </td>
+    </tr>
     <% });%>
 </script>
 
@@ -82,7 +101,7 @@
             <div class="input-prepend  ">
                 <span class="add-on"><i class="icon-user"></i></span>
                 <input type="text" id="inputName" placeholder="Name" value="<%=client.firstName%>">
-                <input type="hidden" name="clientId" id="contactId" value="<%=client.clientId%>" />
+                <input type="hidden" name="clientId" id="contactId" value="<%=client.clientId%>"/>
             </div>
         </div>
     </div>
