@@ -1597,6 +1597,7 @@ input.search-query {
 }
 
 .control-group {
+    padding: 15px;
     margin-bottom: 10px
 }
 

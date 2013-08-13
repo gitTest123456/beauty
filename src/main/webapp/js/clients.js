@@ -75,6 +75,7 @@ $(function () {
 
             render: function () {
                 $(this.el).html(this.template({client: this.collection}));
+                $("#client-list-block").tablesorter();
                 return this;
             }
         }
