@@ -17,9 +17,9 @@ public interface ClientDao {
 
     public Client getClientById(Long clientId);
 
-    public void deleteClientById(Client clientId);
+    public void deleteClient(Client client);
 
-    public void updateClient(Client clientId);
+    public void updateClient(Client client);
 
     public void addClient(Client client);
 }

@@ -15,6 +15,7 @@ $(function () {
      **********************************************************************************/
     var Client = Backbone.Model.extend(
         {
+            url: "/beauty/clients",
             // Default attributes for the Contact item
             defaults: function () {
                 return {
@@ -24,7 +25,7 @@ $(function () {
                     lastName: null,
                     telephone: null
                 };
-            } ,
+            },
             validation: {
                 firstName: {
                     minLength: 5,
@@ -84,13 +85,43 @@ $(function () {
         routes: {
             "": "list",
             "!/clients": "list",
-            "!/client/:id": "details",
+            "!/clients/delete/:id": "delete",
             "!/add": "add"
         },
 
         list: function () {
             clientCollection.fetch();
+        },
+        add: function () {
+            var firstName = $("#inputName").val();
+            var surName = $('#inputSurName').val();
+            var lastName = $('#inputLastName').val();
+            var telephone = $('#inputPhone').val();
+            var newClient = new Client(
+                {   "firstName": firstName,
+                    "surName": surName,
+                    "lastName": lastName,
+                    "telephone": telephone}).save({}, {
+                    wait: true,
+                    success: function (model, response) {
+                        window.location = "";
+                    },
+                    error: function (model, error) {
+                        window.location = "";
+                    }
+                });
+
+        },
+        delete: function (id) {
+            for (i = 0; i < clientCollection.length; i++) {
+                if (clientCollection[i].clientId == id) {
+                    var model_for_delete = clientCollection[i];
+                    clientCollection.remove(model_for_delete);
+                    break;
+                }
+            }
         }
+
     });
 
     var clientCollection = new ClientCollection();
@@ -101,3 +132,4 @@ $(function () {
 
     Backbone.history.start();
 })
+

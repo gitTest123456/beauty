@@ -36,7 +36,7 @@ public class ClientDaoImpl implements ClientDao {
 
 
     public List<Client> getAllClients() {
-        List<Client> clients = sessionFactory.getCurrentSession().createQuery("from Client").list();
+        List<Client> clients = sessionFactory.getCurrentSession().createQuery("from com.model.Client").list();
         return clients;
     }
 
@@ -46,7 +46,7 @@ public class ClientDaoImpl implements ClientDao {
         return client;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
-    public void deleteClientById(Client client) {
+    public void deleteClient(Client client) {
         sessionFactory.getCurrentSession().delete(client);
     }
 

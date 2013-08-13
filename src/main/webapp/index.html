@@ -20,7 +20,7 @@
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="#!/clients">Clients list</a>
+            <a class="nav-collapse collapse" id="clientsListLink" href="#!/clients">Clients list</a>
 
             <div class="nav-collapse collapse">
                 <ul class="nav">
@@ -43,17 +43,6 @@
         </div>  -->
 
     </div>
-
-    <div class="row">
-
-        <div class="span2">
-              <table class="tablesorter" id="client-list-block" border="2">
-
-              </table>
-        </div>
-
-    </div>
-
 </div>
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
@@ -92,60 +81,74 @@
         <td>
             <%=entry.telephone%>
         </td>
+        <td>
+            <li><a href="#!/clients/delete/<%=entry.clientId%>">DELETE</a></li>
+        </td>
     </tr>
     <% });%>
     </tbody>
 </script>
 
-<script type="text/template" id="contact-details-template">
 
-    <div class="control-group">
-        <label class="control-label" for="inputName">Name:</label>
+<div class="control-group">
+    <label class="control-label" for="inputName">Name:</label>
 
-        <div class="controls ">
-            <div class="input-prepend  ">
-                <span class="add-on"><i class="icon-user"></i></span>
-                <input type="text" id="inputName" placeholder="Name" value="<%=client.firstName%>">
-                <input type="hidden" name="clientId" id="contactId" value="<%=client.clientId%>"/>
-            </div>
+    <div class="controls ">
+        <div class="input-prepend  ">
+            <span class="add-on"><i class="icon-user"></i></span>
+            <input type="text" id="inputName" placeholder="name" value="">
         </div>
     </div>
+    <label class="control-label" for="inputSurName">SurName:</label>
 
-    <div class="control-group">
-        <label class="control-label" for="inputEmail">Email:</label>
-
-        <div class="controls">
-            <div class="input-prepend">
-                <span class="add-on"><i class="icon-envelope"></i></span>
-                <input type="text" id="inputEmail" placeholder="Email" value="<%=contact.email%>">
-            </div>
+    <div class="controls">
+        <div class="input-prepend">
+            <span class="add-on"><i class="icon-user"></i></span>
+            <input type="text" id="inputSurName" placeholder="surName" value="">
         </div>
     </div>
+    <label class="control-label" for="inputLastName">LastName:</label>
 
-    <div class="control-group">
-        <label class="control-label" for="inputPhone">Phone:</label>
-
-        <div class="controls">
-            <div class="input-prepend">
-                <span class="add-on"><i class="icon-th"></i></span>
-                <input type="text" id="inputPhone" placeholder="Phone" class="error" value="<%=contact.phone%>">
-            </div>
-        </div>
-
-    </div>
-
-    <div class="control-group">
-        <div class="controls">
-            <button class="btn btn-primary" id="form-btn" type="button">Save</button>
-            <button class="btn btn-danger" id="form-btn-remove" type="button">Remove</button>
-        </div>
-        <div class="controls">
-
+    <div class="controls">
+        <div class="input-prepend">
+            <span class="add-on"><i class="icon-user"></i></span>
+            <input type="text" id="inputLastName" placeholder="lastName" value="">
         </div>
     </div>
+</div>
 
 
-</script>
+<div class="control-group">
+    <label class="control-label" for="inputPhone">Phone:</label>
+
+    <div class="controls">
+        <div class="input-prepend">
+            <span class="add-on"><i class="icon-th"></i></span>
+            <input type="text" id="inputPhone" placeholder="Phone" class="error" value="">
+        </div>
+    </div>
+</div>
+
+<div class="control-group">
+    <div class="controls">
+        <a class="btn btn-primary" href="#!/add">Save</a>
+        <!-- <a class="btn btn-primary" href="">Update view</a>  -->
+        <a class="btn btn-danger" id="form-btn-remove" href="">Remove</a>
+    </div>
+    <div class="controls">
+    </div>
+</div>
+
+<div class="row">
+
+    <div class="span2">
+        <table class="tablesorter" id="client-list-block" border="2">
+
+        </table>
+    </div>
+
+</div>
+
 
 </body>
 </html>

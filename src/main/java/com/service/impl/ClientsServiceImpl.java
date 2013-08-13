@@ -29,4 +29,14 @@ public class ClientsServiceImpl implements ClientsService {
         log.info("[DAO] = " + serviceDao);
         return serviceDao.getAllClients();  //To change body of implemented methods use File | Settings | File Templates.
     }
+
+    public void deleteClient(Client client) {
+        log.info("Remove client " + client.toString());
+        serviceDao.deleteClient(client);
+    }
+
+    public void addClient(Client newClient) {
+        log.info("Add client " + newClient.toString());
+        serviceDao.addClient(newClient);
+    }
 }
