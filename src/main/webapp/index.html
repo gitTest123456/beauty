@@ -55,6 +55,8 @@
         <th>SurName</th>
         <th>LastName</th>
         <th>Telephone</th>
+        <th>Delete mode</th>
+        <th>Edit mode</th>
     </tr>
     </thead>
     <tbody>
@@ -73,10 +75,10 @@
             <%=entry.telephone%>
         </td>
         <td>
-            <li><a href="#!/delete/<%=index_for_del++%>">DELETE</a></li>
+            <a href="#!/delete/<%=index_for_del++%>">DELETE</a>
         </td>
         <td>
-            <li><a href="#!/edit/<%=index_for_edit++%>">EDIT</a></li>
+            <a href="#!/edit/<%=index_for_edit++%>">EDIT</a>
         </td>
     </tr>
     <% });%>
@@ -86,7 +88,7 @@
 
 <div class="control-group">
 
-   <input type="hidden" id="inputId" placeholder="name" value="">
+    <input type="hidden" id="inputId" placeholder="name" value="">
 
     <label class="control-label" for="inputName">Name:</label>
 
@@ -136,11 +138,11 @@
     </div>
 </div>
 
+<div class="control-group">
+    <table class="tablesorter" id="client-list-block" border="2">
 
-<table class="tablesorter" id="client-list-block" border="2">
-
-</table>
-
+    </table>
+</div>
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="js/bootstrap.min.js"></script>
