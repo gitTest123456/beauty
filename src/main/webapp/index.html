@@ -58,7 +58,7 @@
     </tr>
     </thead>
     <tbody>
-    <% _.each(client, function(entry){%>
+    <% index_for_del = 0; index_for_edit = 0; _.each(client, function(entry){%>
     <tr>
         <td>
             <%=entry.firstName%>
@@ -73,7 +73,10 @@
             <%=entry.telephone%>
         </td>
         <td>
-            <li><a href="#!/clients/delete/<%=entry.clientId%>">DELETE</a></li>
+            <li><a href="#!/delete/<%=index_for_del++%>">DELETE</a></li>
+        </td>
+        <td>
+            <li><a href="#!/edit/<%=index_for_edit++%>">EDIT</a></li>
         </td>
     </tr>
     <% });%>
@@ -82,6 +85,9 @@
 
 
 <div class="control-group">
+
+   <input type="hidden" id="inputId" placeholder="name" value="">
+
     <label class="control-label" for="inputName">Name:</label>
 
     <div class="controls ">

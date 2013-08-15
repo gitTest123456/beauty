@@ -41,7 +41,7 @@ public class ClientDaoImpl implements ClientDao {
     }
 
 
-    public Client getClientById(Long clientId) {
+    public Client getClientById(int clientId) {
         Client client = (Client) sessionFactory.getCurrentSession().get(Client.class, clientId);
         return client;  //To change body of implemented methods use File | Settings | File Templates.
     }
@@ -56,6 +56,6 @@ public class ClientDaoImpl implements ClientDao {
     }
 
     public void addClient(Client client) {
-        sessionFactory.getCurrentSession().persist(client);
+        sessionFactory.getCurrentSession().merge(client);
     }
 }

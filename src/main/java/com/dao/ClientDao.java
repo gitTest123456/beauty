@@ -15,7 +15,7 @@ import java.util.List;
 public interface ClientDao {
     public List<Client> getAllClients();
 
-    public Client getClientById(Long clientId);
+    public Client getClientById(int clientId);
 
     public void deleteClient(Client client);
 

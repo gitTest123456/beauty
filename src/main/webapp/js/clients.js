@@ -86,8 +86,9 @@ $(function () {
         routes: {
             "": "list",
             "!/clients": "list",
-            "!/clients/delete/:id": "delete",
-            "!/add": "add"
+            "!/clients/delete/:itemIndex": "delete",
+            "!/add": "add",
+            "!/edit/:itemIndex": "edit"
         },
 
         list: function () {
@@ -98,8 +99,10 @@ $(function () {
             var surName = $('#inputSurName').val();
             var lastName = $('#inputLastName').val();
             var telephone = $('#inputPhone').val();
+            var id = $('#inputId').val();
             var newClient = new Client(
-                {   "firstName": firstName,
+                {   "clientId": id,
+                    "firstName": firstName,
                     "surName": surName,
                     "lastName": lastName,
                     "telephone": telephone}).save({}, {
@@ -113,16 +116,18 @@ $(function () {
                 });
 
         },
-        delete: function (id) {
-            for (i = 0; i < clientCollection.length; i++) {
-                if (clientCollection[i].clientId == id) {
-                    var model_for_delete = clientCollection[i];
-                    clientCollection.remove(model_for_delete);
-                    break;
-                }
-            }
-        }
 
+        edit: function (itemIndex) {
+            $('#inputId').val(clientCollection[itemIndex].clientId);
+            $("#inputName").val(clientCollection[itemIndex].firstName);
+            $('#inputSurName').val(clientCollection[itemIndex].surName);
+            $('#inputLastName').val(clientCollection[itemIndex].lastName);
+            $('#inputPhone').val(clientCollection[itemIndex].telephone);
+        },
+        delete: function (itemIndex) {
+            var model_for_delete = clientCollection[itemIndex];
+            clientCollection.remove(model_for_delete);
+        }
     });
 
     var clientCollection = new ClientCollection();

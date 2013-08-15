@@ -5,6 +5,7 @@ import com.model.Client;
 import com.service.ClientsService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,21 +23,27 @@ import java.util.List;
 public class ClientsServiceImpl implements ClientsService {
     static Logger log = Logger.getLogger(ClientsServiceImpl.class.getName());
 
+
     @Autowired
-    ClientDao serviceDao;
+    ClientDao clientDao;
 
     public List<Client> getAllClientsList() {
-        log.info("[DAO] = " + serviceDao);
-        return serviceDao.getAllClients();  //To change body of implemented methods use File | Settings | File Templates.
+        log.info("[DAO] = " + clientDao);
+        return clientDao.getAllClients();  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     public void deleteClient(Client client) {
         log.info("Remove client " + client.toString());
-        serviceDao.deleteClient(client);
+        clientDao.deleteClient(client);
     }
 
     public void addClient(Client newClient) {
         log.info("Add client " + newClient.toString());
-        serviceDao.addClient(newClient);
+        clientDao.addClient(newClient);
+    }
+
+    public Client getClientById(int clientId){
+        log.info("Get client " + clientId);
+        return clientDao.getClientById(clientId);
     }
 }
