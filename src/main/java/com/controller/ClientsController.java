@@ -11,6 +11,8 @@ import javax.annotation.PostConstruct;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -21,7 +23,6 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @Controller
-@RequestMapping("/clients")
 public class ClientsController {
     static Logger log = Logger.getLogger(ClientsController.class.getName());
 
@@ -43,33 +44,34 @@ public class ClientsController {
         this.service = service;
     }
 
-    @RequestMapping(method = RequestMethod.GET)
+
+    @RequestMapping(method = RequestMethod.GET, value = "/clients")
+    public
     @ResponseBody
-    public List<Client> getContacts() {
-        log.info("START get list of Contacts");
-        List<Client> clients = service.getAllClientsList();
-        return clients;
-
+    List<Client> getClients() {
+        return service.getAllClientsList();
     }
 
-    @RequestMapping(method = RequestMethod.POST)
-    @Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public String addContact(@RequestBody Client client) {
+    @RequestMapping(method = RequestMethod.GET, value = "/{id}")
+    public
+    @ResponseBody
+    Client getClient(@PathVariable Integer id) {
+        return service.getClientById(id);
+    }
 
+    @RequestMapping(method = RequestMethod.POST, value = "/clients")
+    public
+    @ResponseBody
+    Client addClient(@RequestBody Client client) {
+        System.out.println("add client " + client);
         service.addClient(client);
-
-        return "redirect:/index";
+        return client;
     }
 
-    @RequestMapping(method = RequestMethod.DELETE)
-    @Consumes(javax.ws.rs.core.MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public String removeContact(@RequestBody Client client) {
 
+    @RequestMapping(method = RequestMethod.POST, value = "/clients/delete")
+    public void deleteClient(@RequestBody Client client) {
+        System.out.println("delete client " + client.toString());
         service.deleteClient(client);
-
-        return "redirect:/index";
     }
-
 }

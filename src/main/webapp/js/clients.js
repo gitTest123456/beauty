@@ -69,24 +69,58 @@ $(function () {
      **********************************************************************************/
     var ClientListView = Backbone.View.extend(
         {
-            el: $("#client-list-block"), // DOM element with contact list
 
             template: _.template($('#client-list-template').html()),
+            el: $("#client-list-block"),
 
             render: function () {
                 $(this.el).html(this.template({client: this.collection}));
                 $("#client-list-block").tablesorter();
                 return this;
             }
+
         }
+    );
+
+
+    var ClientView = Backbone.View.extend(
+        {
+
+            template: _.template($('#client-details-template').html()),
+            el: $("#client-details-block"), // DOM element with contact details,
+
+            events: {
+                "click  #form-btn-remove": "deleteClient"
+            },
+            render: function () {
+                $(this.el).html(this.template({
+                    client: this.model
+                }))
+            },
+            deleteClient: function (e) {
+                $.ajax({
+                    type: "post",
+                    url: "/beauty/clients/delete", //your valid url
+                    contentType: "application/json", //this is required for spring 3 - ajax to work (at least for me)
+                    data: JSON.stringify(this.model), //json object or array of json objects
+                    success: function (result) {
+                        //do nothing
+                    },
+                    error: function () {
+                        //todo
+                    }
+                });
+            }}
     );
 
 
     var Controller = Backbone.Router.extend({
         routes: {
+            "!/": "list",
+            "/": "list",
             "": "list",
-            "!/clients": "list",
-            "!/clients/delete/:itemIndex": "delete",
+            "!/client_": "list",
+            "!/delete_/:itemIndex": "delete_",
             "!/add": "add",
             "!/edit/:itemIndex": "edit"
         },
@@ -108,34 +142,28 @@ $(function () {
                     "telephone": telephone}).save({}, {
                     wait: true,
                     success: function (model, response) {
-                        window.location = "";
+                        window.location = "/";
                     },
                     error: function (model, error) {
-                        window.location = "";
+                        alert("Some exception when save data");
                     }
                 });
 
         },
 
         edit: function (itemIndex) {
-            $('#inputId').val(clientCollection[itemIndex].clientId);
-            $("#inputName").val(clientCollection[itemIndex].firstName);
-            $('#inputSurName').val(clientCollection[itemIndex].surName);
-            $('#inputLastName').val(clientCollection[itemIndex].lastName);
-            $('#inputPhone').val(clientCollection[itemIndex].telephone);
-        },
-        delete: function (itemIndex) {
-            var model_for_delete = clientCollection[itemIndex];
-            clientCollection.remove(model_for_delete);
+            clientView.model = clientCollection[itemIndex];
+            clientView.render();
         }
     });
 
     var clientCollection = new ClientCollection();
     var clientListView = new ClientListView({collection: clientCollection});
     clientListView.render();
-
+    var curClient = new Client();
+    var clientView = new ClientView({model: curClient});
+    clientView.render();
     var controller = new Controller();
-
     Backbone.history.start();
 })
 
