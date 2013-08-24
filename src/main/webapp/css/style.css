@@ -1,3 +1,16 @@
+label.valid {
+    width: 24px;
+    height: 24px;
+    background: url(/img/valid.png) center center no-repeat;
+    display: inline-block;
+    text-indent: -9999px;
+}
+label.error {
+    font-weight: bold;
+    color: red;
+    padding: 2px 8px;
+    margin-top: 2px;
+}
 /* tables */
 table.tablesorter {
     font-family: arial;
@@ -47,3 +60,5 @@ table.tablesorter thead tr .headerSortDown {
 table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
     background-color: #4949de;
 }
+
+

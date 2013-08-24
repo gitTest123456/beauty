@@ -46,23 +46,17 @@ public class ClientsController {
 
 
     @RequestMapping(method = RequestMethod.GET, value = "/clients")
-    public
-    @ResponseBody
-    List<Client> getClients() {
+    public @ResponseBody List<Client> getClients() {
         return service.getAllClientsList();
     }
 
     @RequestMapping(method = RequestMethod.GET, value = "/{id}")
-    public
-    @ResponseBody
-    Client getClient(@PathVariable Integer id) {
+    public @ResponseBody Client getClient(@PathVariable Integer id) {
         return service.getClientById(id);
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/clients/add")
-    public
-    @ResponseBody
-    Client addClient(@RequestBody Client client) {
+    public @ResponseBody Client addClient(@RequestBody Client client) {
         System.out.println("add client " + client);
         service.addClient(client);
         return client;
@@ -70,8 +64,9 @@ public class ClientsController {
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/clients/delete")
-    public void deleteClient(@RequestBody Client client) {
+    public String deleteClient(@RequestBody Client client) {
         System.out.println("delete client " + client.toString());
         service.deleteClient(client);
+        return "redirect:/1";
     }
 }

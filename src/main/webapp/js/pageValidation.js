@@ -13,8 +13,8 @@
 //	Free for your use -- No warranties, no guarantees!
 //
 
-$(document).ready(function(){
-        alert("inside");
+$(document).ready(function () {
+    alert("inside");
     // Validate
     // http://bassistance.de/jquery-plugins/jquery-plugin-validation/
     // http://docs.jquery.com/Plugins/Validation/
@@ -37,16 +37,21 @@ $(document).ready(function(){
             inputPhone: {
                 minlength: 2,
                 required: true
+            },
+            name: {
+                minlength: 2,
+                required: true
             }
         },
-        highlight: function(element) {
-            $(element).closest('.input-prepend').removeClass('success').addClass('error');
+        highlight: function (element) {
+            $(element).closest('.controls').removeClass('success').addClass('error');
         },
-        success: function(element) {
+        success: function (element) {
             element
                 .text('OK!').addClass('valid')
-                .closest('.input-prepend').removeClass('error').addClass('success');
+                .closest('.controls').removeClass('error').addClass('success');
         }
+
     });
 
 }); // end document.ready
