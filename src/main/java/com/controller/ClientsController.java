@@ -59,7 +59,7 @@ public class ClientsController {
         return service.getClientById(id);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/clients")
+    @RequestMapping(method = RequestMethod.POST, value = "/clients/add")
     public
     @ResponseBody
     Client addClient(@RequestBody Client client) {

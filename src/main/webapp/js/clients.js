@@ -15,7 +15,7 @@ $(function () {
      **********************************************************************************/
     var Client = Backbone.Model.extend(
         {
-            url: "/beauty/clients",
+            url: "/beauty/clients/add",
             // Default attributes for the Contact item
             defaults: function () {
                 return {
@@ -25,24 +25,6 @@ $(function () {
                     lastName: null,
                     telephone: null
                 };
-            },
-            validation: {
-                firstName: {
-                    minLength: 5,
-                    msg: 'Please enter a name'
-                },
-                surName: {
-                    minLength: 5,
-                    msg: 'Please enter a surName'
-                },
-                lastName: {
-                    minLength: 5,
-                    msg: 'Please enter a valid lastName'
-                },
-                telephone: {
-                    minLength: 5,
-                    msg: 'Please enter a valid telephone'
-                }
             }
         }
     ); //Backbone.Model.extend end
@@ -90,7 +72,8 @@ $(function () {
             el: $("#client-details-block"), // DOM element with contact details,
 
             events: {
-                "click  #form-btn-remove": "deleteClient"
+                "click  #form-btn-remove": "deleteClient",
+                "click #form-btn-add": "addClient"
             },
             render: function () {
                 $(this.el).html(this.template({
@@ -110,7 +93,30 @@ $(function () {
                         //todo
                     }
                 });
-            }}
+            },
+            addClient: function (e) {
+                var firstName = $("#inputName").val();
+                var surName = $('#inputSurName').val();
+                var lastName = $('#inputLastName').val();
+                var telephone = $('#inputPhone').val();
+                var id = $('#inputId').val();
+
+                var newClient = new Client(
+                    {   "clientId": id,
+                        "firstName": firstName,
+                        "surName": surName,
+                        "lastName": lastName,
+                        "telephone": telephone}).save({}, {
+                        wait: true,
+                        success: function (model, response) {
+                            window.location = "/";
+                        },
+                        error: function (model, error) {
+                            window.location = "/";
+                        }
+                    });
+            }
+        }
     );
 
 
@@ -121,34 +127,11 @@ $(function () {
             "": "list",
             "!/client_": "list",
             "!/delete_/:itemIndex": "delete_",
-            "!/add": "add",
             "!/edit/:itemIndex": "edit"
         },
 
         list: function () {
             clientCollection.fetch();
-        },
-        add: function () {
-            var firstName = $("#inputName").val();
-            var surName = $('#inputSurName').val();
-            var lastName = $('#inputLastName').val();
-            var telephone = $('#inputPhone').val();
-            var id = $('#inputId').val();
-            var newClient = new Client(
-                {   "clientId": id,
-                    "firstName": firstName,
-                    "surName": surName,
-                    "lastName": lastName,
-                    "telephone": telephone}).save({}, {
-                    wait: true,
-                    success: function (model, response) {
-                        window.location = "/";
-                    },
-                    error: function (model, error) {
-                        alert("Some exception when save data");
-                    }
-                });
-
         },
 
         edit: function (itemIndex) {

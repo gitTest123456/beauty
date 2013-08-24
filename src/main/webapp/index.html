@@ -92,14 +92,14 @@
 <script type="text/template" id="client-details-template">
     <div class="control-group">
 
-        <input type="hidden" id="inputId" placeholder="name" value="<%=client.clientId%>">
+        <input type="hidden" id="inputId" placeholder="name" value="<%=client.clientId==null?'0':client.clientId%>">
 
         <label class="control-label" for="inputName">Name:</label>
 
         <div class="controls ">
-            <div class="input-prepend  ">
+            <div class="input-prepend">
                 <span class="add-on"><i class="icon-user"></i></span>
-                <input type="text" id="inputName" placeholder="name"
+                <input type="text" id="inputName" name="inputName" placeholder="name"
                        value="<%=client.firstName==null?'':client.firstName%>">
             </div>
         </div>
@@ -108,7 +108,7 @@
         <div class="controls">
             <div class="input-prepend">
                 <span class="add-on"><i class="icon-user"></i></span>
-                <input type="text" id="inputSurName" placeholder="surName"
+                <input type="text" id="inputSurName" name="inputSurName" placeholder="surName"
                        value="<%=client.surName==null?'':client.surName%>">
             </div>
         </div>
@@ -117,7 +117,7 @@
         <div class="controls">
             <div class="input-prepend">
                 <span class="add-on"><i class="icon-user"></i></span>
-                <input type="text" id="inputLastName" placeholder="lastName"
+                <input type="text" id="inputLastName" name="inputLastName" placeholder="lastName"
                        value="<%=client.lastName==null?'':client.lastName%>">
             </div>
         </div>
@@ -130,7 +130,7 @@
         <div class="controls">
             <div class="input-prepend">
                 <span class="add-on"><i class="icon-th"></i></span>
-                <input type="text" id="inputPhone" placeholder="Phone" class="error"
+                <input type="text" id="inputPhone" name="inputPhone" placeholder="Phone" class="error"
                        value="<%=client.telephone==null?'':client.telephone%>">
             </div>
         </div>
@@ -138,7 +138,7 @@
 
     <div class="control-group">
         <div class="controls">
-            <a class="btn btn-primary" href="#!/add">Save</a>
+            <a class="btn btn-primary" id="form-btn-add">Save</a>
             <!-- <a class="btn btn-primary" href="">Update view</a>  -->
             <a class="btn btn-danger" id="form-btn-remove" href="">Remove</a>
         </div>
@@ -161,6 +161,6 @@
 <script src="js/backbone.validation.js"></script>
 <script src="js/clients.js"></script>
 <script src="js/jquery.tablesorter.js"></script>
-
+<script src="js/pageValidation.js"></script>
 </body>
 </html>
