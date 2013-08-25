@@ -127,7 +127,8 @@ $(function () {
             "": "list",
             "!/client_": "list",
             "!/delete_/:itemIndex": "delete_",
-            "!/edit/:itemIndex": "edit"
+            "!/edit/:itemIndex": "edit",
+            "!/back":"back"
         },
 
         list: function () {
@@ -137,6 +138,9 @@ $(function () {
         edit: function (itemIndex) {
             clientView.model = clientCollection[itemIndex];
             clientView.render();
+        },
+        back: function() {
+            window.location = "/"
         }
     });
 

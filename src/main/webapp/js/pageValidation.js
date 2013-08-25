@@ -14,7 +14,6 @@
 //
 
 $(document).ready(function () {
-    alert("inside");
     // Validate
     // http://bassistance.de/jquery-plugins/jquery-plugin-validation/
     // http://docs.jquery.com/Plugins/Validation/

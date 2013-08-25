@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clients List</title>
+    <!-- Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/slideStyle.css" rel="stylesheet"/>
+    <link rel="stylesheet" type="text/css" href="css/menu_style/style_menu.css" />
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li><a class="nav-collapse collapse" id="clientsListLink" href="#!/clientsList">Clients list</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="rm_wrapper">
+    <div id="rm_container" class="rm_container">
+        <ul>
+            <li data-images="rm_container_1" data-rotation="-15"><img src="img/menu/1.jpg"/></li>
+            <li data-images="rm_container_2" data-rotation="-5"><img src="img/menu/2.jpg"/></li>
+            <li data-images="rm_container_3" data-rotation="5"><img src="img/menu/3.jpg"/></li>
+            <li data-images="rm_container_4" data-rotation="15"><img src="img/menu/4.jpg"/></li>
+        </ul>
+        <div id="rm_mask_left" class="rm_mask_left"></div>
+        <div id="rm_mask_right" class="rm_mask_right"></div>
+        <div id="rm_corner_left" class="rm_corner_left"></div>
+        <div id="rm_corner_right" class="rm_corner_right"></div>
+
+        <div style="display:none;">
+            <div id="rm_container_1">
+                <img src="img/menu/1.jpg"/>
+                <img src="img/menu/5.jpg"/>
+                <img src="img/menu/6.jpg"/>
+                <img src="img/menu/7.jpg"/>
+            </div>
+            <div id="rm_container_2">
+                <img src="img/menu/2.jpg"/>
+                <img src="img/menu/8.jpg"/>
+                <img src="img/menu/9.jpg"/>
+                <img src="img/menu/10.jpg"/>
+            </div>
+            <div id="rm_container_3">
+                <img src="img/menu/3.jpg"/>
+                <img src="img/menu/11.jpg"/>
+                <img src="img/menu/12.jpg"/>
+                <img src="img/menu/13.jpg"/>
+            </div>
+            <div id="rm_container_4">
+                <img src="img/menu/4.jpg"/>
+                <img src="img/menu/14.jpg"/>
+                <img src="img/menu/15.jpg"/>
+                <img src="img/menu/16.jpg"/>
+            </div>
+        </div>
+    </div>
+    <div class="rm_nav">
+        <a id="rm_next" href="#" class="rm_next"></a>
+        <a id="rm_prev" href="#" class="rm_prev"></a>
+    </div>
+    <div class="rm_controls">
+        <a id="rm_play" href="#" class="rm_play">Play</a>
+        <a id="rm_pause" href="#" class="rm_pause">Pause</a>
+    </div>
+
+</div>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/json2.js"></script>
+<script src="js/underscore.js"></script>
+<script src="js/backbone.js"></script>
+<script src="js/backbone.localstorage.js"></script>
+<script src="js/menu.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/menu/jquery.transform-0.9.3.min_.js"></script>
+<script type="text/javascript" src="js/menu/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="js/menu/jquery.RotateImageMenu.js"></script>
+
+
+</body>
+</html>
