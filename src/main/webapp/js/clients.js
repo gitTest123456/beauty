@@ -81,40 +81,49 @@ $(function () {
                 }))
             },
             deleteClient: function (e) {
-                $.ajax({
-                    type: "post",
-                    url: "/beauty/clients/delete", //your valid url
-                    contentType: "application/json", //this is required for spring 3 - ajax to work (at least for me)
-                    data: JSON.stringify(this.model), //json object or array of json objects
-                    success: function (result) {
-                        //do nothing
-                    },
-                    error: function () {
-                        //todo
-                    }
-                });
-            },
-            addClient: function (e) {
-                var firstName = $("#inputName").val();
-                var surName = $('#inputSurName').val();
-                var lastName = $('#inputLastName').val();
-                var telephone = $('#inputPhone').val();
-                var id = $('#inputId').val();
-
-                var newClient = new Client(
-                    {   "clientId": id,
-                        "firstName": firstName,
-                        "surName": surName,
-                        "lastName": lastName,
-                        "telephone": telephone}).save({}, {
-                        wait: true,
-                        success: function (model, response) {
-                            window.location = "/";
+                e.preventDefault();
+                if (jQuery("#client-details-block").valid()) {
+                    $.ajax({
+                        type: "post",
+                        url: "/beauty/clients/delete", //your valid url
+                        contentType: "application/json", //this is required for spring 3 - ajax to work (at least for me)
+                        data: JSON.stringify(this.model), //json object or array of json objects
+                        success: function (result) {
+                            //do nothing
                         },
-                        error: function (model, error) {
-                            window.location = "/";
+                        error: function () {
+                            //todo
                         }
                     });
+                } else {
+                    $.fancybox.open($("#dialog"));
+                }
+            },
+            addClient: function (e) {
+                if (jQuery("#client-details-block").valid()) {
+                    var firstName = $("#inputName").val();
+                    var surName = $('#inputSurName').val();
+                    var lastName = $('#inputLastName').val();
+                    var telephone = $('#inputPhone').val();
+                    var id = $('#inputId').val();
+
+                    var newClient = new Client(
+                        {   "clientId": id,
+                            "firstName": firstName,
+                            "surName": surName,
+                            "lastName": lastName,
+                            "telephone": telephone}).save({}, {
+                            wait: true,
+                            success: function (model, response) {
+                                window.location = "/clients.html";
+                            },
+                            error: function (model, error) {
+                                window.location = "/clients.html";
+                            }
+                        });
+                } else {
+                    $.fancybox.open($("#dialog"));
+                }
             }
         }
     );
@@ -128,7 +137,7 @@ $(function () {
             "!/client_": "list",
             "!/delete_/:itemIndex": "delete_",
             "!/edit/:itemIndex": "edit",
-            "!/back":"back"
+            "!/back": "back"
         },
 
         list: function () {
@@ -139,7 +148,7 @@ $(function () {
             clientView.model = clientCollection[itemIndex];
             clientView.render();
         },
-        back: function() {
+        back: function () {
             window.location = "/"
         }
     });

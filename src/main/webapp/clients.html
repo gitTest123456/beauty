@@ -7,6 +7,7 @@
     <link href="css/bootstrap-responsive.css" rel="stylesheet"/>
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/jquery.fancybox.css" rel="stylesheet"/>
     <style type="text/css">
         body {
             padding-top: 60px;
@@ -145,7 +146,12 @@
 
     </table>
 </div>
-
+<!-- Artist list, that shows in the pop-up window. -->
+<div class="alert-error" hidden="true" id="dialog"><!--style="display: none"> !-->
+    <div>
+       Input data is incorrect - try again later;
+    </div>
+</div>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/json2.js"></script>
@@ -156,6 +162,7 @@
 <script src="js/clients.js"></script>
 <script src="js/jquery.tablesorter.js"></script>
 <script src="js/pageValidation.js"></script>
+<script src="js/jquery.fancybox.js"></script>
 
 <!-- Validate plugin -->
 <script src="js/jquery.validate.min.js"></script>

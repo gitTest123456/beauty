@@ -22,23 +22,23 @@ $(document).ready(function () {
     $('#client-details-block').validate({
         rules: {
             inputName: {
-                minlength: 2,
+                minlength: 5,
                 required: true
             },
             inputSurName: {
                 required: true,
-                minlength: 2
+                minlength: 5
             },
             inputLastName: {
-                minlength: 2,
+                minlength: 5,
                 required: true
             },
             inputPhone: {
-                minlength: 2,
+                minlength: 5,
                 required: true
             },
             name: {
-                minlength: 2,
+                minlength: 5,
                 required: true
             }
         },
@@ -46,11 +46,10 @@ $(document).ready(function () {
             $(element).closest('.controls').removeClass('success').addClass('error');
         },
         success: function (element) {
-            element
-                .text('OK!').addClass('valid')
+            element.text('OK!').addClass('valid')
                 .closest('.controls').removeClass('error').addClass('success');
         }
 
     });
 
-}); // end document.ready
+});
