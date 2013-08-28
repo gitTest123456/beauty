@@ -54,14 +54,34 @@ $(function () {
 
             template: _.template($('#client-list-template').html()),
             el: $("#client-list-block"),
+            initialize: function (options) {
+                _.bindAll(this, 'beforeRender', 'render', 'afterRender');
+                var _this = this;
+                this.render = _.wrap(this.render, function (render) {
+                    _this.beforeRender();
+                    render();
+                    _this.afterRender();
+                });
+            },
+
+            beforeRender: function () {
+                console.log('beforeRender');
+            },
 
             render: function () {
                 $(this.el).html(this.template({client: this.collection}));
-                $("#client-list-block").tablesorter();
                 return this;
-            }
+            },
 
-        }
+            afterRender: function () {
+                //if (this.collection && this.collection.length != 0)
+                {
+                    $("#client-list-block").tablesorter().tablesorterPager({container: $("#pager")});
+                    alert("ooooo");
+                }
+
+            }}
+
     );
 
 
