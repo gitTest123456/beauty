@@ -76,10 +76,10 @@ $(function () {
             afterRender: function () {
                 //if (this.collection && this.collection.length != 0)
                 {
-                    $("#client-list-block").tablesorter().tablesorterPager({container: $("#pager")});
-                    alert("ooooo");
+                    $("#client-list-block").oneTime("4s", function () {
+                        $("#client-list-block").tablesorter().tablesorterPager({container: $("#pager")});
+                    });
                 }
-
             }}
 
     );
