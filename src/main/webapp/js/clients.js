@@ -26,26 +26,7 @@ $(function () {
                     telephone: null
                 };
             }
-        }
-    ); //Backbone.Model.extend end
-
-
-    // The collection of contacts
-    var ClientCollection = Backbone.Collection.extend(
-        {
-            model: Client,
-            url: "/beauty/clients",
-            parse: function (response) {
-                console.log('Parsing list of the clients:' + response);
-                clientCollection = response;
-                clientListView.collection = clientCollection;
-                clientListView.render();
-                return response;
-            }
-        }
-    );
-
-
+        });
     /**********************************************************************************
      **                     Views
      **********************************************************************************/
@@ -74,14 +55,26 @@ $(function () {
             },
 
             afterRender: function () {
-                //if (this.collection && this.collection.length != 0)
-                {
-                    $("#client-list-block").tablesorter().tablesorterPager({container: $("#pager")});
-                    alert("ooooo");
-                }
 
-            }}
+            }  }
 
+
+    ); //Backbone.Model.extend end
+
+
+    // The collection of contacts
+    var ClientCollection = Backbone.Collection.extend(
+        {
+            model: Client,
+            url: "/beauty/clients",
+            parse: function (response) {
+                console.log('Parsing list of the clients:' + response);
+                clientCollection = response;
+                clientListView.collection = clientCollection;
+                clientListView.render();
+                return response;
+            }
+        }
     );
 
 
@@ -180,6 +173,7 @@ $(function () {
     var clientView = new ClientView({model: curClient});
     clientView.render();
     var controller = new Controller();
+    var timer_pagination = null;
     Backbone.history.start();
 })
 
