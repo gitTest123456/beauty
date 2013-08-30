@@ -55,7 +55,6 @@ $(function () {
             },
 
             afterRender: function () {
-                    $("#client-list-block").oneTime("4s", function () {
             }  }
 
 
