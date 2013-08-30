@@ -55,12 +55,22 @@ $(function () {
             },
 
             afterRender: function () {
+<<<<<<< HEAD
+                //if (this.collection && this.collection.length != 0)
+                {
                     $("#client-list-block").oneTime("4s", function () {
+                        $("#client-list-block").tablesorter().tablesorterPager({container: $("#pager")});
+                    });
+                }
+            }}
+=======
+
             }  }
 
 
     ); //Backbone.Model.extend end
 
+>>>>>>> f4fb2065531ed746b07f6a9ac2b6167540371359
 
     // The collection of contacts
     var ClientCollection = Backbone.Collection.extend(
