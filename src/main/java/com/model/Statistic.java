@@ -20,7 +20,7 @@ public class Statistic {
     private int visitId;
     private Date dateVisit;
     private Time timeVisit;
-    private Employer employeerByEmployeerId;
+    private Employer employerByEmployerId;
     private Client clientByClientId;
 
     @javax.persistence.Column(name = "visit_id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
@@ -77,12 +77,12 @@ public class Statistic {
 
     @ManyToOne
     @javax.persistence.JoinColumn(name = "employeer_id", referencedColumnName = "employeer_id", nullable = false)
-    public Employer getEmployeerByEmployeerId() {
-        return employeerByEmployeerId;
+    public Employer getEmployerByEmployerId() {
+        return employerByEmployerId;
     }
 
-    public void setEmployeerByEmployeerId(Employer employeerByEmployeerId) {
-        this.employeerByEmployeerId = employeerByEmployeerId;
+    public void setEmployerByEmployerId(Employer employerByEmployerId) {
+        this.employerByEmployerId = employerByEmployerId;
     }
 
     @ManyToOne

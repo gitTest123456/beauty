@@ -42,6 +42,7 @@
                 <value>com.model.Employer</value>
                 <value>com.model.Separation</value>
                 <value>com.model.ServiceModel</value>
+                <value>com.model.Statistic</value>
             </list>
         </property>
         <property name="hibernateProperties">

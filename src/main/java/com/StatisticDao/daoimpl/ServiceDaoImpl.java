@@ -1,6 +1,6 @@
-package com.dao.daoimpl;
+package com.StatisticDao.daoimpl;
 
-import com.dao.ServiceDao;
+import com.StatisticDao.ServiceDao;
 import com.model.ServiceModel;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
