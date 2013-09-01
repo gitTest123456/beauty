@@ -1,5 +1,8 @@
 package com.model;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -12,25 +15,25 @@ import java.util.Collection;
  */
 @javax.persistence.Table(name = "employeer", schema = "", catalog = "beauty_salon")
 @Entity
-public class EmployeerEntity {
-    private int employeerId;
+public class Employer {
+    private int employerId;
     private String firstName;
     private String surName;
     private String lastName;
     private String address;
     private String birthday;
     private String telephone;
-    private SeparationEntity separationBySeparationId;
-    private Collection<StatisticEntity> statisticsByEmployeerId;
+    private Separation separation;
+    private Collection<Statistic> statisticsByEmployeerId;
 
     @javax.persistence.Column(name = "employeer_id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id
-    public int getEmployeerId() {
-        return employeerId;
+    public int getEmployerId() {
+        return employerId;
     }
 
-    public void setEmployeerId(int employeerId) {
-        this.employeerId = employeerId;
+    public void setEmployerId(int employerId) {
+        this.employerId = employerId;
     }
 
     @javax.persistence.Column(name = "first_name", nullable = false, insertable = true, updatable = true, length = 20, precision = 0)
@@ -98,9 +101,9 @@ public class EmployeerEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        EmployeerEntity that = (EmployeerEntity) o;
+        Employer that = (Employer) o;
 
-        if (employeerId != that.employeerId) return false;
+        if (employerId != that.employerId) return false;
         if (address != null ? !address.equals(that.address) : that.address != null) return false;
         if (birthday != null ? !birthday.equals(that.birthday) : that.birthday != null) return false;
         if (firstName != null ? !firstName.equals(that.firstName) : that.firstName != null) return false;
@@ -113,7 +116,7 @@ public class EmployeerEntity {
 
     @Override
     public int hashCode() {
-        int result = employeerId;
+        int result = employerId;
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (surName != null ? surName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
@@ -125,20 +128,40 @@ public class EmployeerEntity {
 
     @ManyToOne
     @javax.persistence.JoinColumn(name = "separation_id", referencedColumnName = "separation_id", nullable = false)
-    public SeparationEntity getSeparationBySeparationId() {
-        return separationBySeparationId;
+    public Separation getSeparation() {
+        return separation;
     }
 
-    public void setSeparationBySeparationId(SeparationEntity separationBySeparationId) {
-        this.separationBySeparationId = separationBySeparationId;
+    public void setSeparation(Separation separation) {
+        this.separation = separation;
     }
 
-    @OneToMany(mappedBy = "employeerByEmployeerId")
-    public Collection<StatisticEntity> getStatisticsByEmployeerId() {
-        return statisticsByEmployeerId;
-    }
+//    @OneToMany(mappedBy = "employeerByEmployeerId")
+//    public Collection<Statistic> getStatisticsByEmployerId() {
+//        return statisticsByEmployeerId;
+//    }
+//
+//    public void setStatisticsByEmployeerId(Collection<Statistic> statisticsByEmployeerId) {
+//        this.statisticsByEmployeerId = statisticsByEmployeerId;
+//    }
 
-    public void setStatisticsByEmployeerId(Collection<StatisticEntity> statisticsByEmployeerId) {
-        this.statisticsByEmployeerId = statisticsByEmployeerId;
+
+    @Override
+    public String toString() {
+
+        JSONObject json = new JSONObject();
+        try {
+            json.put("employerId", employerId);
+            json.put("firstName", firstName);
+            json.put("surName", surName);
+            json.put("lastName", lastName);
+            json.put("address", address);
+            json.put("birthday", birthday);
+            json.put("telephone", telephone);
+            json.put("separation", separation.getSeparationName());
+        } catch (JSONException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return json.toString();
     }
 }

@@ -16,11 +16,11 @@ import java.sql.Time;
  */
 @javax.persistence.Table(name = "statistic", schema = "", catalog = "beauty_salon")
 @Entity
-public class StatisticEntity {
+public class Statistic {
     private int visitId;
     private Date dateVisit;
     private Time timeVisit;
-    private EmployeerEntity employeerByEmployeerId;
+    private Employer employeerByEmployeerId;
     private Client clientByClientId;
 
     @javax.persistence.Column(name = "visit_id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
@@ -58,7 +58,7 @@ public class StatisticEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        StatisticEntity that = (StatisticEntity) o;
+        Statistic that = (Statistic) o;
 
         if (visitId != that.visitId) return false;
         if (dateVisit != null ? !dateVisit.equals(that.dateVisit) : that.dateVisit != null) return false;
@@ -77,11 +77,11 @@ public class StatisticEntity {
 
     @ManyToOne
     @javax.persistence.JoinColumn(name = "employeer_id", referencedColumnName = "employeer_id", nullable = false)
-    public EmployeerEntity getEmployeerByEmployeerId() {
+    public Employer getEmployeerByEmployeerId() {
         return employeerByEmployeerId;
     }
 
-    public void setEmployeerByEmployeerId(EmployeerEntity employeerByEmployeerId) {
+    public void setEmployeerByEmployeerId(Employer employeerByEmployeerId) {
         this.employeerByEmployeerId = employeerByEmployeerId;
     }
 

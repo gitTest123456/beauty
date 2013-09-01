@@ -23,7 +23,7 @@ public class Client {
     private String surName;
     private String lastName;
     private String telephone;
-    private Collection<StatisticEntity> statisticsByClientId;
+    private Collection<Statistic> statisticsByClientId;
 
     public Client(int id, String firstName, String surName, String lastName, String telephone) {
         this.clientId = id;
@@ -103,11 +103,11 @@ public class Client {
     }
 
 //    @OneToMany(mappedBy = "clientsByClientId")
-//    public Collection<StatisticEntity> getStatisticsByClientId() {
+//    public Collection<Statistic> getStatisticsByClientId() {
 //        return statisticsByClientId;
 //    }
 //
-//    public void setStatisticsByClientId(Collection<StatisticEntity> statisticsByClientId) {
+//    public void setStatisticsByClientId(Collection<Statistic> statisticsByClientId) {
 //        this.statisticsByClientId = statisticsByClientId;
 //    }
 

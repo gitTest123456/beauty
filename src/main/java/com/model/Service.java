@@ -15,13 +15,13 @@ import java.sql.Date;
  */
 @javax.persistence.Table(name = "service", schema = "", catalog = "beauty_salon")
 @Entity
-public class ServiceEntity {
+public class Service {
     private int serviceId;
     private String naming;
     private Date data;
     private int cost;
-    private SeparationEntity separationBySeparationId;
-    private StatisticEntity statisticBySeparationId;
+    private Separation separationBySeparationId;
+    private Statistic statisticBySeparationId;
 
     @javax.persistence.Column(name = "service_id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id
@@ -68,7 +68,7 @@ public class ServiceEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ServiceEntity that = (ServiceEntity) o;
+        Service that = (Service) o;
 
         if (cost != that.cost) return false;
         if (serviceId != that.serviceId) return false;
@@ -89,21 +89,21 @@ public class ServiceEntity {
 
     @ManyToOne
     @javax.persistence.JoinColumn(name = "separation_id", referencedColumnName = "separation_id", nullable = false)
-    public SeparationEntity getSeparationBySeparationId() {
+    public Separation getSeparationBySeparationId() {
         return separationBySeparationId;
     }
 
-    public void setSeparationBySeparationId(SeparationEntity separationBySeparationId) {
+    public void setSeparationBySeparationId(Separation separationBySeparationId) {
         this.separationBySeparationId = separationBySeparationId;
     }
 
     @ManyToOne
     @javax.persistence.JoinColumn(name = "separation_id", referencedColumnName = "service_id", nullable = false)
-    public StatisticEntity getStatisticBySeparationId() {
+    public Statistic getStatisticBySeparationId() {
         return statisticBySeparationId;
     }
 
-    public void setStatisticBySeparationId(StatisticEntity statisticBySeparationId) {
+    public void setStatisticBySeparationId(Statistic statisticBySeparationId) {
         this.statisticBySeparationId = statisticBySeparationId;
     }
 }

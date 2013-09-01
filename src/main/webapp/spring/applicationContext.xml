@@ -39,6 +39,8 @@
         <property name="annotatedClasses">
             <list>
                 <value>com.model.Client</value>
+                <value>com.model.Employer</value>
+                <value>com.model.Separation</value>
             </list>
         </property>
         <property name="hibernateProperties">

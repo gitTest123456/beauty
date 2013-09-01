@@ -15,11 +15,11 @@ import java.util.Collection;
  */
 @javax.persistence.Table(name = "separation", schema = "", catalog = "beauty_salon")
 @Entity
-public class SeparationEntity {
+public class Separation {
     private int separationId;
     private String separationName;
-    private Collection<EmployeerEntity> employeersBySeparationId;
-    private Collection<ServiceEntity> servicesBySeparationId;
+    private Collection<Employer> employeersBySeparationId;
+    private Collection<Service> servicesBySeparationId;
 
     @javax.persistence.Column(name = "separation_id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id
@@ -46,7 +46,7 @@ public class SeparationEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        SeparationEntity that = (SeparationEntity) o;
+        Separation that = (Separation) o;
 
         if (separationId != that.separationId) return false;
         if (separationName != null ? !separationName.equals(that.separationName) : that.separationName != null)
@@ -62,21 +62,21 @@ public class SeparationEntity {
         return result;
     }
 
-    @OneToMany(mappedBy = "separationBySeparationId")
-    public Collection<EmployeerEntity> getEmployeersBySeparationId() {
+    @OneToMany(mappedBy = "separation")
+    public Collection<Employer> getEmployersBySeparationId() {
         return employeersBySeparationId;
     }
 
-    public void setEmployeersBySeparationId(Collection<EmployeerEntity> employeersBySeparationId) {
+    public void setEmployersBySeparationId(Collection<Employer> employersBySeparationId) {
         this.employeersBySeparationId = employeersBySeparationId;
     }
 
-    @OneToMany(mappedBy = "separationBySeparationId")
-    public Collection<ServiceEntity> getServicesBySeparationId() {
-        return servicesBySeparationId;
-    }
-
-    public void setServicesBySeparationId(Collection<ServiceEntity> servicesBySeparationId) {
-        this.servicesBySeparationId = servicesBySeparationId;
-    }
+//    @OneToMany(mappedBy = "separationBySeparationId")
+//    public Collection<Service> getServicesBySeparationId() {
+//        return servicesBySeparationId;
+//    }
+//
+//    public void setServicesBySeparationId(Collection<Service> servicesBySeparationId) {
+//        this.servicesBySeparationId = servicesBySeparationId;
+//    }
 }
