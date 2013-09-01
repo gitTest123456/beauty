@@ -1,9 +1,10 @@
 package com.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import javax.persistence.*;
 import java.sql.Date;
 
 /**
@@ -15,13 +16,16 @@ import java.sql.Date;
  */
 @javax.persistence.Table(name = "service", schema = "", catalog = "beauty_salon")
 @Entity
-public class Service {
+public class ServiceModel {
     private int serviceId;
     private String naming;
     private Date data;
     private int cost;
-    private Separation separationBySeparationId;
-    private Statistic statisticBySeparationId;
+
+
+
+    private Separation separation_;
+    //private Statistic statisticBySeparationId;
 
     @javax.persistence.Column(name = "service_id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id
@@ -68,7 +72,7 @@ public class Service {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Service that = (Service) o;
+        ServiceModel that = (ServiceModel) o;
 
         if (cost != that.cost) return false;
         if (serviceId != that.serviceId) return false;
@@ -87,23 +91,40 @@ public class Service {
         return result;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonBackReference
     @javax.persistence.JoinColumn(name = "separation_id", referencedColumnName = "separation_id", nullable = false)
-    public Separation getSeparationBySeparationId() {
-        return separationBySeparationId;
+    public Separation getSeparation_() {
+        return separation_;
     }
 
-    public void setSeparationBySeparationId(Separation separationBySeparationId) {
-        this.separationBySeparationId = separationBySeparationId;
+    public void setSeparation_(Separation separation_) {
+        this.separation_ = separation_;
     }
 
-    @ManyToOne
-    @javax.persistence.JoinColumn(name = "separation_id", referencedColumnName = "service_id", nullable = false)
-    public Statistic getStatisticBySeparationId() {
-        return statisticBySeparationId;
-    }
+//    @ManyToOne
+//    @javax.persistence.JoinColumn(name = "separation_id", referencedColumnName = "service_id", nullable = false)
+//    public Statistic getStatisticBySeparationId() {
+//        return statisticBySeparationId;
+//    }
+//
+//    public void setStatisticBySeparationId(Statistic statisticBySeparationId) {
+//        this.statisticBySeparationId = statisticBySeparationId;
+//    }
 
-    public void setStatisticBySeparationId(Statistic statisticBySeparationId) {
-        this.statisticBySeparationId = statisticBySeparationId;
+    @Override
+    public String toString() {
+
+        JSONObject json = new JSONObject();
+        try {
+            json.put("serviceId", serviceId);
+            json.put("naming", naming);
+            json.put("data", data);
+            json.put("cost", cost);
+            json.put("separation_", separation_);
+        } catch (JSONException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return json.toString();
     }
 }

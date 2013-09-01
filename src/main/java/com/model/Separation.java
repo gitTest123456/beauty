@@ -1,9 +1,10 @@
 package com.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import javax.persistence.*;
 import java.util.Collection;
 
 /**
@@ -18,8 +19,8 @@ import java.util.Collection;
 public class Separation {
     private int separationId;
     private String separationName;
-    private Collection<Employer> employeersBySeparationId;
-    private Collection<Service> servicesBySeparationId;
+    private Collection<Employer> employers;
+    private Collection<ServiceModel> serviceModels;
 
     @javax.persistence.Column(name = "separation_id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id
@@ -64,19 +65,33 @@ public class Separation {
 
     @OneToMany(mappedBy = "separation")
     public Collection<Employer> getEmployersBySeparationId() {
-        return employeersBySeparationId;
+        return employers;
     }
 
     public void setEmployersBySeparationId(Collection<Employer> employersBySeparationId) {
-        this.employeersBySeparationId = employeersBySeparationId;
+        this.employers = employers;
     }
 
-//    @OneToMany(mappedBy = "separationBySeparationId")
-//    public Collection<Service> getServicesBySeparationId() {
-//        return servicesBySeparationId;
-//    }
-//
-//    public void setServicesBySeparationId(Collection<Service> servicesBySeparationId) {
-//        this.servicesBySeparationId = servicesBySeparationId;
-//    }
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "separation_", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    public Collection<ServiceModel> getServiceModels() {
+        return serviceModels;
+    }
+
+    public void setServiceModels(Collection<ServiceModel> serviceModels) {
+        this.serviceModels = serviceModels;
+    }
+
+    @Override
+    public String toString() {
+        JSONObject json = new JSONObject();
+        try {
+            json.put("separationId", separationId);
+            json.put("separationName", separationName);
+            json.put("employers", employers);
+        } catch (JSONException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+        return json.toString();
+    }
 }

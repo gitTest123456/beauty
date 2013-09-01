@@ -13,7 +13,10 @@ import java.util.List;
  */
 public interface ClientsService {
     List<Client> getAllClientsList();
+
     void deleteClient(Client client);
+
     void addClient(Client newClient);
+
     Client getClientById(int clientId);
 }
