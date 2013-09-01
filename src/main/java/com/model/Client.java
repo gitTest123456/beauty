@@ -1,11 +1,10 @@
 package com.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Collection;
 
 /**
@@ -102,14 +101,15 @@ public class Client {
         return true;
     }
 
-//    @OneToMany(mappedBy = "clientsByClientId")
-//    public Collection<Statistic> getStatisticsByClientId() {
-//        return statisticsByClientId;
-//    }
-//
-//    public void setStatisticsByClientId(Collection<Statistic> statisticsByClientId) {
-//        this.statisticsByClientId = statisticsByClientId;
-//    }
+    @OneToMany(mappedBy = "clientByClientId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JsonManagedReference
+    public Collection<Statistic> getStatisticsByClientId() {
+        return statisticsByClientId;
+    }
+
+    public void setStatisticsByClientId(Collection<Statistic> statisticsByClientId) {
+        this.statisticsByClientId = statisticsByClientId;
+    }
 
     @Override
     public String toString() {
