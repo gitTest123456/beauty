@@ -12,11 +12,16 @@ $(function () {
 
     var Controller = Backbone.Router.extend({
         routes: {
-            "!/clientsList": "list"
+            "!/clientsList": "clientsList",
+            "!/employersList": "employersList"
         },
 
-        list: function () {
-           window.location="/clients.html";
+        clientsList: function () {
+            window.location = "/clients.html";
+        },
+
+        employersList: function () {
+            window.location = "/employers.html"
         }
     });
 

@@ -1,11 +1,10 @@
 /**
  * Created with IntelliJ IDEA.
  * User: Asus
- * Date: 08.08.13
- * Time: 23:15
+ * Date: 31.08.13
+ * Time: 20:44
  * To change this template use File | Settings | File Templates.
  */
-
 
 //Load application with JQuery when DOM is ready
 $(function () {
@@ -13,28 +12,31 @@ $(function () {
     /**********************************************************************************
      **                     Models
      **********************************************************************************/
-    var Client = Backbone.Model.extend(
+    var Employer = Backbone.Model.extend(
         {
-            url: "/beauty/clients/add",
-            // Default attributes for the Client item
+            url: "/beauty/employers/add",
+            // Default attributes for the Employer item
             defaults: function () {
                 return {
-                    clientId: null,
+                    employerId: null,
                     firstName: null,
                     surName: null,
                     lastName: null,
-                    telephone: null
+                    address: null,
+                    birthday: null,
+                    telephone: null,
+                    separation: null
                 };
             }
         });
     /**********************************************************************************
      **                     Views
      **********************************************************************************/
-    var ClientListView = Backbone.View.extend(
+    var EmployerListView = Backbone.View.extend(
         {
 
-            template: _.template($('#client-list-template').html()),
-            el: $("#client-list-block"),
+            template: _.template($('#employer-list-template').html()),
+            el: $("#employer-list-block"),
             initialize: function (options) {
                 _.bindAll(this, 'beforeRender', 'render', 'afterRender');
                 var _this = this;
@@ -50,7 +52,7 @@ $(function () {
             },
 
             render: function () {
-                $(this.el).html(this.template({client: this.collection}));
+                $(this.el).html(this.template({employer: this.collection}));
                 return this;
             },
 
@@ -61,43 +63,43 @@ $(function () {
     ); //Backbone.Model.extend end
 
 
-    // The collection of clients
-    var ClientCollection = Backbone.Collection.extend(
+    // The collection of employers
+    var EmployerCollection = Backbone.Collection.extend(
         {
-            model: Client,
-            url: "/beauty/clients",
+            model: Employer,
+            url: "/beauty/employers",
             parse: function (response) {
-                console.log('Parsing list of the clients:' + response);
-                clientCollection = response;
-                clientListView.collection = clientCollection;
-                clientListView.render();
+                console.log('Parsing list of the employers:' + response);
+                employersCollection = response;
+                employersListView.collection = employersCollection;
+                employersListView.render();
                 return response;
             }
         }
     );
 
 
-    var ClientView = Backbone.View.extend(
+    var EmployerView = Backbone.View.extend(
         {
 
-            template: _.template($('#client-details-template').html()),
-            el: $("#client-details-block"), // DOM element with client details,
+            template: _.template($('#employer-details-template').html()),
+            el: $("#employer-details-block"), // DOM element with contact details,
 
             events: {
-                "click  #form-btn-remove": "deleteClient",
-                "click #form-btn-add": "addClient"
+                "click  #form-btn-remove": "deleteEmployer",
+                "click #form-btn-add": "addEmployer"
             },
             render: function () {
                 $(this.el).html(this.template({
-                    client: this.model
+                    employer: this.model
                 }))
             },
-            deleteClient: function (e) {
+            deleteEmployer: function (e) {
                 e.preventDefault();
-                if (jQuery("#client-details-block").valid()) {
+                if (jQuery("#employer-details-block").valid()) {
                     $.ajax({
                         type: "post",
-                        url: "/beauty/clients/delete", //your valid url
+                        url: "/beauty/employers/delete", //your valid url
                         contentType: "application/json", //this is required for spring 3 - ajax to work (at least for me)
                         data: JSON.stringify(this.model), //json object or array of json objects
                         success: function (result) {
@@ -111,26 +113,32 @@ $(function () {
                     $.fancybox.open($("#dialog"));
                 }
             },
-            addClient: function (e) {
-                if (jQuery("#client-details-block").valid()) {
+            addEmployer: function (e) {
+                if (jQuery("#employer-details-block").valid()) {
                     var firstName = $("#inputName").val();
                     var surName = $('#inputSurName').val();
                     var lastName = $('#inputLastName').val();
                     var telephone = $('#inputPhone').val();
+                    var address = $('#inputAddress').val();
+                    var birthday = $('#inputBirthday').val();
+                    var separation = 1;
                     var id = $('#inputId').val();
 
-                    var newClient = new Client(
-                        {   "clientId": id,
+                    var newEmployer = new Employer(
+                        {   "employerId": id,
                             "firstName": firstName,
                             "surName": surName,
                             "lastName": lastName,
-                            "telephone": telephone}).save({}, {
+                            "telephone": telephone,
+                            "address": address,
+                            "birthday": birthday,
+                            "separation": separation}).save({}, {
                             wait: true,
                             success: function (model, response) {
-                                window.location = "/clients.html";
+                                window.location = "/employers.html";
                             },
                             error: function (model, error) {
-                                window.location = "/clients.html";
+                                window.location = "/employers.html";
                             }
                         });
                 } else {
@@ -146,31 +154,31 @@ $(function () {
             "!/": "list",
             "/": "list",
             "": "list",
-            "!/client_": "list",
+            "!/employer_": "list",
             "!/delete_/:itemIndex": "delete_",
             "!/edit/:itemIndex": "edit",
             "!/back": "back"
         },
 
         list: function () {
-            clientCollection.fetch();
+            employersCollection.fetch();
         },
 
         edit: function (itemIndex) {
-            clientView.model = clientCollection[itemIndex];
-            clientView.render();
+            employerView.model = employersCollection[itemIndex];
+            employerView.render();
         },
         back: function () {
             window.location = "/"
         }
     });
 
-    var clientCollection = new ClientCollection();
-    var clientListView = new ClientListView({collection: clientCollection});
-    clientListView.render();
-    var curClient = new Client();
-    var clientView = new ClientView({model: curClient});
-    clientView.render();
+    var employersCollection = new EmployerCollection();
+    var employersListView = new EmployerListView({collection: employersCollection});
+    employersListView.render();
+    var curEmployer = new Employer();
+    var employerView = new EmployerView({model: curEmployer});
+    employerView.render();
     var controller = new Controller();
     var timer_pagination = null;
     Backbone.history.start();

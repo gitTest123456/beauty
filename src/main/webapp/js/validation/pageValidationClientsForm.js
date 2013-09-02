@@ -5,19 +5,9 @@
  * Time: 7:25
  * To change this template use File | Settings | File Templates.
  */
-//
-//	jQuery Validate example script
-//
-//	Prepared by David Cochran
-//
-//	Free for your use -- No warranties, no guarantees!
-//
+
 
 $(document).ready(function () {
-    // Validate
-    // http://bassistance.de/jquery-plugins/jquery-plugin-validation/
-    // http://docs.jquery.com/Plugins/Validation/
-    // http://docs.jquery.com/Plugins/Validation/validate#toptions
 
     $('#client-details-block').validate({
         rules: {
