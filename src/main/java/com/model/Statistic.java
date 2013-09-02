@@ -78,6 +78,7 @@ public class Statistic {
     }
 
     @ManyToOne
+    @JsonBackReference
     @javax.persistence.JoinColumn(name = "employeer_id", referencedColumnName = "employeer_id", nullable = false)
     public Employer getEmployerByEmployerId() {
         return employerByEmployerId;

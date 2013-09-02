@@ -1,5 +1,8 @@
 package com.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -24,7 +27,7 @@ public class Employer {
     private String birthday;
     private String telephone;
     private Separation separation;
-    private Collection<Statistic> statisticsByEmployeerId;
+    private Collection<Statistic> statisticsByEmployerId;
 
     @javax.persistence.Column(name = "employeer_id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id
@@ -136,14 +139,16 @@ public class Employer {
         this.separation = separation;
     }
 
-//    @OneToMany(mappedBy = "employeerByEmployeerId")
-//    public Collection<Statistic> getStatisticsByEmployerId() {
-//        return statisticsByEmployeerId;
-//    }
-//
-//    public void setStatisticsByEmployeerId(Collection<Statistic> statisticsByEmployeerId) {
-//        this.statisticsByEmployeerId = statisticsByEmployeerId;
-//    }
+    @OneToMany(mappedBy = "employerByEmployerId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @Fetch(value = FetchMode.SUBSELECT)
+    @JsonManagedReference
+    public Collection<Statistic> getStatisticsByEmployerId() {
+        return statisticsByEmployerId;
+    }
+
+    public void setStatisticsByEmployerId(Collection<Statistic> statisticsByEmployerId) {
+        this.statisticsByEmployerId = statisticsByEmployerId;
+    }
 
 
     @Override
