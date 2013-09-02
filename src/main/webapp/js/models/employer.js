@@ -149,7 +149,7 @@ $(function () {
     );
 
 
-    var Controller = Backbone.Router.extend({
+    var EmployerController = Backbone.Router.extend({
         routes: {
             "!/": "list",
             "/": "list",
@@ -179,7 +179,7 @@ $(function () {
     var curEmployer = new Employer();
     var employerView = new EmployerView({model: curEmployer});
     employerView.render();
-    var controller = new Controller();
+    var controller = new EmployerController();
     var timer_pagination = null;
     Backbone.history.start();
 })

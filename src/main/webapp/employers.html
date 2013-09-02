@@ -74,7 +74,7 @@
 <script type="text/template" id="employer-details-template">
     <div class="control-group">
 
-        <input type="hidden" id="inputId" placeholder="name"
+        <input type="hidden" id="inputId"
                value="<%=employer.employerId==null?'0':employer.employerId%>">
 
         <label class="control-label" for="inputName">Name:</label>
@@ -173,14 +173,13 @@
 <script src="js/backbone/backbone.js"></script>
 <script src="js/backbone/backbone.localstorage.js"></script>
 <script src="js/backbone/backbone.validation.js"></script>
-<script src="js/models/employer.js"></script>
 <script src="js/table/jquery.tablesorter.js"></script>
 <script src="js/dialogs/jquery.fancybox.js"></script>
 <script src="js/validation/jquery.validate.min.js"></script>
-<script src="js/table/jquery.tablesorter.pager.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
 <script src="js/table/simplePage.js"></script>
 <script src="js/backbone/timer_.js"></script>
 <script src="js/models/employer.js"></script>
+<script src="js/validation/pageValidationEmployersForm.js"></script>
 </body>
 </html>

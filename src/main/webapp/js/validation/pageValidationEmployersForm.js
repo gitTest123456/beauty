@@ -27,8 +27,12 @@ $(document).ready(function () {
                 minlength: 5,
                 required: true
             },
-            name: {
+            inputAddress: {
                 minlength: 5,
+                required: true
+            },
+            inputBirthday: {
+                minLength: 5,
                 required: true
             }
         },
