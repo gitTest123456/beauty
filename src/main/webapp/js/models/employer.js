@@ -103,10 +103,10 @@ $(function () {
                         contentType: "application/json", //this is required for spring 3 - ajax to work (at least for me)
                         data: JSON.stringify(this.model), //json object or array of json objects
                         success: function (result) {
-                            //do nothing
+                            window.location = "/employers.html";
                         },
                         error: function () {
-                            //todo
+                            window.location = "/employers.html";
                         }
                     });
                 } else {
