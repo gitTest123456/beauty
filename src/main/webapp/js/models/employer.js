@@ -80,7 +80,7 @@ $(function () {
             parse: function (response) {
                 console.log('Parsing list of the separations:' + JSON.stringify(response));
                 separationsCollection = response;
-                separationListView = new SeparationView({collection: separationsCollection}).render();
+                separationListView = new SeparationView().render();
                 return response;
             }
         }
@@ -93,7 +93,7 @@ $(function () {
 
             render: function () {
                 $(this.el).html(this.template({
-                    separation: this.model
+                    separation: separationsCollection
                 }))
             }
         }
@@ -157,8 +157,8 @@ $(function () {
                     var telephone = $('#inputEmployerPhone').val();
                     var address = $('#inputEmployerAddress').val();
                     var birthday = $('#inputEmployerBirthday').val();
-                    var separation = $('#inputEmployerSeparation').val();
-                    ;
+                    var separationIndex = $(document).find('option:selected').val();
+                    var separation = separationsCollection[separationIndex];
                     var id = $('#inputEmployerId').val();
 
                     var newEmployer = new Employer(
@@ -169,7 +169,7 @@ $(function () {
                             "telephone": telephone,
                             "address": address,
                             "birthday": birthday,
-                            "separation": employersCollection[0].separation}).save({}, {
+                            "separation": separation}).save({}, {
                             wait: true,
                             success: function (model, response) {
                                 window.location = "/employers.html";

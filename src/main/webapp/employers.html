@@ -32,22 +32,25 @@
 
 
 <div class="span10">
+    <form class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label">Separation:</label>
+
+            <div class="controls" id="separation-details-block">
+                <!-- For separation would be injected here by Backbone.js -->
+            </div>
+        </div>
+    </form>
     <form class="form-horizontal" id="employer-details-block">
-        <!-- Contact details would be injected here by Backbone.js -->
+        <!-- Employer details would be injected here by Backbone.js -->
     </form>
 </div>
 
-
-<div class="span10">
-    <form class="form-horizontal" id="separation-details-block">
-        <!-- Contact details would be injected here by Backbone.js -->
-    </form>
-</div>
 
 <script type="text/template" id="separation-details-template">
-    <select>
+    <select id="selectId">
         <% separation_id = 0; _.each(separation, function(entry){%>
-        <option value="<%=separation_id++%>"><%=separation.separationName%></option>
+        <option value="<%=separation_id++%>"><%=entry.separationName%></option>
         <%})%>
     </select>
 </script>
@@ -102,6 +105,8 @@
                        value="<%=employer.firstName==null?'':employer.firstName%>">
             </div>
         </div>
+    </div>
+    <div class="control-group">
         <label class="control-label" for="inputEmployerSurName">SurName:</label>
 
         <div class="controls">
@@ -111,6 +116,8 @@
                        value="<%=employer.surName==null?'':employer.surName%>">
             </div>
         </div>
+    </div>
+    <div class="control-group">
         <label class="control-label" for="inputEmployerLastName">LastName:</label>
 
         <div class="controls">
@@ -121,7 +128,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="control-group">
         <label class="control-label" for="inputEmployerPhone">Phone:</label>
@@ -160,8 +166,6 @@
             </div>
         </div>
     </div>
-
-
     <div class="control-group">
         <div class="controls">
             <a class="btn btn-primary" id="form-btn-add">Save</a>
