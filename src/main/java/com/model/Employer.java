@@ -1,10 +1,9 @@
 package com.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -27,6 +26,7 @@ public class Employer {
     private String birthday;
     private String telephone;
     private Separation separation;
+    @JsonIgnore
     private Collection<Statistic> statisticsByEmployerId;
 
     @javax.persistence.Column(name = "employeer_id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
@@ -148,25 +148,5 @@ public class Employer {
 
     public void setStatisticsByEmployerId(Collection<Statistic> statisticsByEmployerId) {
         this.statisticsByEmployerId = statisticsByEmployerId;
-    }
-
-
-    @Override
-    public String toString() {
-
-        JSONObject json = new JSONObject();
-        try {
-            json.put("employerId", employerId);
-            json.put("firstName", firstName);
-            json.put("surName", surName);
-            json.put("lastName", lastName);
-            json.put("address", address);
-            json.put("birthday", birthday);
-            json.put("telephone", telephone);
-            json.put("separation", separation.getSeparationName());
-        } catch (JSONException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-        return json.toString();
     }
 }

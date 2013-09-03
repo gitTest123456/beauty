@@ -114,15 +114,16 @@ $(function () {
                 }
             },
             addEmployer: function (e) {
-                if (jQuery("#employer-details-block").valid()) {
-                    var firstName = $("#inputName").val();
-                    var surName = $('#inputSurName').val();
-                    var lastName = $('#inputLastName').val();
-                    var telephone = $('#inputPhone').val();
-                    var address = $('#inputAddress').val();
-                    var birthday = $('#inputBirthday').val();
-                    var separation = 1;
-                    var id = $('#inputId').val();
+                if (jQuery("#employer-details-block").valid())
+                {
+                    var firstName = $("#inputEmployerName").val();
+                    var surName = $('#inputEmployerSurName').val();
+                    var lastName = $('#inputEmployerLastName').val();
+                    var telephone = $('#inputEmployerPhone').val();
+                    var address = $('#inputEmployerAddress').val();
+                    var birthday = $('#inputEmployerBirthday').val();
+                    var separation = $('#inputEmployerSeparation').val();;
+                    var id = $('#inputEmployerId').val();
 
                     var newEmployer = new Employer(
                         {   "employerId": id,
@@ -132,7 +133,7 @@ $(function () {
                             "telephone": telephone,
                             "address": address,
                             "birthday": birthday,
-                            "separation": separation}).save({}, {
+                            "separation": employersCollection[0].separation}).save({}, {
                             wait: true,
                             success: function (model, response) {
                                 window.location = "/employers.html";

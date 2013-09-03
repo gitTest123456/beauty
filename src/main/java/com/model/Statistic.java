@@ -55,19 +55,6 @@ public class Statistic {
         this.timeVisit = timeVisit;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Statistic that = (Statistic) o;
-
-        if (visitId != that.visitId) return false;
-        if (dateVisit != null ? !dateVisit.equals(that.dateVisit) : that.dateVisit != null) return false;
-        if (timeVisit != null ? !timeVisit.equals(that.timeVisit) : that.timeVisit != null) return false;
-
-        return true;
-    }
 
     @Override
     public int hashCode() {

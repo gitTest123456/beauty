@@ -11,28 +11,24 @@ $(document).ready(function () {
 
     $('#employer-details-block').validate({
         rules: {
-            inputName: {
+            inputEmployerName: {
                 minlength: 5,
                 required: true
             },
-            inputSurName: {
+            inputEmployerSurName: {
                 required: true,
                 minlength: 5
             },
-            inputLastName: {
+            inputEmployerLastName: {
                 minlength: 5,
                 required: true
             },
-            inputPhone: {
+            inputEmployerPhone: {
                 minlength: 5,
                 required: true
             },
-            inputAddress: {
+            inputEmployerAddress: {
                 minlength: 5,
-                required: true
-            },
-            inputBirthday: {
-                minLength: 5,
                 required: true
             }
         },

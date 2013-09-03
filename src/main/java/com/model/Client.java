@@ -1,5 +1,6 @@
 package com.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,6 +23,7 @@ public class Client {
     private String surName;
     private String lastName;
     private String telephone;
+    @JsonIgnore
     private Collection<Statistic> statisticsByClientId;
 
     public Client(int id, String firstName, String surName, String lastName, String telephone) {

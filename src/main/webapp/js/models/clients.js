@@ -124,7 +124,8 @@ $(function () {
                             "firstName": firstName,
                             "surName": surName,
                             "lastName": lastName,
-                            "telephone": telephone}).save({}, {
+                            "telephone": telephone
+                        }).save({}, {
                             wait: true,
                             success: function (model, response) {
                                 window.location = "/clients.html";
