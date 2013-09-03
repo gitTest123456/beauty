@@ -20,6 +20,7 @@ import java.util.Collection;
 public class Separation {
     private int separationId;
     private String separationName;
+    @JsonIgnore
     private Collection<Employer> employers;
     @JsonIgnore
     private Collection<ServiceModel> serviceModels;
@@ -65,14 +66,14 @@ public class Separation {
         return result;
     }
 
-    @OneToMany(mappedBy = "separation")
-    public Collection<Employer> getEmployersBySeparationId() {
-        return employers;
-    }
-
-    public void setEmployersBySeparationId(Collection<Employer> employersBySeparationId) {
-        this.employers = employers;
-    }
+//    @OneToMany(mappedBy = "separation")
+//    public Collection<Employer> getEmployersBySeparationId() {
+//        return employers;
+//    }
+//
+//    public void setEmployersBySeparationId(Collection<Employer> employersBySeparationId) {
+//        this.employers = employers;
+//    }
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "separation_", cascade = CascadeType.ALL)
     @JsonManagedReference

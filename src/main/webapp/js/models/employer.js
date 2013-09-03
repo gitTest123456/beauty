@@ -62,6 +62,42 @@ $(function () {
 
     ); //Backbone.Model.extend end
 
+    var Separation = Backbone.Model.extend(
+        {
+            defaults: function () {
+                return {
+                    separationId: null,
+                    separationName: null
+                };
+            }
+        });
+
+    // The collection of employers
+    var SeparationCollection = Backbone.Collection.extend(
+        {
+            model: Separation,
+            url: "/beauty/separations",
+            parse: function (response) {
+                console.log('Parsing list of the separations:' + JSON.stringify(response));
+                separationsCollection = response;
+                separationListView = new SeparationView({collection: separationsCollection}).render();
+                return response;
+            }
+        }
+    );
+
+    var SeparationView = Backbone.View.extend(
+        {
+            template: _.template($('#separation-details-template').html()),
+            el: $("#separation-details-block"), // DOM element with contact details,
+
+            render: function () {
+                $(this.el).html(this.template({
+                    separation: this.model
+                }))
+            }
+        }
+    );
 
     // The collection of employers
     var EmployerCollection = Backbone.Collection.extend(
@@ -69,7 +105,7 @@ $(function () {
             model: Employer,
             url: "/beauty/employers",
             parse: function (response) {
-                console.log('Parsing list of the employers:' + response);
+                console.log('Parsing list of the employers:' + JSON.stringify(response));
                 employersCollection = response;
                 employersListView.collection = employersCollection;
                 employersListView.render();
@@ -114,15 +150,15 @@ $(function () {
                 }
             },
             addEmployer: function (e) {
-                if (jQuery("#employer-details-block").valid())
-                {
+                if (jQuery("#employer-details-block").valid()) {
                     var firstName = $("#inputEmployerName").val();
                     var surName = $('#inputEmployerSurName').val();
                     var lastName = $('#inputEmployerLastName').val();
                     var telephone = $('#inputEmployerPhone').val();
                     var address = $('#inputEmployerAddress').val();
                     var birthday = $('#inputEmployerBirthday').val();
-                    var separation = $('#inputEmployerSeparation').val();;
+                    var separation = $('#inputEmployerSeparation').val();
+                    ;
                     var id = $('#inputEmployerId').val();
 
                     var newEmployer = new Employer(
@@ -163,6 +199,7 @@ $(function () {
 
         list: function () {
             employersCollection.fetch();
+            separationsCollection.fetch();
         },
 
         edit: function (itemIndex) {
@@ -180,8 +217,10 @@ $(function () {
     var curEmployer = new Employer();
     var employerView = new EmployerView({model: curEmployer});
     employerView.render();
+    var separationsCollection = new SeparationCollection();
     var controller = new EmployerController();
-    var timer_pagination = null;
+    var separationListView = new SeparationView({collection: separationsCollection});
+    separationListView.render();
     Backbone.history.start();
 })
 
