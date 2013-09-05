@@ -157,7 +157,7 @@ $(function () {
                     var telephone = $('#inputEmployerPhone').val();
                     var address = $('#inputEmployerAddress').val();
                     var birthday = $('#inputEmployerBirthday').val();
-                    var separationIndex = $(document).find('option:selected').val();
+                    var separationIndex = $("#selectId").val();
                     var separation = separationsCollection[separationIndex];
                     var id = $('#inputEmployerId').val();
 
@@ -205,6 +205,12 @@ $(function () {
         edit: function (itemIndex) {
             employerView.model = employersCollection[itemIndex];
             employerView.render();
+            for (index = 0; index < separationsCollection.length; index++) {
+                if (employersCollection[itemIndex].separation.separationName == separationsCollection[index].separationName) {
+                    $("#selectId").val(index);
+                    break;
+                }
+            }
         },
         back: function () {
             window.location = "/"
@@ -222,5 +228,4 @@ $(function () {
     var separationListView = new SeparationView({collection: separationsCollection});
     separationListView.render();
     Backbone.history.start();
-})
-
+});

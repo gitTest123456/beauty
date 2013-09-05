@@ -50,7 +50,7 @@
 <script type="text/template" id="separation-details-template">
     <select id="selectId">
         <% separation_id = 0; _.each(separation, function(entry){%>
-        <option value="<%=separation_id++%>"><%=entry.separationName%></option>
+        <option value=<%=separation_id++%>><%=entry.separationName%></option>
         <%})%>
     </select>
 </script>
