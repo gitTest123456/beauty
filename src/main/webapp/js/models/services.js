@@ -160,7 +160,7 @@ $(function () {
                             "naming": naming,
                             "data": data,
                             "cost": cost,
-                            "separation": separation}).save({}, {
+                            "separation_": separation}).save({}, {
                             wait: true,
                             success: function (model, response) {
                                 window.location = "/services.html";
