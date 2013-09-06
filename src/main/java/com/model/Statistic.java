@@ -24,6 +24,7 @@ public class Statistic {
     private Time timeVisit;
     private Employer employerByEmployerId;
     private Client clientByClientId;
+    private ServiceModel serviceByServiceId;
 
     @javax.persistence.Column(name = "visit_id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id
@@ -84,5 +85,16 @@ public class Statistic {
 
     public void setClientByClientId(Client clientByClientId) {
         this.clientByClientId = clientByClientId;
+    }
+
+    @ManyToOne
+    @JsonBackReference
+    @javax.persistence.JoinColumn(name = "service_id", referencedColumnName = "service_id", nullable = false)
+    public ServiceModel getServiceByServiceId() {
+        return serviceByServiceId;
+    }
+
+    public void setServiceByServiceId(ServiceModel serviceByServiceId) {
+        this.serviceByServiceId = serviceByServiceId;
     }
 }
