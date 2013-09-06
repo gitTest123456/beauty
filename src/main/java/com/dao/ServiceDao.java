@@ -1,4 +1,4 @@
-package com.StatisticDao;
+package com.dao;
 
 import com.model.ServiceModel;
 

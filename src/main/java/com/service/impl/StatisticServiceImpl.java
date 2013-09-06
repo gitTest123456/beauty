@@ -1,6 +1,6 @@
 package com.service.impl;
 
-import com.StatisticDao.StatisticDao;
+import com.dao.StatisticDao;
 import com.model.Statistic;
 import com.service.StatisticService;
 import org.springframework.beans.factory.annotation.Autowired;

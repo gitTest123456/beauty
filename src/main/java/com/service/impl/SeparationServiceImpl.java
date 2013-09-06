@@ -1,6 +1,6 @@
 package com.service.impl;
 
-import com.StatisticDao.SeparationDao;
+import com.dao.SeparationDao;
 import com.model.Separation;
 import com.service.SeparationI;
 import org.springframework.beans.factory.annotation.Autowired;

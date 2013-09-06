@@ -87,7 +87,7 @@ public class ServiceModel {
         return result;
     }
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne
     @javax.persistence.JoinColumn(name = "separation_id", referencedColumnName = "separation_id", nullable = false)
     public Separation getSeparation_() {
         return separation_;

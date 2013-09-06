@@ -1,6 +1,6 @@
-package com.StatisticDao.daoimpl;
+package com.dao.daoimpl;
 
-import com.StatisticDao.SeparationDao;
+import com.dao.SeparationDao;
 import com.model.Separation;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

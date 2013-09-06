@@ -1,6 +1,6 @@
 package com.service.impl;
 
-import com.StatisticDao.ClientDao;
+import com.dao.ClientDao;
 import com.model.Client;
 import com.service.ClientsService;
 import org.apache.log4j.Logger;
