@@ -43,6 +43,6 @@ $(document).ready(function () {
     });
     $(document).oneTime("1s", function () {
         $("#employer-list-block").tablesorter();
-        $("#employer-list-block").oneSimpleTablePagination({rowsPerPage: 3});
+        $("#employer-list-block").oneSimpleTablePagination({rowsPerPage: 5});
     })
 });

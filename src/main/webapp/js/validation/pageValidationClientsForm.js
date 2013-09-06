@@ -43,6 +43,6 @@ $(document).ready(function () {
     });
     $(document).oneTime("1s", function () {
         $("#client-list-block").tablesorter();
-        $("#client-list-block").oneSimpleTablePagination({rowsPerPage: 3});
+        $("#client-list-block").oneSimpleTablePagination({rowsPerPage: 5});
     })
 });

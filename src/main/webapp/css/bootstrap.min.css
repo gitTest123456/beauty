@@ -1601,9 +1601,16 @@ input.search-query {
     margin-bottom: 10px
 }
 
+.control-group-table {
+    position: absolute;
+    bottom: 10px;
+}
+
 .control-group_ {
-    padding: 3px;
-    margin-bottom: 10px
+    position:absolute;
+    bottom:0;
+    margin:auto;
+    width: 100%;
 }
 
 legend+.control-group {
