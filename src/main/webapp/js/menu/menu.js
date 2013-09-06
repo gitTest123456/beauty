@@ -13,7 +13,8 @@ $(function () {
     var Controller = Backbone.Router.extend({
         routes: {
             "!/clientsList": "clientsList",
-            "!/employersList": "employersList"
+            "!/employersList": "employersList",
+            "!/servicesList": "servicesList"
         },
 
         clientsList: function () {
@@ -22,6 +23,10 @@ $(function () {
 
         employersList: function () {
             window.location = "/employers.html"
+        },
+
+        servicesList: function () {
+            window.location = "/services.html"
         }
     });
 
