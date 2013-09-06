@@ -1,12 +1,9 @@
 package com.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
-import javax.persistence.*;
-import java.util.Collection;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,8 +23,7 @@ public class Employer {
     private String birthday;
     private String telephone;
     private Separation separation;
-    @JsonIgnore
-    private Collection<Statistic> statisticsByEmployerId;
+
 
     @javax.persistence.Column(name = "employeer_id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id
@@ -137,16 +133,5 @@ public class Employer {
 
     public void setSeparation(Separation separation) {
         this.separation = separation;
-    }
-
-    @OneToMany(mappedBy = "employerByEmployerId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @Fetch(value = FetchMode.SUBSELECT)
-    @JsonManagedReference
-    public Collection<Statistic> getStatisticsByEmployerId() {
-        return statisticsByEmployerId;
-    }
-
-    public void setStatisticsByEmployerId(Collection<Statistic> statisticsByEmployerId) {
-        this.statisticsByEmployerId = statisticsByEmployerId;
     }
 }

@@ -1,7 +1,5 @@
 package com.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -66,7 +64,6 @@ public class Statistic {
     }
 
     @ManyToOne
-    @JsonBackReference
     @javax.persistence.JoinColumn(name = "employeer_id", referencedColumnName = "employeer_id", nullable = false)
     public Employer getEmployerByEmployerId() {
         return employerByEmployerId;
@@ -77,7 +74,6 @@ public class Statistic {
     }
 
     @ManyToOne
-    @JsonBackReference
     @javax.persistence.JoinColumn(name = "client_id", referencedColumnName = "client_id", nullable = false)
     public Client getClientByClientId() {
         return clientByClientId;
@@ -88,7 +84,6 @@ public class Statistic {
     }
 
     @ManyToOne
-    @JsonBackReference
     @javax.persistence.JoinColumn(name = "service_id", referencedColumnName = "service_id", nullable = false)
     public ServiceModel getServiceByServiceId() {
         return serviceByServiceId;

@@ -1,15 +1,10 @@
 package com.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.Collection;
 
 /**
  * Created with IntelliJ IDEA.
@@ -25,7 +20,6 @@ public class ServiceModel {
     private String naming;
     private Date data;
     private int cost;
-    private Collection<Statistic> statistics;
     private Separation separation_;
 
 
@@ -94,7 +88,6 @@ public class ServiceModel {
     }
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonBackReference
     @javax.persistence.JoinColumn(name = "separation_id", referencedColumnName = "separation_id", nullable = false)
     public Separation getSeparation_() {
         return separation_;
@@ -104,18 +97,6 @@ public class ServiceModel {
         this.separation_ = separation_;
     }
 
-
-    @OneToMany(mappedBy = "serviceByServiceId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @Fetch(value = FetchMode.SUBSELECT)
-    @JsonManagedReference
-    public Collection<Statistic> getStatistics() {
-        return statistics;
-    }
-
-
-    public void setStatistics(Collection<Statistic> statistics) {
-        this.statistics = statistics;
-    }
 
     @Override
     public String toString() {

@@ -1,12 +1,8 @@
 package com.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import javax.persistence.*;
-import java.util.Collection;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,10 +16,6 @@ import java.util.Collection;
 public class Separation {
     private int separationId;
     private String separationName;
-    @JsonIgnore
-    private Collection<Employer> employers;
-    @JsonIgnore
-    private Collection<ServiceModel> serviceModels;
 
     @javax.persistence.Column(name = "separation_id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id
@@ -64,37 +56,5 @@ public class Separation {
         int result = separationId;
         result = 31 * result + (separationName != null ? separationName.hashCode() : 0);
         return result;
-    }
-
-//    @OneToMany(mappedBy = "separation")
-//    public Collection<Employer> getEmployersBySeparationId() {
-//        return employers;
-//    }
-//
-//    public void setEmployersBySeparationId(Collection<Employer> employersBySeparationId) {
-//        this.employers = employers;
-//    }
-
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "separation_", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    public Collection<ServiceModel> getServiceModels() {
-        return serviceModels;
-    }
-
-    public void setServiceModels(Collection<ServiceModel> serviceModels) {
-        this.serviceModels = serviceModels;
-    }
-
-    @Override
-    public String toString() {
-        JSONObject json = new JSONObject();
-        try {
-            json.put("separationId", separationId);
-            json.put("separationName", separationName);
-            json.put("employers", employers);
-        } catch (JSONException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
-        return json.toString();
     }
 }

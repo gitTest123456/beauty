@@ -1,12 +1,11 @@
 package com.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import javax.persistence.*;
-import java.util.Collection;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,8 +22,6 @@ public class Client {
     private String surName;
     private String lastName;
     private String telephone;
-    @JsonIgnore
-    private Collection<Statistic> statisticsByClientId;
 
     public Client(int id, String firstName, String surName, String lastName, String telephone) {
         this.clientId = id;
@@ -101,16 +98,6 @@ public class Client {
         if (telephone != null ? !telephone.equals(that.telephone) : that.telephone != null) return false;
 
         return true;
-    }
-
-    @OneToMany(mappedBy = "clientByClientId", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JsonManagedReference
-    public Collection<Statistic> getStatisticsByClientId() {
-        return statisticsByClientId;
-    }
-
-    public void setStatisticsByClientId(Collection<Statistic> statisticsByClientId) {
-        this.statisticsByClientId = statisticsByClientId;
     }
 
     @Override
