@@ -36,5 +36,8 @@ $(document).ready(function () {
     $(document).oneTime("1s", function () {
         $("#service-list-block").tablesorter();
         $("#service-list-block").oneSimpleTablePagination({rowsPerPage: 5});
+        $("#datetimepicker").datetimepicker({
+            pickTime: false
+        });
     })
 });

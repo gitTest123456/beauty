@@ -126,6 +126,9 @@ $(function () {
                 $(this.el).html(this.template({
                     service: this.model
                 }))
+
+                if (this.model != null && this.model.data != null)
+                   $("#datetimepicker").data('datetimepicker').setDate(Date.parse("2012-12-12"));
             },
             deleteService: function (e) {
                 e.preventDefault();
