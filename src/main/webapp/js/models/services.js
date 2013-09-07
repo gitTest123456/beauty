@@ -197,7 +197,7 @@ $(function () {
             serviceView.model = servicesCollection[itemIndex];
             serviceView.render();
             for (index = 0; index < separationsCollection.length; index++) {
-                if (servicesCollection[itemIndex].separation.separationName == separationsCollection[index].separationName) {
+                if (servicesCollection[itemIndex].separation_.separationName == separationsCollection[index].separationName) {
                     $("#selectId").val(index);
                     break;
                 }
