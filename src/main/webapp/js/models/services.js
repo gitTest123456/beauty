@@ -128,7 +128,7 @@ $(function () {
                 }))
 
                 if (this.model != null && this.model.data != null)
-                   $("#datetimepicker").data('datetimepicker').setDate(Date.parse("2012-12-12"));
+                   $("#datetimepicker").data('datetimepicker').setDate(this.model.data);
             },
             deleteService: function (e) {
                 e.preventDefault();

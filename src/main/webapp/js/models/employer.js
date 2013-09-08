@@ -211,6 +211,10 @@ $(function () {
                     break;
                 }
             }
+            if (employerView.model != null && employerView.model.birthday != null)
+                $("#datetimepicker_").data('datetimepicker').setDate(employerView.model.birthday);
+
+
         },
         back: function () {
             window.location = "/"

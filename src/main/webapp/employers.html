@@ -8,11 +8,12 @@
     <link href="css/bootstrap.min.css" rel="stylesheet"/>
     <link href="css/style.css" rel="stylesheet"/>
     <link href="css/jquery.fancybox.css" rel="stylesheet"/>
+    <link href="css/date/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
     <style type="text/css">
         body {
             padding-top: 60px;
             padding-bottom: 40px;
-            background-color:#b0b0b0;
+            background-color: #b0b0b0;
         }
     </style>
 </head>
@@ -41,7 +42,24 @@
                 <!-- For separation would be injected here by Backbone.js -->
             </div>
         </div>
+        <div class="control-group">
+            <label class="control-label" for="inputEmployerBirthday">Birthday:</label>
+
+            <div class="controls">
+                <div id="datetimepicker_" class="input-append">
+                    <input data-format="yyyy-MM-dd" name="inputEmployerBirthday" id="inputEmployerBirthday" class="span2"
+                           size="16"
+                           type="text"
+                           readonly>
+    <span class="add-on">
+      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+      </i>
+    </span>
+                </div>
+            </div>
+        </div>
     </form>
+
     <form class="form-horizontal" id="employer-details-block">
         <!-- Employer details would be injected here by Backbone.js -->
     </form>
@@ -156,18 +174,6 @@
     </div>
 
     <div class="control-group">
-        <label class="control-label" for="inputEmployerBirthday">Birthday:</label>
-
-        <div class="controls">
-            <div class="input-prepend">
-                <span class="add-on"><i class="icon-th"></i></span>
-                <input type="text" id="inputEmployerBirthday" name="inputEmployerBirthday" placeholder="12.12.2012"
-                       class="error"
-                       value="<%=employer.birthday==null?'':employer.birthday%>">
-            </div>
-        </div>
-    </div>
-    <div class="control-group">
         <div class="controls">
             <a class="btn btn-primary" id="form-btn-add">Save</a>
             <!-- <a class="btn btn-primary" href="">Update view</a>  -->
@@ -203,5 +209,6 @@
 <script src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
 <script src="js/table/simplePage.js"></script>
 <script src="js/backbone/timer_.js"></script>
+<script src="js/date/bootstrap-datetimepicker.min.js"></script>
 </body>
 </html>
