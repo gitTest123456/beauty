@@ -14,7 +14,8 @@ $(function () {
         routes: {
             "!/clientsList": "clientsList",
             "!/employersList": "employersList",
-            "!/servicesList": "servicesList"
+            "!/servicesList": "servicesList",
+            "!/statisticsList": "statisticsList"
         },
 
         clientsList: function () {
@@ -27,6 +28,10 @@ $(function () {
 
         servicesList: function () {
             window.location = "/services.html"
+        },
+
+        statisticsList: function () {
+            window.location = "/statistic.html"
         }
     });
 
