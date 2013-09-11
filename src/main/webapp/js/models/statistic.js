@@ -227,7 +227,6 @@ $(function () {
             },
             deleteStatistic: function (e) {
                 e.preventDefault();
-                alert(JSON.stringify(this.model));
                 $.ajax({
                     type: "post",
                     url: "/beauty/statistics/delete", //your valid url
@@ -266,10 +265,10 @@ $(function () {
                     }).save({}, {
                         wait: true,
                         success: function (model, response) {
-                            window.location = "/statistics.html";
+                            window.location = "/statistic.html";
                         },
                         error: function (model, error) {
-                            window.location = "/statistics.html";
+                            window.location = "/statistic.html";
                         }
                     });
             }
@@ -297,17 +296,33 @@ $(function () {
 
         edit: function (itemIndex) {
             statisticView.model = statisticCollection[itemIndex];
-            alert(statisticCollection[itemIndex].visitId);
             statisticView.render();
-//            for (index = 0; index < separationsCollection.length; index++) {
-//                if (employersCollection[itemIndex].separation.separationName == separationsCollection[index].separationName) {
-//                    $("#selectId").val(index);
-//                    break;
-//                }
-//            }
-//            if (employerView.model != null && employerView.model.birthday != null)
-//                $("#datetimepicker_").data('datetimepicker').setDate(employerView.model.birthday);
-//
+            for (index = 0; index < clientsCollection.length; index++) {
+                if (statisticCollection[itemIndex].clientByClientId.clientId == clientsCollection[index].clientId) {
+                    $("#selectId").val(index);
+                    break;
+                }
+            }
+
+            for (index = 0; index < clientsCollection.length; index++) {
+                if (statisticCollection[itemIndex].employerByEmployerId.employerId == employersCollection[index].employerId) {
+                    $("#selectId1").val(index);
+                    break;
+                }
+            }
+
+            for (index = 0; index < servicesCollection.length; index++) {
+                if (statisticCollection[itemIndex].serviceByServiceId.serviceId == servicesCollection[index].serviceId) {
+                    $("#selectId2").val(index);
+                    break;
+                }
+            }
+
+            if (statisticView.model != null && statisticView.model.dateVisit != null) {
+                $("#datetimepicker1").data('datetimepicker').setDate(statisticView.model.dateVisit);
+                $("#datetimepicker2").data('datetimepicker').setDate(statisticView.model.timeVisit);
+            }
+
 
         },
         back: function () {

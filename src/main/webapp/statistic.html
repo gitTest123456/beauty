@@ -108,7 +108,7 @@
 <script type="text/template" id="clients-details-template">
     <select id="selectId">
         <% client_id = 0; _.each(client, function(entry){%>
-        <option value=<%=client_id++%>><%=entry.firstName%></option>
+        <option value=<%=client_id++%>><%=entry.firstName+" "+entry.lastName+" "+entry.surName%></option>
         <%})%>
     </select>
 </script>
@@ -116,7 +116,7 @@
 <script type="text/template" id="employers-details-template">
     <select id="selectId1">
         <% employer_id = 0; _.each(employer, function(entry){%>
-        <option value=<%=employer_id++%>><%=entry.firstName%></option>
+        <option value=<%=employer_id++%>><%=entry.firstName+" "+entry.lastName+" "+entry.surName%></option>
         <%})%>
     </select>
 </script>
@@ -133,7 +133,7 @@
 <script type="text/template" id="statistic-details-template">
     <div class="control-group">
 
-        <input  id="inputStatisticId"
+        <input  type="hidden" id="inputStatisticId"
                value="<%=statistic.visitId==null?'0':statistic.visitId%>">
     </div>
 
