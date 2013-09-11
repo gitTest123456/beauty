@@ -179,7 +179,7 @@ $(function () {
             },
 
             render: function () {
-                $(this.el).html(this.template({statistic: this.collection}));
+                $(this.el).html(this.template({statistic: statisticCollection}));
                 return this;
             },
 
@@ -220,6 +220,7 @@ $(function () {
             clientsCollection.fetch();
             employersCollection.fetch();
             servicesCollection.fetch();
+            statisticCollection.fetch();
         },
 
         edit: function (itemIndex) {

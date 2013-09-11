@@ -138,7 +138,8 @@
 <script type="text/template" id="statistic-list-template">
     <thead>
     <tr>
-        <th>Visit_id</th>
+        <th>Employer</th>
+        <th>Client</th>
         <th>DateVisit</th>
         <th>TimeVisit</th>
         <th>Edit mode</th>
@@ -148,13 +149,16 @@
     <% index_for_del = 0; index_for_edit = 0; _.each(statistic, function(entry){%>
     <tr>
         <td>
-            <%=entry.visit_id%>
+            <%=entry.employerByEmployerId==null?entry.employerByEmployerId:entry.employerByEmployerId.firstName+" "+entry.employerByEmployerId.lastName+" "+entry.employerByEmployerId.surName%>
         </td>
         <td>
-            <%=entry.date_visit%>
+            <%=entry.clientByClientId==null?entry.clientByClientId:entry.clientByClientId.firstName+" "+entry.clientByClientId.lastName+" "+entry.clientByClientId.surName%>
         </td>
         <td>
-            <%=entry.time_visit%>
+            <%=entry.dateVisit%>
+        </td>
+        <td>
+            <%=entry.timeVisit%>
         </td>
         <td>
             <a href="#!/edit/<%=index_for_edit++%>">EDIT</a>
@@ -163,7 +167,6 @@
     <% });%>
     </tbody>
  </script>
-
 
 
 <!-- Artist list, that shows in the pop-up window. -->
