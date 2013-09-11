@@ -220,6 +220,7 @@ $(function () {
             clientsCollection.fetch();
             employersCollection.fetch();
             servicesCollection.fetch();
+            statisticCollection.fetch();
         },
 
         edit: function (itemIndex) {
