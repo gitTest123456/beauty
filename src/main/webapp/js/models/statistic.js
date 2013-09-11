@@ -227,16 +227,17 @@ $(function () {
             },
             deleteStatistic: function (e) {
                 e.preventDefault();
+                alert(JSON.stringify(this.model));
                 $.ajax({
                     type: "post",
                     url: "/beauty/statistics/delete", //your valid url
                     contentType: "application/json", //this is required for spring 3 - ajax to work (at least for me)
                     data: JSON.stringify(this.model), //json object or array of json objects
                     success: function (result) {
-                        window.location = "/statistics.html";
+                        window.location = "/statistic.html";
                     },
                     error: function () {
-                        window.location = "/statistics.html";
+                        window.location = "/statistic.html";
                     }
                 });
             },
@@ -295,7 +296,18 @@ $(function () {
         },
 
         edit: function (itemIndex) {
-
+            statisticView.model = statisticCollection[itemIndex];
+            alert(statisticCollection[itemIndex].visitId);
+            statisticView.render();
+//            for (index = 0; index < separationsCollection.length; index++) {
+//                if (employersCollection[itemIndex].separation.separationName == separationsCollection[index].separationName) {
+//                    $("#selectId").val(index);
+//                    break;
+//                }
+//            }
+//            if (employerView.model != null && employerView.model.birthday != null)
+//                $("#datetimepicker_").data('datetimepicker').setDate(employerView.model.birthday);
+//
 
         },
         back: function () {
