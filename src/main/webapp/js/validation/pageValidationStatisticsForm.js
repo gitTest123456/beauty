@@ -6,7 +6,6 @@
  * To change this template use File | Settings | File Templates.
  */
 $(document).ready(function () {
-    alert("inside");
 
     $('#datetimepicker1').datetimepicker({
         pickTime: false
@@ -15,4 +14,7 @@ $(document).ready(function () {
     $("#datetimepicker2").datetimepicker({
         pickDate: false
     });
+
+    $("#statistic-list-block").tablesorter();
+    $("#statistic-list-block").oneSimpleTablePagination({rowsPerPage: 5});
 });

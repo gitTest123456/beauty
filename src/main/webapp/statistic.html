@@ -126,6 +126,46 @@
     </select>
 </script>
 
+
+<div class="control-group_">
+    <table class="tablesorter" id="statistic-list-block" border="2">
+
+    </table>
+</div>
+
+
+<!---- table view-->
+<script type="text/template" id="statistic-list-template">
+    <thead>
+    <tr>
+        <th>Visit_id</th>
+        <th>DateVisit</th>
+        <th>TimeVisit</th>
+        <th>Edit mode</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% index_for_del = 0; index_for_edit = 0; _.each(statistic, function(entry){%>
+    <tr>
+        <td>
+            <%=entry.visit_id%>
+        </td>
+        <td>
+            <%=entry.date_visit%>
+        </td>
+        <td>
+            <%=entry.time_visit%>
+        </td>
+        <td>
+            <a href="#!/edit/<%=index_for_edit++%>">EDIT</a>
+        </td>
+    </tr>
+    <% });%>
+    </tbody>
+ </script>
+
+
+
 <!-- Artist list, that shows in the pop-up window. -->
 <div class="alert-error" hidden="true" id="dialog"><!--style="display: none"> !-->
     <div>

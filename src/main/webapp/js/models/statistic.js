@@ -159,6 +159,51 @@ $(function () {
         }
     });
 
+    var StatisticListView = Backbone.View.extend(
+        {
+
+            template: _.template($('#statistic-list-template').html()),
+            el: $("#statistic-list-block"),
+            initialize: function (options) {
+                _.bindAll(this, 'beforeRender', 'render', 'afterRender');
+                var _this = this;
+                this.render = _.wrap(this.render, function (render) {
+                    _this.beforeRender();
+                    render();
+                    _this.afterRender();
+                });
+            },
+
+            beforeRender: function () {
+                console.log('beforeRender');
+            },
+
+            render: function () {
+                $(this.el).html(this.template({statistic: this.collection}));
+                return this;
+            },
+
+            afterRender: function () {
+            }  }
+
+
+    ); //Backbone.Model.extend end
+
+
+    var StatisticCollection = Backbone.Collection.extend(
+        {
+            model: Statistic,
+            url: "/beauty/statistics",
+            parse: function (response) {
+                console.log('Parsing list of the statistic:' + JSON.stringify(response));
+                statisticCollection = response;
+                statisticListView.collection = statisticCollection;
+                statisticListView = new StatisticListView().render();
+                return response;
+            }
+        }
+    );
+
 
     var StatisticController = Backbone.Router.extend({
         routes: {
@@ -200,7 +245,12 @@ $(function () {
     var serviceListView = new ServiceOptionListView();
     serviceListView.render();
 
+    var statisticCollection = new StatisticCollection();
+    var statisticListView = new StatisticListView({collection : statisticCollection});
+    statisticListView.render();
+
     var controller = new StatisticController();
+
 
     Backbone.history.start();
 });
