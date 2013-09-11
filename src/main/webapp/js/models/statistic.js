@@ -179,7 +179,7 @@ $(function () {
             },
 
             render: function () {
-                $(this.el).html(this.template({statistic: this.collection}));
+                $(this.el).html(this.template({statistic: statisticCollection}));
                 return this;
             },
 
@@ -200,6 +200,77 @@ $(function () {
                 statisticListView.collection = statisticCollection;
                 statisticListView = new StatisticListView().render();
                 return response;
+            }
+        }
+    );
+
+
+    var StatisticView = Backbone.View.extend(
+        {
+
+            template: _.template($('#statistic-details-template').html()),
+            el: $("#statistic-details-block"), // DOM element with contact details,
+
+            events: {
+                "click  #form-btn-remove": "deleteStatistic",
+                "click #form-btn-add": "addStatistic"
+            },
+            render: function () {
+                $(this.el).html(this.template({
+                    statistic: this.model
+                }))
+
+                if (this.model != null && this.model.data != null) {
+                    $("#datetimepicker1").data('datetimepicker').setDate(this.model.dateVisit);
+                    $("#datetimepicker2").data('datetimepicker').setDate(this.model.timeVisit);
+                }
+            },
+            deleteStatistic: function (e) {
+                e.preventDefault();
+                $.ajax({
+                    type: "post",
+                    url: "/beauty/statistics/delete", //your valid url
+                    contentType: "application/json", //this is required for spring 3 - ajax to work (at least for me)
+                    data: JSON.stringify(this.model), //json object or array of json objects
+                    success: function (result) {
+                        window.location = "/statistics.html";
+                    },
+                    error: function () {
+                        window.location = "/statistics.html";
+                    }
+                });
+            },
+            employerByEmployerId: null,
+            clientByClientId: null,
+            serviceByServiceId: null,
+            addStatistic: function (e) {
+                var visitId = $("#inputStatisticId").val();
+                var dateVisit = $('#inputStatisticData').val();
+                var timeVisit = $('#inputStatisticTime').val();
+                var employerIndex = $("#selectId").val();
+                var employer = employersCollection[employerIndex];
+                var clientIndex = $("#selectId1").val();
+                var client = clientsCollection[clientIndex];
+                var serviceIndex = $("#selectId2").val();
+                var service = servicesCollection[serviceIndex];
+
+                var newStatistic = new Statistic(
+                    {
+                        "visitId": visitId,
+                        "dateVisit": dateVisit,
+                        "timeVisit": timeVisit,
+                        "employerByEmployerId": employer,
+                        "clientByClientId": client,
+                        "serviceByServiceId": service
+                    }).save({}, {
+                        wait: true,
+                        success: function (model, response) {
+                            window.location = "/statistics.html";
+                        },
+                        error: function (model, error) {
+                            window.location = "/statistics.html";
+                        }
+                    });
             }
         }
     );
@@ -247,9 +318,13 @@ $(function () {
     serviceListView.render();
 
     var statisticCollection = new StatisticCollection();
-    var statisticListView = new StatisticListView({collection : statisticCollection});
+    var statisticListView = new StatisticListView({collection: statisticCollection});
     statisticListView.render();
 
+
+    var curStatistic = new Statistic();
+    var statisticView = new StatisticView({model: curStatistic});
+    statisticView.render();
     var controller = new StatisticController();
 
 

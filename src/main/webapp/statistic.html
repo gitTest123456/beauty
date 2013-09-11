@@ -60,11 +60,11 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="inputStaticData">Data:</label>
+            <label class="control-label" for="inputStatisticData">Data:</label>
 
             <div class="controls">
                 <div id="datetimepicker1" class="input-append">
-                    <input data-format="yyyy-MM-dd" name="inputStaticData" id="inputStaticData" class="span2"
+                    <input data-format="yyyy-MM-dd" name="inputStatisticData" id="inputStatisticData" class="span2"
                            size="16"
                            type="text"
                            readonly>
@@ -77,11 +77,11 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="inputStaticTime">Time:</label>
+            <label class="control-label" for="inputStatisticTime">Time:</label>
 
             <div class="controls">
                 <div id="datetimepicker2" class="input-append">
-                    <input data-format="hh:mm:ss"  name="inputStaticData" id="inputStaticTime" class="span2"
+                    <input data-format="hh:mm:ss"  name="inputStatisticTime" id="inputStatisticTime" class="span2"
                            size="16"
                            type="text"
                            readonly>
@@ -98,6 +98,10 @@
     <form class="form-horizontal" id="employer-details-block">
         <!-- Employer details would be injected here by Backbone.js -->
     </form>
+
+    <form class="form-horizontal" id="statistic-details-block">
+        <!-- Employer details would be injected here by Backbone.js -->
+    </form>
 </div>
 
 
@@ -108,7 +112,6 @@
         <%})%>
     </select>
 </script>
-
 
 <script type="text/template" id="employers-details-template">
     <select id="selectId1">
@@ -123,7 +126,27 @@
         <% service_id = 0; _.each(service, function(entry){%>
         <option value=<%=service_id++%>><%=entry.naming%></option>
         <%})%>
-    </select>
+ </select>
+ </script>
+
+
+<script type="text/template" id="statistic-details-template">
+    <div class="control-group">
+
+        <input type="hidden" id="inputStatisticId"
+               value="<%=statistic.visitId==null?'0':statistic.statisticId%>">
+    </div>
+
+
+    <div class="control-group">
+        <div class="controls">
+            <a class="btn btn-primary" id="form-btn-add">Save</a>
+            <!-- <a class="btn btn-primary" href="">Update view</a>  -->
+            <a class="btn btn-danger" id="form-btn-remove" href="">Remove</a>
+        </div>
+        <div class="controls">
+        </div>
+    </div>
 </script>
 
 
@@ -138,7 +161,8 @@
 <script type="text/template" id="statistic-list-template">
     <thead>
     <tr>
-        <th>Visit_id</th>
+        <th>Employer</th>
+        <th>Client</th>
         <th>DateVisit</th>
         <th>TimeVisit</th>
         <th>Edit mode</th>
@@ -148,13 +172,16 @@
     <% index_for_del = 0; index_for_edit = 0; _.each(statistic, function(entry){%>
     <tr>
         <td>
-            <%=entry.visit_id%>
+            <%=entry.employerByEmployerId==null?entry.employerByEmployerId:entry.employerByEmployerId.firstName+" "+entry.employerByEmployerId.lastName+" "+entry.employerByEmployerId.surName%>
         </td>
         <td>
-            <%=entry.date_visit%>
+            <%=entry.clientByClientId==null?entry.clientByClientId:entry.clientByClientId.firstName+" "+entry.clientByClientId.lastName+" "+entry.clientByClientId.surName%>
         </td>
         <td>
-            <%=entry.time_visit%>
+            <%=entry.dateVisit%>
+        </td>
+        <td>
+            <%=entry.timeVisit%>
         </td>
         <td>
             <a href="#!/edit/<%=index_for_edit++%>">EDIT</a>
@@ -163,7 +190,6 @@
     <% });%>
     </tbody>
  </script>
-
 
 
 <!-- Artist list, that shows in the pop-up window. -->
