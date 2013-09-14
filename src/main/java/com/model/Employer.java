@@ -1,5 +1,7 @@
 package com.model;
 
+import org.hibernate.mapping.Column;
+
 import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -23,6 +25,12 @@ public class Employer {
     private String birthday;
     private String telephone;
     private Separation separation;
+
+
+    private String salary;
+
+
+    private String experience;
 
 
     @javax.persistence.Column(name = "employer_id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
@@ -112,6 +120,27 @@ public class Employer {
 
         return true;
     }
+
+    @javax.persistence.Column(name = "experience", nullable = false, insertable = true, updatable = true, length = 5, precision = 0)
+    @Basic
+    public String getExperience() {
+        return experience;
+    }
+
+    public void setExperience(String experience) {
+        this.experience = experience;
+    }
+
+    @javax.persistence.Column(name = "salary", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
+    @Basic
+    public String getSalary() {
+        return salary;
+    }
+
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }
+
 
     @Override
     public int hashCode() {

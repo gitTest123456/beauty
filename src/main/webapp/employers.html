@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <head>
     <title>Сотрудники</title>
     <!-- Bootstrap -->
@@ -36,35 +36,43 @@
 
 
 <div class="span10">
-    <form class="form-horizontal">
-        <div class="control-group">
-            <label class="control-label">Отдел:</label>
+    <table>
+        <tr>
+            <td>
+                <form class="form-horizontal">
+                    <div class="control-group">
+                        <label class="control-label">Отдел:</label>
 
-            <div class="controls" id="separation-details-block">
-                <!-- For separation would be injected here by Backbone.js -->
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="inputEmployerBirthday">День рождения:</label>
+                        <div class="controls" id="separation-details-block">
+                            <!-- For separation would be injected here by Backbone.js -->
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="inputEmployerBirthday">День рождения:</label>
 
-            <div class="controls">
-                <div id="datetimepicker_" class="input-append">
-                    <input data-format="yyyy-MM-dd" name="inputEmployerBirthday" id="inputEmployerBirthday" class="span2"
-                           size="16"
-                           type="text"
-                           readonly>
+                        <div class="controls">
+                            <div id="datetimepicker_" class="input-append">
+                                <input data-format="yyyy-MM-dd" name="inputEmployerBirthday" id="inputEmployerBirthday"
+                                       class="span2"
+                                       size="16"
+                                       type="text"
+                                       readonly>
     <span class="add-on">
       <i data-time-icon="icon-time" data-date-icon="icon-calendar">
       </i>
     </span>
-                </div>
-            </div>
-        </div>
-    </form>
-
-    <form class="form-horizontal" id="employer-details-block">
-        <!-- Employer details would be injected here by Backbone.js -->
-    </form>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </td>
+            <td>
+                <form class="form-horizontal" id="employer-details-block">
+                    <!-- Employer details would be injected here by Backbone.js -->
+                </form>
+            </td>
+        </tr>
+    </table>
 </div>
 
 
@@ -149,7 +157,28 @@
             </div>
         </div>
     </div>
+    <div class="control-group">
+        <label class="control-label" for="inputEmployerExperience">Опыт:</label>
 
+        <div class="controls">
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-user"></i></span>
+                <input type="text" id="inputEmployerExperience" name="inputEmployerExperience" placeholder="Опыт"
+                       value="<%=employer.experience==null?'':employer.experience%>">
+            </div>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="inputEmployerSalary">Зарплата:</label>
+
+        <div class="controls">
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-user"></i></span>
+                <input type="text" id="inputEmployerSalary" name="inputEmployerSalary" placeholder="Зарплата"
+                       value="<%=employer.salary==null?'':employer.salary%>">
+            </div>
+        </div>
+    </div>
     <div class="control-group">
         <label class="control-label" for="inputEmployerPhone">Телефон:</label>
 

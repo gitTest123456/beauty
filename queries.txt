@@ -17,10 +17,12 @@ last_name varchar(30) not null,
 separation_id int not null,
 address varchar(20) not null,
 birthday varchar(20) not null,
+experience varchar(5) not null,
+salary varchar(10) not null,
 telephone varchar(12),
 primary key (employer_id),
- FOREIGN KEY(separation_id)
- REFERENCES separation(separation_id)
+FOREIGN KEY(separation_id)
+REFERENCES separation(separation_id)
 );
 
 create table CLIENTS(

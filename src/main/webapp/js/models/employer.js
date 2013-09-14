@@ -25,7 +25,9 @@ $(function () {
                     address: null,
                     birthday: null,
                     telephone: null,
-                    separation: null
+                    separation: null,
+                    experience: null,
+                    salary: null
                 };
             }
         });
@@ -158,6 +160,8 @@ $(function () {
                     var address = $('#inputEmployerAddress').val();
                     var birthday = $('#inputEmployerBirthday').val();
                     var separationIndex = $("#selectId").val();
+                    var experience = $("#inputEmployerExperience").val();
+                    var salary = $("#inputEmployerSalary").val();
                     var separation = separationsCollection[separationIndex];
                     var id = $('#inputEmployerId').val();
 
@@ -169,6 +173,8 @@ $(function () {
                             "telephone": telephone,
                             "address": address,
                             "birthday": birthday,
+                            "experience": experience,
+                            "salary": salary,
                             "separation": separation}).save({}, {
                             wait: true,
                             success: function (model, response) {
