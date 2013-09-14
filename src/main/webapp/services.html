@@ -1,21 +1,23 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
-    <title>Services</title>
-    <!-- Bootstrap -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link href="css/bootstrap-responsive.css" rel="stylesheet"/>
-    <link href="css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="css/style.css" rel="stylesheet"/>
-    <link href="css/jquery.fancybox.css" rel="stylesheet"/>
-    <link href="css/date/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
-    <style type="text/css">
-        body {
-            padding-top: 60px;
-            padding-bottom: 40px;
-            background-color: #b0b0b0;
-        }
-    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<title>Услуги</title>
+<!-- Bootstrap -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link href="css/bootstrap-responsive.css" rel="stylesheet"/>
+<link href="css/bootstrap.min.css" rel="stylesheet"/>
+<link href="css/style.css" rel="stylesheet"/>
+<link href="css/jquery.fancybox.css" rel="stylesheet"/>
+<link href="css/date/bootstrap-datetimepicker.min.css" rel="stylesheet"/>
+<style type="text/css">
+    body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+        background-color: #b0b0b0;
+    }
+</style>
 </head>
 <body>
 
@@ -35,26 +37,19 @@
 <div class="span10">
     <form class="form-horizontal">
         <div class="control-group">
-            <label class="control-label">Separation:</label>
+            <label class="control-label">Отдел:</label>
 
             <div class="controls" id="separation-details-block">
                 <!-- For separation would be injected here by Backbone.js -->
             </div>
         </div>
-        <div class="control-group">
-            <label class="control-label" for="inputServiceData">Data:</label>
 
-            <div class="controls">
-                <div id="datetimepicker" class="input-append">
-                    <input data-format="yyyy-MM-dd" name="inputServiceData" id="inputServiceData" class="span2"
-                           size="16"
-                           type="text"
-                           readonly>
-    <span class="add-on">
-      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-      </i>
-    </span>
-                </div>
+        <label class="control-label" for="inputServiceData">Продолжительность:</label>
+
+        <div class="controls">
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-time"></i></span>
+                <input type="text" id="inputServiceData" value=""/>
             </div>
         </div>
     </form>
@@ -77,11 +72,11 @@
 <script type="text/template" id="service-list-template">
     <thead>
     <tr>
-        <th>Naming</th>
-        <th>Data</th>
-        <th>Cost</th>
-        <th>Separation</th>
-        <th>Edit mode</th>
+        <th>Название</th>
+        <th>Продолжительность процедуры</th>
+        <th>Стоимость</th>
+        <th>Отдел</th>
+        <th>Режим редактирования</th>
     </tr>
     </thead>
     <tbody>
@@ -114,22 +109,23 @@
         <input type="hidden" id="inputServiceId" placeholder="name"
                value="<%=service.serviceId==null?'0':service.serviceId%>">
 
-        <label class="control-label" for="inputServiceNaming">Name:</label>
+        <label class="control-label" for="inputServiceNaming">Наименование:</label>
 
         <div class="controls">
             <div class="input-prepend">
                 <span class="add-on"><i class="icon-user"></i></span>
-                <input type="text" id="inputServiceNaming" name="inputServiceNaming" placeholder="naming"
+                <input type="text" id="inputServiceNaming" name="inputServiceNaming" placeholder="Наименования"
                        value="<%=service.naming==null?'':service.naming%>">
             </div>
         </div>
-
-        <label class="control-label" for="inputServiceCost">Cost:</label>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="inputServiceCost">Стоимость:</label>
 
         <div class="controls">
             <div class="input-prepend">
                 <span class="add-on"><i class="icon-user"></i></span>
-                <input type="text" id="inputServiceCost" name="inputServiceCost" placeholder="cost"
+                <input type="text" id="inputServiceCost" name="inputServiceCost" placeholder="Стоимость"
                        value="<%=service.cost==null?'':service.cost%>">
             </div>
         </div>
@@ -138,9 +134,9 @@
 
     <div class="control-group">
         <div class="controls">
-            <a class="btn btn-primary" id="form-btn-add">Save</a>
+            <a class="btn btn-primary" id="form-btn-add">Сохранить</a>
             <!-- <a class="btn btn-primary" href="">Update view</a>  -->
-            <a class="btn btn-danger" id="form-btn-remove" href="">Remove</a>
+            <a class="btn btn-danger" id="form-btn-remove" href="">Удалить</a>
         </div>
         <div class="controls">
         </div>

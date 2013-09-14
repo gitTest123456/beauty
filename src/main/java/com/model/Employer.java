@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
  * Time: 22:09
  * To change this template use File | Settings | File Templates.
  */
-@javax.persistence.Table(name = "employeer", schema = "", catalog = "beauty_salon")
+@javax.persistence.Table(name = "employer", schema = "", catalog = "beauty_salon")
 @Entity
 public class Employer {
     private int employerId;
@@ -25,7 +25,7 @@ public class Employer {
     private Separation separation;
 
 
-    @javax.persistence.Column(name = "employeer_id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
+    @javax.persistence.Column(name = "employer_id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id
     public int getEmployerId() {
         return employerId;

@@ -1,7 +1,9 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
-    <title>Employers List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+    <title>Сотрудники</title>
     <!-- Bootstrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="css/bootstrap-responsive.css" rel="stylesheet"/>
@@ -36,14 +38,14 @@
 <div class="span10">
     <form class="form-horizontal">
         <div class="control-group">
-            <label class="control-label">Separation:</label>
+            <label class="control-label">Отдел:</label>
 
             <div class="controls" id="separation-details-block">
                 <!-- For separation would be injected here by Backbone.js -->
             </div>
         </div>
         <div class="control-group">
-            <label class="control-label" for="inputEmployerBirthday">Birthday:</label>
+            <label class="control-label" for="inputEmployerBirthday">День рождения:</label>
 
             <div class="controls">
                 <div id="datetimepicker_" class="input-append">
@@ -78,11 +80,11 @@
 <script type="text/template" id="employer-list-template">
     <thead>
     <tr>
-        <th>Name</th>
-        <th>SurName</th>
-        <th>LastName</th>
-        <th>Telephone</th>
-        <th>Edit mode</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Отчество</th>
+        <th>Телефон</th>
+        <th>Режим редактирования</th>
     </tr>
     </thead>
     <tbody>
@@ -115,58 +117,58 @@
         <input type="hidden" id="inputEmployerId"
                value="<%=employer.employerId==null?'0':employer.employerId%>">
 
-        <label class="control-label" for="inputEmployerName">Name:</label>
+        <label class="control-label" for="inputEmployerName">Имя:</label>
 
         <div class="controls">
             <div class="input-prepend">
                 <span class="add-on"><i class="icon-user"></i></span>
-                <input type="text" id="inputEmployerName" name="inputEmployerName" placeholder="name"
+                <input type="text" id="inputEmployerName" name="inputEmployerName" placeholder="Имя"
                        value="<%=employer.firstName==null?'':employer.firstName%>">
             </div>
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label" for="inputEmployerSurName">SurName:</label>
+        <label class="control-label" for="inputEmployerSurName">Фамилия:</label>
 
         <div class="controls">
             <div class="input-prepend">
                 <span class="add-on"><i class="icon-user"></i></span>
-                <input type="text" id="inputEmployerSurName" name="inputEmployerSurName" placeholder="surName"
+                <input type="text" id="inputEmployerSurName" name="inputEmployerSurName" placeholder="Фамилия"
                        value="<%=employer.surName==null?'':employer.surName%>">
             </div>
         </div>
     </div>
     <div class="control-group">
-        <label class="control-label" for="inputEmployerLastName">LastName:</label>
+        <label class="control-label" for="inputEmployerLastName">Отчество:</label>
 
         <div class="controls">
             <div class="input-prepend">
                 <span class="add-on"><i class="icon-user"></i></span>
-                <input type="text" id="inputEmployerLastName" name="inputEmployerLastName" placeholder="lastName"
+                <input type="text" id="inputEmployerLastName" name="inputEmployerLastName" placeholder="Отчество"
                        value="<%=employer.lastName==null?'':employer.lastName%>">
             </div>
         </div>
     </div>
 
     <div class="control-group">
-        <label class="control-label" for="inputEmployerPhone">Phone:</label>
+        <label class="control-label" for="inputEmployerPhone">Телефон:</label>
 
         <div class="controls">
             <div class="input-prepend">
                 <span class="add-on"><i class="icon-th"></i></span>
-                <input type="text" id="inputEmployerPhone" name="inputEmployerPhone" placeholder="Phone" class="error"
+                <input type="text" id="inputEmployerPhone" name="inputEmployerPhone" placeholder="Телефон" class="error"
                        value="<%=employer.telephone==null?'':employer.telephone%>">
             </div>
         </div>
     </div>
 
     <div class="control-group">
-        <label class="control-label" for="inputEmployerAddress">Address:</label>
+        <label class="control-label" for="inputEmployerAddress">Адрес:</label>
 
         <div class="controls">
             <div class="input-prepend">
                 <span class="add-on"><i class="icon-th"></i></span>
-                <input type="text" id="inputEmployerAddress" name="inputEmployerAddress" placeholder="Address"
+                <input type="text" id="inputEmployerAddress" name="inputEmployerAddress" placeholder="Адрес"
                        class="error"
                        value="<%=employer.address==null?'':employer.address%>">
             </div>
@@ -175,9 +177,9 @@
 
     <div class="control-group">
         <div class="controls">
-            <a class="btn btn-primary" id="form-btn-add">Save</a>
+            <a class="btn btn-primary" id="form-btn-add">Сохранить</a>
             <!-- <a class="btn btn-primary" href="">Update view</a>  -->
-            <a class="btn btn-danger" id="form-btn-remove" href="">Remove</a>
+            <a class="btn btn-danger" id="form-btn-remove" href="">Удалить</a>
         </div>
     </div>
 </script>

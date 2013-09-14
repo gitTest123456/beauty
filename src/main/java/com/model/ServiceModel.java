@@ -18,7 +18,7 @@ import java.sql.Date;
 public class ServiceModel {
     private int serviceId;
     private String naming;
-    private Date data;
+    private int data;
     private int cost;
     private Separation separation_;
 
@@ -45,11 +45,11 @@ public class ServiceModel {
 
     @javax.persistence.Column(name = "data", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Basic
-    public Date getData() {
+    public int getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(int data) {
         this.data = data;
     }
 
@@ -72,7 +72,7 @@ public class ServiceModel {
 
         if (cost != that.cost) return false;
         if (serviceId != that.serviceId) return false;
-        if (data != null ? !data.equals(that.data) : that.data != null) return false;
+        if (data != that.data) return false;
         if (naming != null ? !naming.equals(that.naming) : that.naming != null) return false;
 
         return true;
@@ -82,7 +82,7 @@ public class ServiceModel {
     public int hashCode() {
         int result = serviceId;
         result = 31 * result + (naming != null ? naming.hashCode() : 0);
-        result = 31 * result + (data != null ? data.hashCode() : 0);
+        result = 31 * result + data;
         result = 31 * result + cost;
         return result;
     }

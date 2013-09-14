@@ -1,7 +1,9 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
-    <title>Employers List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+    <title>Учет</title>
     <!-- Bootstrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="css/bootstrap-responsive.css" rel="stylesheet"/>
@@ -36,7 +38,7 @@
 <div class="span10">
     <form class="form-horizontal">
         <div class="control-group">
-            <label class="control-label">Clients:</label>
+            <label class="control-label">Клиент:</label>
 
             <div class="controls" id="clients-details-block">
                 <!-- For Clients would be injected here by Backbone.js -->
@@ -44,7 +46,7 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label">Employers:</label>
+            <label class="control-label">Сотрудник:</label>
 
             <div class="controls" id="employers-details-block">
                 <!-- For employers would be injected here by Backbone.js -->
@@ -52,7 +54,7 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label">Services:</label>
+            <label class="control-label">Услуга:</label>
 
             <div class="controls" id="services-details-block">
                 <!-- For Services would be injected here by Backbone.js -->
@@ -60,7 +62,7 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="inputStatisticData">Data:</label>
+            <label class="control-label" for="inputStatisticData">Дата:</label>
 
             <div class="controls">
                 <div id="datetimepicker1" class="input-append">
@@ -77,7 +79,7 @@
         </div>
 
         <div class="control-group">
-            <label class="control-label" for="inputStatisticTime">Time:</label>
+            <label class="control-label" for="inputStatisticTime">Время:</label>
 
             <div class="controls">
                 <div id="datetimepicker2" class="input-append">
@@ -140,9 +142,9 @@
 
     <div class="control-group">
         <div class="controls">
-            <a class="btn btn-primary" id="form-btn-add">Save</a>
+            <a class="btn btn-primary" id="form-btn-add">Сохранить</a>
             <!-- <a class="btn btn-primary" href="">Update view</a>  -->
-            <a class="btn btn-danger" id="form-btn-remove" href="">Remove</a>
+            <a class="btn btn-danger" id="form-btn-remove" href="">Удалить</a>
         </div>
         <div class="controls">
         </div>
@@ -161,11 +163,11 @@
 <script type="text/template" id="statistic-list-template">
     <thead>
     <tr>
-        <th>Employer</th>
-        <th>Client</th>
-        <th>DateVisit</th>
-        <th>TimeVisit</th>
-        <th>Edit mode</th>
+        <th>Сотрудник</th>
+        <th>Клиент</th>
+        <th>Дата</th>
+        <th>Время начала процедуры</th>
+        <th>Режим редактирования</th>
     </tr>
     </thead>
     <tbody>

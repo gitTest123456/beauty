@@ -64,7 +64,7 @@ public class Statistic {
     }
 
     @ManyToOne
-    @javax.persistence.JoinColumn(name = "employeer_id", referencedColumnName = "employeer_id", nullable = false)
+    @javax.persistence.JoinColumn(name = "employer_id", referencedColumnName = "employer_id", nullable = false)
     public Employer getEmployerByEmployerId() {
         return employerByEmployerId;
     }

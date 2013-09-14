@@ -16,11 +16,9 @@ $(document).ready(function () {
                 required: true
             },
             inputServiceCost: {
-                required: true,
-                minlength: 5
+                required: true
             },
             inputServiceData: {
-                minlength: 5,
                 required: true
             }
         },

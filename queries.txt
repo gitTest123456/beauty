@@ -9,8 +9,8 @@ create table SEPARATION(
 );
 
 
-create table EMPLOYEER(
-employeer_id int auto_increment not null,
+create table EMPLOYER(
+employer_id int auto_increment not null,
 first_name varchar(20) not null,
 sur_name varchar(20) not null,
 last_name varchar(30) not null,
@@ -18,7 +18,7 @@ separation_id int not null,
 address varchar(20) not null,
 birthday varchar(20) not null,
 telephone varchar(12),
-primary key (employeer_id),
+primary key (employer_id),
  FOREIGN KEY(separation_id)
  REFERENCES separation(separation_id)
 );
@@ -36,7 +36,7 @@ create table SERVICE(
 service_id int not null AUTO_INCREMENT,
 separation_id int not null,
 naming varchar(40) not null,
-data date not null,
+data int not null,
 cost int not null,
 PRIMARY KEY(service_id),
 FOREIGN KEY(separation_id) 
@@ -47,14 +47,14 @@ create table STATISTIC(
 visit_id int not null AUTO_INCREMENT,
 date_visit date not null,
 service_id int not null,
-employeer_id int not null,
+employer_id int not null,
 client_id int not null,
 time_visit time not null,
 PRIMARY KEY (visit_id),
 FOREIGN KEY(service_id)
 REFERENCES SERVICE(service_id),
-FOREIGN KEY(employeer_id)
-REFERENCES EMPLOYEER(employeer_id),
+FOREIGN KEY(employer_id)
+REFERENCES EMPLOYER(employer_id),
 FOREIGN KEY(client_id)
 REFERENCES CLIENTS(client_id) 
 );

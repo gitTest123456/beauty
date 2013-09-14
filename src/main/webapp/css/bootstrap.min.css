@@ -1647,6 +1647,12 @@ legend+.control-group {
     *margin-left: 0
 }
 
+.form-horizontal .controls {
+    *display: inline-block;
+    *padding-left: 20px;
+    margin-left: 180px;
+    *margin-left: 0
+}
 .form-horizontal .controls:first-child {
     *padding-left: 180px
 }

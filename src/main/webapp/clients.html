@@ -1,7 +1,9 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
-    <title>Clients List</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<head>
+    <title>Клиенты</title>
     <!-- Bootstrap -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link href="css/bootstrap-responsive.css" rel="stylesheet"/>
@@ -12,7 +14,7 @@
         body {
             padding-top: 60px;
             padding-bottom: 40px;
-            background-color:#b0b0b0;
+            background-color: #b0b0b0;
         }
     </style>
 </head>
@@ -41,11 +43,11 @@
 <script type="text/template" id="client-list-template">
     <thead>
     <tr>
-        <th>Name</th>
-        <th>SurName</th>
-        <th>LastName</th>
-        <th>Telephone</th>
-        <th>Edit mode</th>
+        <th>Имя</th>
+        <th>Фамилия</th>
+        <th>Отчество</th>
+        <th>Телефон</th>
+        <th>Редактирование</th>
     </tr>
     </thead>
     <tbody>
@@ -73,47 +75,50 @@
 
 
 <script type="text/template" id="client-details-template">
+
+    <input type="hidden" id="inputId" placeholder="name" value="<%=client.clientId==null?'0':client.clientId%>">
+
     <div class="control-group">
-
-        <input type="hidden" id="inputId" placeholder="name" value="<%=client.clientId==null?'0':client.clientId%>">
-
-        <label class="control-label" for="inputName">Name:</label>
+        <label class="control-label" for="inputName">Имя:</label>
 
         <div class="controls">
             <div class="input-prepend">
                 <span class="add-on"><i class="icon-user"></i></span>
-                <input type="text" id="inputName" name="inputName" placeholder="name"
+                <input type="text" id="inputName" name="inputName" placeholder="Имя"
                        value="<%=client.firstName==null?'':client.firstName%>">
             </div>
         </div>
-        <label class="control-label" for="inputSurName">SurName:</label>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="inputSurName">Фамилия:</label>
 
         <div class="controls">
             <div class="input-prepend">
                 <span class="add-on"><i class="icon-user"></i></span>
-                <input type="text" id="inputSurName" name="inputSurName" placeholder="surName"
+                <input type="text" id="inputSurName" name="inputSurName" placeholder="Фамилия"
                        value="<%=client.surName==null?'':client.surName%>">
             </div>
         </div>
-        <label class="control-label" for="inputLastName">LastName:</label>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="inputLastName">Отчество:</label>
 
         <div class="controls">
             <div class="input-prepend">
                 <span class="add-on"><i class="icon-user"></i></span>
-                <input type="text" id="inputLastName" name="inputLastName" placeholder="lastName"
+                <input type="text" id="inputLastName" name="inputLastName" placeholder="Отчество"
                        value="<%=client.lastName==null?'':client.lastName%>">
             </div>
         </div>
     </div>
 
-
     <div class="control-group">
-        <label class="control-label" for="inputPhone">Phone:</label>
+        <label class="control-label" for="inputPhone">Телефон:</label>
 
         <div class="controls">
             <div class="input-prepend">
                 <span class="add-on"><i class="icon-th"></i></span>
-                <input type="text" id="inputPhone" name="inputPhone" placeholder="Phone" class="error"
+                <input type="text" id="inputPhone" name="inputPhone" placeholder="Телефон" class="error"
                        value="<%=client.telephone==null?'':client.telephone%>">
             </div>
         </div>
@@ -121,9 +126,9 @@
 
     <div class="control-group">
         <div class="controls">
-            <a class="btn btn-primary" id="form-btn-add">Save</a>
+            <a class="btn btn-primary" id="form-btn-add">Сохранить</a>
             <!-- <a class="btn btn-primary" href="">Update view</a>  -->
-            <a class="btn btn-danger" id="form-btn-remove" href="">Remove</a>
+            <a class="btn btn-danger" id="form-btn-remove" href="">Удалить</a>
         </div>
         <div class="controls">
         </div>
