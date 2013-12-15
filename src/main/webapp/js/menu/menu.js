@@ -15,7 +15,8 @@ $(function () {
             "!/clientsList": "clientsList",
             "!/employersList": "employersList",
             "!/servicesList": "servicesList",
-            "!/statisticsList": "statisticsList"
+            "!/statisticsList": "statisticsList",
+            "!/galleryLink": "galleryLink"
         },
 
         clientsList: function () {
@@ -32,6 +33,10 @@ $(function () {
 
         statisticsList: function () {
             window.location = "/statistic.html"
+        },
+
+        galleryLink: function () {
+            window.location = "/gallery.html"
         }
     });
 
