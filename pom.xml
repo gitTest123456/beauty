@@ -12,7 +12,6 @@
             <url>http://download.java.net/maven/2/</url>
         </repository>
 
-
         <repository>
             <id>codehaus</id>
             <url>http://repository.codehaus.org/org/codehaus</url>
