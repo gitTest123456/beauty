@@ -57,6 +57,6 @@
 
 
     <welcome-file-list>
-        <welcome-file>/mainMenu.html</welcome-file>
+        <welcome-file>/login.html</welcome-file>
     </welcome-file-list>
 </web-app>
