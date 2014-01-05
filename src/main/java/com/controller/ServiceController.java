@@ -23,7 +23,8 @@ public class ServiceController {
 
     @PostConstruct
     public void init() {
-        log.info("Inside method ClientsController init");
+        log.info("Inside met" +
+                "hod ClientsController init");
     }
 
 
