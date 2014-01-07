@@ -11,7 +11,7 @@
         <intercept-url pattern="/welcome*" access="ROLE_USER"/>
         <form-login login-page="/login.html" default-target-url="/mainMenu.html"
                     authentication-failure-url="/login.html"/>
-        <logout logout-success-url="/logout"/>
+        <logout logout-success-url="/login.html"/>
     </http>
 
 
