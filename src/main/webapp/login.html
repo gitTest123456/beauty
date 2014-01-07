@@ -1,44 +1,73 @@
-<html xmlns:c="http://www.w3.org/1999/XSL/Transform">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
 <head>
-<title>Login Page</title>
-<style>
-.errorblock {
-	color: #ff0000;
-	background-color: #ffEEEE;
-	border: 3px solid #ff0000;
-	padding: 8px;
-	margin: 16px;
-}
-</style>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<head>
+    <title>Login page</title>
+    <!-- Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/jquery.fancybox.css" rel="stylesheet"/>
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+            background-color: #b0b0b0;
+        }
+    </style>
 </head>
-<body onload='document.f.j_username.focus();'>
-	<h3>Login with Username and Password (Custom Page)</h3>
 
-	<form name='f' action="/j_spring_security_check"
-		method='POST'>
+<body>
 
-		<table>
-			<tr>
-				<td>User:</td>
-				<td><input type='text' name='j_username' value=''>
-				</td>
-			</tr>
-			<tr>
-				<td>Password:</td>
-				<td><input type='password' name='j_password' />
-				</td>
-			</tr>
-			<tr>
-				<td colspan='2'><input name="submit" type="submit"
-					value="Login" />
-				</td>
-			</tr>
-			<tr>
-				<td colspan='2'><input name="reset" type="reset" />
-				</td>
-			</tr>
-		</table>
+<form name='f' action="/j_spring_security_check"
+      method='POST'>
+    <div class="control-group">
+        <label class="control-label" for="inputName">Login:</label>
 
-	</form>
+        <div class="controls">
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-user"></i></span>
+                <input type="text" id="inputName" name="j_username" placeholder="Login"
+                       value="">
+            </div>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="inputLastName">Password:</label>
+
+        <div class="controls">
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-user"></i></span>
+                <input type="text" id="inputLastName" name="j_password" placeholder="Password"
+                       value="">
+            </div>
+        </div>
+    </div>
+
+
+    <div class="control-group">
+        <div class="controls">
+            <input type="submit" value="Sign in"/>
+        </div>
+    </div>
+</form>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="js/backbone/json2.js"></script>
+<script src="js/backbone/underscore.js"></script>
+<script src="js/backbone/backbone.js"></script>
+<script src="js/backbone/backbone.localstorage.js"></script>
+<script src="js/backbone/backbone.validation.js"></script>
+<script src="js/models/clients.js"></script>
+<script src="js/table/jquery.tablesorter.js"></script>
+<script src="js/validation/pageValidationClientsForm.js"></script>
+<script src="js/dialogs/jquery.fancybox.js"></script>
+<script src="js/validation/jquery.validate.min.js"></script>
+<script src="js/table/jquery.tablesorter.pager.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
+<script src="js/table/simplePage.js"></script>
+<script src="js/backbone/timer_.js"></script>
 </body>
 </html>
