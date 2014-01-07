@@ -8,7 +8,8 @@
                     http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
     <http auto-config="true">
-        <intercept-url pattern="/welcome*" access="ROLE_USER"/>
+        <intercept-url pattern="/welcome*" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/mainMenu.html" access="ROLE_ADMIN"/>
         <form-login login-page="/login.html" default-target-url="/mainMenu.html"
                     authentication-failure-url="/login.html"/>
         <logout logout-success-url="/login.html"/>
@@ -19,6 +20,7 @@
         <authentication-provider>
             <user-service>
                 <user name="devi" password="irina" authorities="ROLE_ADMIN"/>
+                <user name="user" password="user" authorities="ROLE_USER" />
             </user-service>
         </authentication-provider>
     </authentication-manager>
