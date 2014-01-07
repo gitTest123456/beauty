@@ -223,7 +223,7 @@ $(function () {
 
         },
         back: function () {
-            window.location = "/"
+            window.location = "/mainMenu.html"
         }
     });
 

@@ -162,7 +162,7 @@ $(function () {
             clientView.render();
         },
         back: function () {
-            window.location = "/"
+            window.location = "/mainMenu.html"
         }
     });
 
