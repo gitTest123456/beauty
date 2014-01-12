@@ -16,7 +16,8 @@ $(function () {
             "!/employersList": "employersList",
             "!/servicesList": "servicesList",
             "!/statisticsList": "statisticsList",
-            "!/galleryLink": "galleryLink"
+            "!/galleryLink": "galleryLink",
+            "!/modelEditorLink":"modelEditorLink"
         },
 
         clientsList: function () {
@@ -37,7 +38,12 @@ $(function () {
 
         galleryLink: function () {
             window.location = "/gallery.html"
+        },
+
+        modelEditorLink: function() {
+            window.location = "/modelEditorLink.html"
         }
+
     });
 
     var controller = new Controller();
