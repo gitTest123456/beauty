@@ -10,6 +10,11 @@
     <http auto-config="true">
         <intercept-url pattern="/welcome*" access="ROLE_ADMIN"/>
         <intercept-url pattern="/mainMenu.html" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/clients.html" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/employers.html" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/services.html" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/statistic.html" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/modelEditorLink.html" access="ROLE_ADMIN"/>
         <form-login login-page="/login.html" default-target-url="/mainMenu.html"
                     authentication-failure-url="/login.html"/>
         <logout logout-success-url="/login.html"/>
