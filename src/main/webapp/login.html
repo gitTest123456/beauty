@@ -17,12 +17,25 @@
             background-color: #b0b0b0;
         }
     </style>
+    <script type="text/javascript">
+        var msg ="";
+        function login() {
+            $.ajax({
+                type: "post",
+                url: "/j_spring_security_check", //your valid url
+                success: function (result) {
+                },
+                error: function (result) {
+                   window.location ="/error.html";
+                }
+            });
+        }
+    </script>
 </head>
 
 <body>
 
-<form name='f' action="/j_spring_security_check"
-      method='POST'>
+<form onsubmit="login()">
     <div class="control-group">
         <label class="control-label" for="lgnId">Login:</label>
 
@@ -52,20 +65,16 @@
             <input type="submit" value="Sign in"/>
         </div>
     </div>
+
 </form>
+
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <script src="js/bootstrap/bootstrap.min.js"></script>
 <script src="js/backbone/json2.js"></script>
 <script src="js/backbone/underscore.js"></script>
 <script src="js/backbone/backbone.js"></script>
 <script src="js/backbone/backbone.localstorage.js"></script>
-<script src="js/backbone/backbone.validation.js"></script>
-<script src="js/models/clients.js"></script>
-<script src="js/table/jquery.tablesorter.js"></script>
-<script src="js/validation/pageValidationClientsForm.js"></script>
 <script src="js/dialogs/jquery.fancybox.js"></script>
-<script src="js/validation/jquery.validate.min.js"></script>
-<script src="js/table/jquery.tablesorter.pager.js"></script>
 <script src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
 <script src="js/table/simplePage.js"></script>
 <script src="js/backbone/timer_.js"></script>
