@@ -91,7 +91,20 @@
                                    src="img/model_creator/elements/hair1.png" alt="el"/></div>
     </div>
 </div>
+
+<input type='file' accept="jpg jpeg" onchange="readURL(this);"/>
+
 <script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#obj_0').attr('src', e.target.result).width("300px").height("280px").style("display:block; margin:auto");
+                ;
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
     $(document).ready(function (id) {
         var count_dropped_hits = 0;
         var data = {
