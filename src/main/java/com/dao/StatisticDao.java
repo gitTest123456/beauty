@@ -21,4 +21,6 @@ public interface StatisticDao {
     public void updateStatistic(Statistic statistic);
 
     public void addService(Statistic statistic);
+
+    public void printReport(Integer empId);
 }

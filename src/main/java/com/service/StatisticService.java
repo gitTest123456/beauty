@@ -18,6 +18,8 @@ public interface StatisticService {
 
     public void deleteStatistic(Statistic statistic);
 
+    public void printReport(Integer empId);
+
     public void updateStatistic(Statistic statistic);
 
     public void addService(Statistic statistic);

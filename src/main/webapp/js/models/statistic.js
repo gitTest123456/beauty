@@ -213,7 +213,8 @@ $(function () {
 
             events: {
                 "click  #form-btn-remove": "deleteStatistic",
-                "click #form-btn-add": "addStatistic"
+                "click #form-btn-add": "addStatistic",
+                "click #form-btn-report": "getCVSReport"
             },
             render: function () {
                 $(this.el).html(this.template({
@@ -232,6 +233,23 @@ $(function () {
                     url: "/beauty/statistics/delete", //your valid url
                     contentType: "application/json", //this is required for spring 3 - ajax to work (at least for me)
                     data: JSON.stringify(this.model), //json object or array of json objects
+                    success: function (result) {
+                        window.location = "/statistic.html";
+                    },
+                    error: function () {
+                        window.location = "/statistic.html";
+                    }
+                });
+            },
+            getCVSReport: function (e) {
+                var employerIndex = $("#selectId").val();
+                var employer = employersCollection[employerIndex];
+                e.preventDefault();
+                $.ajax({
+                    type: "post",
+                    url: "/beauty/statistics/report", //your valid url
+                    contentType: "application/json", //this is required for spring 3 - ajax to work (at least for me)
+                    data: JSON.stringify(employer), //json object or array of json objects
                     success: function (result) {
                         window.location = "/statistic.html";
                     },

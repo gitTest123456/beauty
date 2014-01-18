@@ -1,6 +1,6 @@
 package com.controller;
 
-import com.model.ServiceModel;
+import com.model.Employer;
 import com.model.Statistic;
 import com.service.StatisticService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -73,9 +73,16 @@ public class StatisticController {
 
 
     @RequestMapping(method = RequestMethod.POST, value = "/statistics/delete")
-    public String deleteClient(@RequestBody Statistic statistic) {
+    public String deleteStatistic(@RequestBody Statistic statistic) {
         System.out.println("delete statistic " + statistic.toString());
         service.deleteStatistic(statistic);
         return "redirect:/1";
     }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/statistics/report")
+       public String generateReport(@RequestBody Employer employer) {
+           System.out.println("report statistic " + employer.getBirthday());
+           service.printReport(employer.getEmployerId());
+           return "redirect:/1";
+       }
 }

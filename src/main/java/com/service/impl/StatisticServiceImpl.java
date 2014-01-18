@@ -34,6 +34,10 @@ public class StatisticServiceImpl implements StatisticService {
         dao.deleteStatistic(statistic);
     }
 
+    public void printReport(Integer empId) {
+        dao.printReport(empId);
+    }
+
     public void updateStatistic(Statistic statistic) {
         dao.updateStatistic(statistic);
     }
