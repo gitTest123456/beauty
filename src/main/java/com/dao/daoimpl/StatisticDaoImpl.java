@@ -60,9 +60,9 @@ public class StatisticDaoImpl implements StatisticDao {
     }
 
     public void printReport(Integer empId) {
-        String fileName = "D://emp" + empId + ".csv";
+        String fileName = "С://emp" + empId + ".xsl";
         try {
-            File file = new File("D://emp" + empId + ".csv");
+            File file = new File(fileName);
             if (file.exists()) {
                 file.delete();
             }
