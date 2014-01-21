@@ -15,6 +15,12 @@ $(document).ready(function () {
         pickDate: false
     });
 
-    $("#statistic-list-block").tablesorter();
-    $("#statistic-list-block").oneSimpleTablePagination({rowsPerPage: 5});
+    $(document).oneTime("1s", function () {
+            $("#statistic-list-block").tablesorter();
+            $("#statistic-list-block").oneSimpleTablePagination({rowsPerPage: 4});
+           $("#datetimepicker").datetimepicker({
+               pickTime: false
+           });
+       })
+
 });

@@ -67,7 +67,12 @@ $(function () {
     var EmployersOptionListView = Backbone.View.extend({
         template: _.template($('#employers-details-template').html()),
         el: $("#employers-details-block"), // DOM element with contact details,
-
+        events: {
+            "change #selectId1": "separationSelected"
+        },
+        separationSelected: function () {
+            serviceListView = new ServiceOptionListView().render();
+        },
         render: function () {
             $(this.el).html(this.template({
                 employer: employersCollection
@@ -141,7 +146,7 @@ $(function () {
             parse: function (response) {
                 console.log('Parsing list of the services:' + JSON.stringify(response));
                 servicesCollection = response;
-                serviceListView.collection = servicesCollection;
+                serviceListView.collection = servicesCollectionCopy;
                 serviceListView = new ServiceOptionListView().render();
                 return response;
             }
@@ -151,11 +156,23 @@ $(function () {
     var ServiceOptionListView = Backbone.View.extend({
         template: _.template($('#services-details-template').html()),
         el: $("#services-details-block"), // DOM element with contact details,
-
         render: function () {
-            $(this.el).html(this.template({
-                service: servicesCollection
-            }))
+            servicesCollectionCopy = [];
+            var employerIndex = $("#selectId1").val();
+            if (employerIndex != null && employersCollection.length > 0) {
+                var employer = employersCollection[employerIndex];
+                var curSeparation = employer.separation.separationId;
+                var j = 0;
+                for (var i = 0; i < servicesCollection.length; i++) {
+                    if (servicesCollection[i].separation_.separationId == curSeparation) {
+                        servicesCollectionCopy[j++] = servicesCollection[i];
+                    }
+                }
+
+                $(this.el).html(this.template({
+                    service: servicesCollectionCopy
+                }))
+            }
         }
     });
 
@@ -270,7 +287,7 @@ $(function () {
                 var clientIndex = $("#selectId1").val();
                 var client = clientsCollection[clientIndex];
                 var serviceIndex = $("#selectId2").val();
-                var service = servicesCollection[serviceIndex];
+                var service = servicesCollectionCopy[serviceIndex];
 
                 var newStatistic = new Statistic(
                     {
@@ -302,14 +319,19 @@ $(function () {
             "!/statistic_": "list",
             "!/delete_/:itemIndex": "delete_",
             "!/edit/:itemIndex": "edit",
-            "!/back": "back"
+            "!/back": "back",
+            "!/serviceUpdate": "serviceUpdate"
         },
 
         list: function () {
             clientsCollection.fetch();
             employersCollection.fetch();
-            servicesCollection.fetch();
+            servicesCollectionCopy.fetch();
             statisticCollection.fetch();
+        },
+
+        serviceUpdate: function () {
+            serviceListView = new ServiceOptionListView().render();
         },
 
         edit: function (itemIndex) {
@@ -329,8 +351,8 @@ $(function () {
                 }
             }
 
-            for (index = 0; index < servicesCollection.length; index++) {
-                if (statisticCollection[itemIndex].serviceByServiceId.serviceId == servicesCollection[index].serviceId) {
+            for (index = 0; index < servicesCollectionCopy.length; index++) {
+                if (statisticCollection[itemIndex].serviceByServiceId.serviceId == servicesCollectionCopy[index].serviceId) {
                     $("#selectId2").val(index);
                     break;
                 }
@@ -371,7 +393,7 @@ $(function () {
     var statisticView = new StatisticView({model: curStatistic});
     statisticView.render();
     var controller = new StatisticController();
-
+    var servicesCollectionCopy = new ServiceCollection();
 
     Backbone.history.start();
 });
