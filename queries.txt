@@ -62,3 +62,7 @@ REFERENCES CLIENTS(client_id)
 );
 
 
+Insert into separation(separation_name) values('Nail');
+Insert into separation(separation_name) values('Hair style');
+Insert into separation(separation_name) values('Celebrity Hairstyles');
+Insert into separation(separation_name) values('Haircut style');
