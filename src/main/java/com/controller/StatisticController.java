@@ -66,7 +66,7 @@ public class StatisticController {
     public
     @ResponseBody
     Statistic addService(@RequestBody Statistic statistic) {
-        System.out.println("add statistic " + statistic);
+        System.out.println("add statistic " + statistic.getClientByClientId());
         service.addService(statistic);
         return statistic;
     }

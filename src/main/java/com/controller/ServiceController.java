@@ -66,7 +66,7 @@ public class ServiceController {
     public
     @ResponseBody
     ServiceModel addService(@RequestBody ServiceModel service_Model_) {
-        System.out.println("add service " + service_Model_);
+        System.out.println("add service " + service_Model_.getSeparation_().getSeparationId() + service_Model_.getSeparation_().getSeparationName());
         service.addService(service_Model_);
         return service_Model_;
     }
