@@ -60,7 +60,7 @@ public class StatisticDaoImpl implements StatisticDao {
     }
 
     public void printReport(Integer empId) {
-        String fileName = "С://emp" + empId + ".xsl";
+        String fileName = "C://emp" + empId + ".doc";
         try {
             File file = new File(fileName);
             if (file.exists()) {
@@ -74,13 +74,12 @@ public class StatisticDaoImpl implements StatisticDao {
                     " left join clients clt on(ststc.client_id = clt.client_id)" +
                     " where e.employer_id = ?" +
                     " group by serv.naming, date_visit, cltData, empData" +
-                    " INTO OUTFILE ?" +
-                    " FIELDS TERMINATED BY ','";
+                    " INTO OUTFILE '" + fileName +
+                    "' FIELDS TERMINATED BY ','";
 
             Connection connection = dataSource.getConnection();
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setInt(1, empId.intValue());
-            statement.setString(2, fileName);
             statement.execute();
         } catch (SQLException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
@@ -88,3 +87,15 @@ public class StatisticDaoImpl implements StatisticDao {
 
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+

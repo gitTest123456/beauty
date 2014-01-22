@@ -81,32 +81,4 @@ insert into service values(3, 1, 'Hair model 2', 50, 60);
 
 
 #client
-
-isnert into clients
-values(1, 'FName', 'SurName', 'LastName', '12-12-12');
-
-#employers
-
-insert into employer
-values(2, 'Name1','sURnAME','lASTnAME',1,'Gaydara','12.09.78','10','456','761-04-24');
-insert into employer
-values(2, 'Name1','sURnAME','lASTnAME',2,'Gaydara','12.09.78','10','456','761-04-24');
-
-#services
-insert into service 
-values(1, 1, 'Hair model 1', 50, 60);
-
-insert into service 
-values(2, 1, 'Hair model 2', 50, 60);
-
-insert into service 
-values(3, 1, 'Hair model 2', 50, 60);
-
-
-
-
-#client
-
 insert into clients values(1, 'FName', 'SurName', 'LastName', '12-12-12');
-
-insert into clients values(2, 'FName 1', 'SurName 1', 'LastName 1', '12-12-12');
