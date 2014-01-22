@@ -74,7 +74,7 @@ public class StatisticController {
 
     @RequestMapping(method = RequestMethod.POST, value = "/statistics/delete")
     public String deleteStatistic(@RequestBody Statistic statistic) {
-        System.out.println("delete statistic " + statistic.toString());
+        System.out.println("delete statistic " + statistic.getDescription());
         service.deleteStatistic(statistic);
         return "redirect:/1";
     }

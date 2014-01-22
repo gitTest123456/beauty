@@ -48,7 +48,7 @@ public class StatisticDaoImpl implements StatisticDao {
     }
 
     public void deleteStatistic(Statistic statistic) {
-        factory.getCurrentSession().merge(statistic);
+        factory.getCurrentSession().delete(statistic);
     }
 
     public void updateStatistic(Statistic statistic) {

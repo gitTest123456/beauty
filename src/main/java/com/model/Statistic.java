@@ -23,6 +23,17 @@ public class Statistic {
     private Employer employerByEmployerId;
     private Client clientByClientId;
     private ServiceModel serviceByServiceId;
+    private String description;
+
+     @javax.persistence.Column(name = "description", nullable = false, insertable = true, updatable = true, length = 20, precision = 0)
+       @Basic
+       public String getDescription() {
+           return description;
+       }
+
+       public void setDescription(String description) {
+           this.description = description;
+       }
 
     @javax.persistence.Column(name = "visit_id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id

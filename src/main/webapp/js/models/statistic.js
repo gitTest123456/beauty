@@ -23,7 +23,8 @@ $(function () {
                     timeVisit: null,
                     employerByEmployerId: null,
                     clientByClientId: null,
-                    serviceByServiceId: null
+                    serviceByServiceId: null,
+                    description: null
                 };
             }
         });
@@ -288,6 +289,7 @@ $(function () {
                 var client = clientsCollection[clientIndex];
                 var serviceIndex = $("#selectId2").val();
                 var service = servicesCollectionCopy[serviceIndex];
+                var description = $("#inputModelDescr").val();
 
                 var newStatistic = new Statistic(
                     {
@@ -296,7 +298,8 @@ $(function () {
                         "timeVisit": timeVisit,
                         "employerByEmployerId": employer,
                         "clientByClientId": client,
-                        "serviceByServiceId": service
+                        "serviceByServiceId": service,
+                        "description": description
                     }).save({}, {
                         wait: true,
                         success: function (model, response) {
@@ -363,6 +366,7 @@ $(function () {
                 $("#datetimepicker2").data('datetimepicker').setDate(statisticView.model.timeVisit);
             }
 
+            $("#inputModelDescr").val(statisticView.model.description);
 
         },
         back: function () {
