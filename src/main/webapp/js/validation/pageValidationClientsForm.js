@@ -49,9 +49,7 @@ $(document).ready(function () {
 
 });
 
-function doSearch() {
-        var searchText = document.getElementById('searchTerm').value;
-        var targetTable = document.getElementById('client-list-block');
+function doSearch(searchText, targetTable) {
         var targetTableColCount;
 
         //Loop through table rows

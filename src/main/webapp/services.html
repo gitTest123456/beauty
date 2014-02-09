@@ -143,6 +143,7 @@
     </div>
 </script>
 <div class="control-group_">
+    <input type="text" id="searchTerm" class="search_box" onkeyup="doSearch(document.getElementById('searchTerm').value,document.getElementById('service-list-block'))" alt="Search" />
     <table class="tablesorter" id="service-list-block" border="2">
 
     </table>
@@ -171,5 +172,6 @@
 <script src="js/table/simplePage.js"></script>
 <script src="js/backbone/timer_.js"></script>
 <script src="js/date/bootstrap-datetimepicker.min.js"></script>
+<script src="js/validation/pageValidationClientsForm.js"></script>
 </body>
 </html>

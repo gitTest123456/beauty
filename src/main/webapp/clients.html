@@ -135,7 +135,7 @@
     </div>
 </script>
 <div class="control-group_">
-    <input type="text" id="searchTerm" class="search_box" onkeyup="doSearch()" alt="Search" />
+    <input type="text" id="searchTerm" class="search_box" onkeyup="doSearch(document.getElementById('searchTerm').value,document.getElementById('client-list-block'))" alt="Search" />
     <table class="tablesorter" id="client-list-block" border="2">
 
     </table>
