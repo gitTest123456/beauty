@@ -108,7 +108,7 @@ public class StatisticDaoImpl implements StatisticDao {
                 " left join employer e on(ststc.employer_id = e.employer_id)" +
                 " left join clients clt on(ststc.client_id = clt.client_id)" +
                 " where e.employer_id =" + empId +
-                " and and day(now()) = day(date_visit) " +
+                " and day(now()) = day(date_visit) " +
                 " group by serv.naming, date_visit, cltData, empData";
         try {
             JasperReportBuilder reportBuilder = report().setTemplate(Templates.reportTemplate)
@@ -125,9 +125,8 @@ public class StatisticDaoImpl implements StatisticDao {
             reportViewer.setTitle("Отчет на текущий день");
             reportViewer.setVisible(true);
         } catch (DRException e) {
-            e.printStackTrace();
+
         } catch (SQLException e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
     }
 
