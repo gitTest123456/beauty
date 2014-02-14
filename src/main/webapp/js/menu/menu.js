@@ -17,7 +17,8 @@ $(function () {
             "!/servicesList": "servicesList",
             "!/statisticsList": "statisticsList",
             "!/galleryLink": "galleryLink",
-            "!/modelEditorLink":"modelEditorLink"
+            "!/modelEditorLink": "modelEditorLink",
+            "!/investLink ": "investLink"
         },
 
         clientsList: function () {
@@ -40,8 +41,12 @@ $(function () {
             window.location = "/gallery.html"
         },
 
-        modelEditorLink: function() {
+        modelEditorLink: function () {
             window.location = "/modelEditorLink.html"
+        },
+
+        investLink: function () {
+            window.location = "/invest.html"
         }
 
     });

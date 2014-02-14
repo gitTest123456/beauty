@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ru" lang="ru">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<head>
+    <title>Расходы</title>
+    <!-- Bootstrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="css/bootstrap-responsive.css" rel="stylesheet"/>
+    <link href="css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="css/style.css" rel="stylesheet"/>
+    <link href="css/jquery.fancybox.css" rel="stylesheet"/>
+    <style type="text/css">
+        body {
+            padding-top: 60px;
+            padding-bottom: 40px;
+            background-color: #b0b0b0;
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li><a class="nav-collapse collapse" id="investsListLink" href="/mainMenu.html">Back</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="span10">
+    <form class="form-horizontal" id="invest-details-block">
+        <!-- Contact details would be injected here by Backbone.js -->
+    </form>
+</div>
+
+<script type="text/template" id="invest-list-template">
+    <thead>
+    <tr>
+        <th>Аренда</th>
+        <th>Зарплата сотрудникам</th>
+        <th>Оборудование</th>
+        <th>Дата</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% index_for_del = 0; index_for_edit = 0; _.each(invest, function(entry){%>
+    <tr>
+        <td>
+            <%=entry.arenda%>
+        </td>
+        <td>
+            <%=entry.commonSalaryReq%>
+        </td>
+        <td>
+            <%=entry.commonReqEnv%>
+        </td>
+        <td>
+            <%=entry.dateReq%>
+        </td>
+        <td>
+            <a href="#!/edit/<%=index_for_edit++%>">EDIT</a>
+        </td>
+    </tr>
+    <% });%>
+    </tbody>
+</script>
+
+
+<script type="text/template" id="invest-details-template">
+
+    <input type="hidden" id="inputId" placeholder="name" value="<%=invest.investId==null?'0':invest.investId%>">
+
+    <div class="control-group">
+        <label class="control-label" for="inputArenda">Аренда:</label>
+
+        <div class="controls">
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-user"></i></span>
+                <input type="text" id="inputArenda" name="inputArenda" placeholder="Аренда"
+                       value="<%=invest.arenda==null?'':invest.arenda%>">
+            </div>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="inputCommonSalaryReq">Зарплата:</label>
+
+        <div class="controls">
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-user"></i></span>
+                <input type="text" id="inputCommonSalaryReq" name="inputCommonSalaryReq" placeholder="Зарплата"
+                       value="<%=invest.сommonSalaryReq==null?'':invest.сommonSalaryReq%>">
+            </div>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="inputСommonReqEnv">Оборудование:</label>
+
+        <div class="controls">
+            <div class="input-prepend">
+                <span class="add-on"><i class="icon-user"></i></span>
+                <input type="text" id="inputСommonReqEnv" name="inputCommonReqEnv" placeholder="Оборудование"
+                       value="<%=invest.commonReqEnv==null?'':invest.commonReqEnv%>">
+            </div>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label" for="inputDateReq">Дата:</label>
+
+        <div class="controls">
+            <div id="datetimepicker1" class="input-append">
+                <input data-format="yyyy-MM-dd" name="inputDateReq" id="inputDateReq" class="span2"
+                       size="16"
+                       type="text"
+                       readonly>
+    <span class="add-on">
+      <i data-date-icon="icon-calendar">
+      </i>
+    </span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="control-group">
+        <div class="controls">
+            <a class="btn btn-primary" id="form-btn-add">Сохранить</a>
+            <!-- <a class="btn btn-primary" href="">Update view</a>  -->
+            <a class="btn btn-danger" id="form-btn-remove" href="">Удалить</a>
+        </div>
+        <div class="controls">
+        </div>
+    </div>
+</script>
+<div class="control-group_">
+    <input type="text" id="searchTerm" class="search_box"
+           onkeyup="doSearch(document.getElementById('searchTerm').value,document.getElementById('invest-list-block'))"
+           alt="Search"/>
+    <table class="tablesorter" id="invest-list-block" border="2">
+
+    </table>
+</div>
+
+<div class="alert-error" hidden="true" id="dialog"><!--style="display: none"> !-->
+    <div>
+        Input data is incorrect - try again later;
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/bootstrap/bootstrap.min.js"></script>
+<script src="js/backbone/json2.js"></script>
+<script src="js/backbone/underscore.js"></script>
+<script src="js/backbone/backbone.js"></script>
+<script src="js/backbone/backbone.localstorage.js"></script>
+<script src="js/backbone/backbone.validation.js"></script>
+<script src="js/models/invest.js"></script>
+<script src="js/table/jquery.tablesorter.js"></script>
+<script src="js/validation/pageValidationInvestsForm.js"></script>
+<script src="js/dialogs/jquery.fancybox.js"></script>
+<script src="js/validation/jquery.validate.min.js"></script>
+<script src="js/table/jquery.tablesorter.pager.js"></script>
+<script src="http://code.jquery.com/jquery-migrate-1.0.0.js"></script>
+<script src="js/table/simplePage.js"></script>
+<script src="js/backbone/timer_.js"></script>
+</body>
+</html>
