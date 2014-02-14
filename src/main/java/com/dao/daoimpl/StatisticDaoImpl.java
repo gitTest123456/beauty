@@ -99,6 +99,38 @@ public class StatisticDaoImpl implements StatisticDao {
     }
 
 
+    public void printDayReport(Integer empId) {
+
+        String query = "select serv.naming, concat_ws(',',e.first_name, e.sur_name, e.last_name) empData, " +
+                "concat_ws(',',clt.first_name,clt.sur_name,clt.last_name) cltData , date_visit " +
+                " from statistic ststc " +
+                " left join service serv on(ststc.service_id = serv.service_id)" +
+                " left join employer e on(ststc.employer_id = e.employer_id)" +
+                " left join clients clt on(ststc.client_id = clt.client_id)" +
+                " where e.employer_id =" + empId +
+                " and and day(now()) = day(date_visit) " +
+                " group by serv.naming, date_visit, cltData, empData";
+        try {
+            JasperReportBuilder reportBuilder = report().setTemplate(Templates.reportTemplate)
+                    .columns(
+                            col.column("Item", "naming", type.stringType()),
+                            col.column("Quantity", "empData", type.stringType()),
+                            col.column("Clients data", "cltData", type.stringType()),
+                            col.column("Date", "date_visit", type.stringType()))
+                    .title(Templates.createTitleComponent("Clients Report"))
+                    .pageFooter(Templates.footerComponent)
+                    .setDataSource(query, dataSource.getConnection());
+            JasperPrint reportPrint = reportBuilder.toJasperPrint();
+            JasperViewer reportViewer = new JasperViewer(reportPrint, false);
+            reportViewer.setTitle("Отчет на текущий день");
+            reportViewer.setVisible(true);
+        } catch (DRException e) {
+            e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+        }
+    }
+
 //    public void printReport(Integer empId) {
 //        String fileName = "C://emp" + empId + ".doc";
 //        try {

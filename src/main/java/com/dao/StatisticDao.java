@@ -23,4 +23,6 @@ public interface StatisticDao {
     public void addService(Statistic statistic);
 
     public void printReport(Integer empId);
+
+    public void printDayReport(Integer empId);
 }

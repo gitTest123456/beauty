@@ -80,9 +80,16 @@ public class StatisticController {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/statistics/report")
-       public String generateReport(@RequestBody Employer employer) {
-           System.out.println("report statistic " + employer.getBirthday());
-           service.printReport(employer.getEmployerId());
-           return "redirect:/1";
-       }
+    public String generateReport(@RequestBody Employer employer) {
+        System.out.println("report statistic " + employer.getBirthday());
+        service.printReport(employer.getEmployerId());
+        return "redirect:/1";
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/statistics/dayReport")
+    public String generateDayReport(@RequestBody Employer employer) {
+        System.out.println("report statistic " + employer.getBirthday());
+        service.printDayReport(employer.getEmployerId());
+        return "redirect:/1";
+    }
 }

@@ -232,7 +232,8 @@ $(function () {
             events: {
                 "click  #form-btn-remove": "deleteStatistic",
                 "click #form-btn-add": "addStatistic",
-                "click #form-btn-report": "getCVSReport"
+                "click #form-btn-report": "getCVSReport",
+                "click #form-btn-report1": "getCVSDayReport"
             },
             render: function () {
                 $(this.el).html(this.template({
@@ -276,6 +277,23 @@ $(function () {
                     }
                 });
             },
+            getCVSDayReport: function (e) {
+                           var employerIndex = $("#selectId").val();
+                           var employer = employersCollection[employerIndex];
+                           e.preventDefault();
+                           $.ajax({
+                               type: "post",
+                               url: "/beauty/statistics/dayReport", //your valid url
+                               contentType: "application/json", //this is required for spring 3 - ajax to work (at least for me)
+                               data: JSON.stringify(employer), //json object or array of json objects
+                               success: function (result) {
+                                   window.location = "/statistic.html";
+                               },
+                               error: function () {
+                                   window.location = "/statistic.html";
+                               }
+                           });
+                       },
             employerByEmployerId: null,
             clientByClientId: null,
             serviceByServiceId: null,

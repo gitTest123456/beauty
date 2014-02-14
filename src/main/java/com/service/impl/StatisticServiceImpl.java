@@ -38,6 +38,10 @@ public class StatisticServiceImpl implements StatisticService {
         dao.printReport(empId);
     }
 
+    public void printDayReport(Integer empId) {
+           dao.printDayReport(empId);
+       }
+
     public void updateStatistic(Statistic statistic) {
         dao.updateStatistic(statistic);
     }

@@ -20,6 +20,8 @@ public interface StatisticService {
 
     public void printReport(Integer empId);
 
+    public void printDayReport(Integer empId);
+
     public void updateStatistic(Statistic statistic);
 
     public void addService(Statistic statistic);
