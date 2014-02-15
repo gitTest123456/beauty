@@ -69,6 +69,19 @@ REFERENCES CLIENTS(client_id)
 );
 
 
+select sum(arenda)+sum(common_req_env)+sum(salary), sum(arenda),sum(common_req_env), sum(salary)
+from invest, employer
+group by month(date_req);
+
+
+select serv.naming, concat_ws(',',e.first_name, e.sur_name, e.last_name) empData,
+sum(serv.cost) commonCost
+from statistic ststc
+left join service serv on(ststc.service_id = serv.service_id)
+left join employer e on(ststc.employer_id = e.employer_id)
+group by empData, serv.naming;
+
+
 Insert into separation(separation_name) values('Nail');
 Insert into separation(separation_name) values('Hair style');
 Insert into separation(separation_name) values('Celebrity Hairstyles');

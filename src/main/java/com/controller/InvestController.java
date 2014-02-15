@@ -1,6 +1,7 @@
 package com.controller;
 
 import com.model.Client;
+import com.model.Employer;
 import com.model.InvestEntity;
 import com.service.ClientsService;
 import com.service.InvestService;
@@ -54,4 +55,17 @@ public class InvestController {
         service.deleteInvest(investEntity);
         return "redirect:/1";
     }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/statistics/report")
+    public String generateInvestReport(@RequestBody InvestEntity invest) {
+        service.printInvestReport(invest.getInvestId());
+        return "redirect:/1";
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/statistics/report")
+    public String generateReport(@RequestBody InvestEntity invest) {
+        service.printReport(invest.getInvestId());
+        return "redirect:/1";
+    }
+
 }

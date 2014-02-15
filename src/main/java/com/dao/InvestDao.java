@@ -21,4 +21,8 @@ public interface InvestDao {
     public void updateInvest(InvestEntity invest);
 
     public void addInvest(InvestEntity invest);
+
+    public void printInvestReport(Integer investId);
+
+    public void printReport(Integer investId);
 }

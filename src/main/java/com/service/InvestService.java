@@ -18,4 +18,8 @@ public interface InvestService {
     public void deleteInvest(InvestEntity invest);
 
     public void addInvest(InvestEntity invest);
+
+    void printReport(int investId);
+
+    void printInvestReport(int investId);
 }

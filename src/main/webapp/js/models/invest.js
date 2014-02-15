@@ -85,7 +85,9 @@ $(function () {
 
             events: {
                 "click  #form-btn-remove": "deleteInvest",
-                "click #form-btn-add": "addInvest"
+                "click #form-btn-add": "addInvest",
+                "click #form-btn-report": "getCVSInvestReport",
+                "click #form-btn-report1": "getCVSReport"
             },
             render: function () {
                 $(this.el).html(this.template({
@@ -110,6 +112,40 @@ $(function () {
                 } else {
                     $.fancybox.open($("#dialog"));
                 }
+            },
+            getCVSInvestReport: function (e) {
+                var investIndex = $("#selectId").val();
+                var invest = investCollection[investIndex];
+                e.preventDefault();
+                $.ajax({
+                    type: "post",
+                    url: "/beauty/invest/investReport", //your valid url
+                    contentType: "application/json", //this is required for spring 3 - ajax to work (at least for me)
+                    data: JSON.stringify(invest), //json object or array of json objects
+                    success: function (result) {
+                        window.location = "/invest.html";
+                    },
+                    error: function () {
+                        window.location = "/invest.html";
+                    }
+                });
+            },
+            getCVSInvestReport: function (e) {
+                var investIndex = $("#selectId").val();
+                var invest = investCollection[investIndex];
+                e.preventDefault();
+                $.ajax({
+                    type: "post",
+                    url: "/beauty/invest/report", //your valid url
+                    contentType: "application/json", //this is required for spring 3 - ajax to work (at least for me)
+                    data: JSON.stringify(invest), //json object or array of json objects
+                    success: function (result) {
+                        window.location = "/invest.html";
+                    },
+                    error: function () {
+                        window.location = "/invest.html";
+                    }
+                });
             },
             addInvest: function (e) {
                 if (jQuery("#invest-details-block").valid()) {
