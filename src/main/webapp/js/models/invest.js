@@ -21,7 +21,6 @@ $(function () {
                 return {
                     investId: null,
                     arenda: null,
-                    commonSalaryReq: null,
                     commonReqEnv: null,
                     dateReq: null
                 };
@@ -85,9 +84,9 @@ $(function () {
 
             events: {
                 "click  #form-btn-remove": "deleteInvest",
-                "click #form-btn-add": "addInvest",
-                "click #form-btn-report": "getCVSInvestReport",
-                "click #form-btn-report1": "getCVSReport"
+                "click  #form-btn-add": "addInvest",
+                "click  #form-btn-report": "getCVSInvestReport",
+                "click  #form-btn-report1": "getCVSReport"
             },
             render: function () {
                 $(this.el).html(this.template({
@@ -99,14 +98,14 @@ $(function () {
                 if (jQuery("#invest-details-block").valid()) {
                     $.ajax({
                         type: "post",
-                        url: "/beauty/invests/delete", //your valid url
+                        url: "/beauty/invest/delete", //your valid url
                         contentType: "application/json", //this is required for spring 3 - ajax to work (at least for me)
                         data: JSON.stringify(this.model), //json object or array of json objects
                         success: function (result) {
-                            window.location = "/invests.html";
+                            window.location = "/invest.html";
                         },
                         error: function () {
-                            window.location = "/invests.html";
+                            window.location = "/invest.html";
                         }
                     });
                 } else {
@@ -114,14 +113,11 @@ $(function () {
                 }
             },
             getCVSInvestReport: function (e) {
-                var investIndex = $("#selectId").val();
-                var invest = investCollection[investIndex];
                 e.preventDefault();
                 $.ajax({
                     type: "post",
                     url: "/beauty/invest/investReport", //your valid url
                     contentType: "application/json", //this is required for spring 3 - ajax to work (at least for me)
-                    data: JSON.stringify(invest), //json object or array of json objects
                     success: function (result) {
                         window.location = "/invest.html";
                     },
@@ -130,15 +126,11 @@ $(function () {
                     }
                 });
             },
-            getCVSInvestReport: function (e) {
-                var investIndex = $("#selectId").val();
-                var invest = investCollection[investIndex];
+            getCVSReport: function (e) {
                 e.preventDefault();
                 $.ajax({
                     type: "post",
                     url: "/beauty/invest/report", //your valid url
-                    contentType: "application/json", //this is required for spring 3 - ajax to work (at least for me)
-                    data: JSON.stringify(invest), //json object or array of json objects
                     success: function (result) {
                         window.location = "/invest.html";
                     },
@@ -150,23 +142,21 @@ $(function () {
             addInvest: function (e) {
                 if (jQuery("#invest-details-block").valid()) {
                     var arenda = $("#inputArenda").val();
-                   // var commonSalaryReq = $('#inputCommonSalaryReq').val();
                     var commonReqEnv = $('#inputCommonReqEnv').val();
                     var dateReq = $('#inputDateReq').val();
                     var id = $('#inputId').val();
                     var newInvest = new Invest(
                         {   "investId": id,
                             "arenda": arenda,
-                        //    "commonSalaryReq": commonSalaryReq,
                             "commonReqEnv": commonReqEnv,
                             "dateReq": dateReq
                         }).save({}, {
                             wait: true,
                             success: function (model, response) {
-                                window.location = "/invests.html";
+                                window.location = "/invest.html";
                             },
                             error: function (model, error) {
-                                window.location = "/invests.html";
+                                window.location = "/invest.html";
                             }
                         });
                 } else {
@@ -177,7 +167,7 @@ $(function () {
     );
 
 
-    var Controller = Backbone.Router.extend({
+    var InvestController = Backbone.Router.extend({
         routes: {
             "!/": "list",
             "/": "list",
@@ -207,7 +197,7 @@ $(function () {
     var curInvest = new Invest();
     var investView = new InvestView({model: curInvest});
     investView.render();
-    var controller = new Controller();
+    var controller = new InvestController();
     var timer_pagination = null;
     Backbone.history.start();
 })

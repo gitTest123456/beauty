@@ -22,7 +22,7 @@ public interface InvestDao {
 
     public void addInvest(InvestEntity invest);
 
-    public void printInvestReport(Integer investId);
+    public void printInvestReport();
 
-    public void printReport(Integer investId);
+    public void printReport();
 }

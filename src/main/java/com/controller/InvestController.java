@@ -56,15 +56,15 @@ public class InvestController {
         return "redirect:/1";
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/statistics/report")
-    public String generateInvestReport(@RequestBody InvestEntity invest) {
-        service.printInvestReport(invest.getInvestId());
+    @RequestMapping(method = RequestMethod.POST, value = "/invest/investReport")
+    public String generateInvestReport() {
+        service.printInvestReport();
         return "redirect:/1";
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/statistics/report")
-    public String generateReport(@RequestBody InvestEntity invest) {
-        service.printReport(invest.getInvestId());
+    @RequestMapping(method = RequestMethod.POST, value = "/invest/report")
+    public String generateReport() {
+        service.printReport();
         return "redirect:/1";
     }
 

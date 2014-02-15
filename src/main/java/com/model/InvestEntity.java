@@ -13,39 +13,39 @@ import java.sql.Date;
 @javax.persistence.Table(name = "invest", schema = "", catalog = "beauty_salon")
 @Entity
 public class InvestEntity {
-    private int investId;
-    private int arenda;
-    private int commonReqEnv;
+    private Integer investId;
+    private Integer arenda;
+    private Integer commonReqEnv;
     private Date dateReq;
 
     @javax.persistence.Column(name = "invest_id", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public int getInvestId() {
+    public Integer getInvestId() {
         return investId;
     }
 
-    public void setInvestId(int investId) {
+    public void setInvestId(Integer investId) {
         this.investId = investId;
     }
 
     @javax.persistence.Column(name = "arenda", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Basic
-    public int getArenda() {
+    public Integer getArenda() {
         return arenda;
     }
 
-    public void setArenda(int arenda) {
+    public void setArenda(Integer arenda) {
         this.arenda = arenda;
     }
 
     @javax.persistence.Column(name = "common_req_env", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Basic
-    public int getCommonReqEnv() {
+    public Integer getCommonReqEnv() {
         return commonReqEnv;
     }
 
-    public void setCommonReqEnv(int commonReqEnv) {
+    public void setCommonReqEnv(Integer commonReqEnv) {
         this.commonReqEnv = commonReqEnv;
     }
 

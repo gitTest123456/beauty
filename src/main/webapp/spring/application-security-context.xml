@@ -16,6 +16,7 @@
         <intercept-url pattern="/services.html" access="ROLE_ADMIN"/>
         <intercept-url pattern="/statistic.html" access="ROLE_ADMIN"/>
         <intercept-url pattern="/modelEditorLink.html" access="ROLE_ADMIN"/>
+        <intercept-url pattern="/invest.html" access="ROLE_ADMIN"/>
         <form-login login-page="/login.html" default-target-url="/mainMenu.html"
                     authentication-failure-url="/login.html"/>
         <logout logout-success-url="/login.html"/>

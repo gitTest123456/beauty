@@ -18,7 +18,7 @@ $(function () {
             "!/statisticsList": "statisticsList",
             "!/galleryLink": "galleryLink",
             "!/modelEditorLink": "modelEditorLink",
-            "!/investLink ": "investLink"
+            "!/investLinkPage": "investLinkPage"
         },
 
         clientsList: function () {
@@ -45,7 +45,7 @@ $(function () {
             window.location = "/modelEditorLink.html"
         },
 
-        investLink: function () {
+        investLinkPage: function () {
             window.location = "/invest.html"
         }
 

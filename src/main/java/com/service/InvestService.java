@@ -19,7 +19,7 @@ public interface InvestService {
 
     public void addInvest(InvestEntity invest);
 
-    void printReport(int investId);
+    void printReport();
 
-    void printInvestReport(int investId);
+    void printInvestReport();
 }

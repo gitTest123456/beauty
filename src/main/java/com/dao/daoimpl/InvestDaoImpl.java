@@ -1,8 +1,6 @@
 package com.dao.daoimpl;
 
-import com.dao.ClientDao;
 import com.dao.InvestDao;
-import com.model.Client;
 import com.model.InvestEntity;
 import com.report.Templates;
 import net.sf.dynamicreports.jasper.builder.JasperReportBuilder;
@@ -71,8 +69,7 @@ public class InvestDaoImpl implements InvestDao {
         sessionFactory.getCurrentSession().merge(invest);
     }
 
-    public void printInvestReport(Integer investId) {
-
+    public void printInvestReport() {
         String query = "select month(date_req) as dateReq,sum(arenda)+sum(common_req_env)+sum(salary) as common, " +
                 " sum(arenda)as arnd,sum(common_req_env) as env, sum(salary) as emplSal" +
                 " from invest, employer" +
@@ -99,8 +96,7 @@ public class InvestDaoImpl implements InvestDao {
     }
 
 
-    public void printReport(Integer investId) {
-
+    public void printReport() {
         String query = "select serv.naming, concat_ws(',',e.first_name, e.sur_name, e.last_name) empData, " +
                 " sum(serv.cost) commonCost         " +
                 " from statistic ststc" +

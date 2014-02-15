@@ -42,12 +42,12 @@ public class InvestServiceImpl implements InvestService {
         investDao.addInvest(investEntity);
     }
 
-    public void printReport(int investId) {
-        investDao.printReport(investId);
+    public void printReport() {
+        investDao.printReport();
     }
 
-    public void printInvestReport(int investId) {
-        investDao.printInvestReport(investId);
+    public void printInvestReport() {
+        investDao.printInvestReport();
     }
 
 }
