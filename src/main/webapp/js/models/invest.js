@@ -150,14 +150,14 @@ $(function () {
             addInvest: function (e) {
                 if (jQuery("#invest-details-block").valid()) {
                     var arenda = $("#inputArenda").val();
-                    var commonSalaryReq = $('#inputCommonSalaryReq').val();
+                   // var commonSalaryReq = $('#inputCommonSalaryReq').val();
                     var commonReqEnv = $('#inputCommonReqEnv').val();
                     var dateReq = $('#inputDateReq').val();
                     var id = $('#inputId').val();
                     var newInvest = new Invest(
                         {   "investId": id,
                             "arenda": arenda,
-                            "commonSalaryReq": commonSalaryReq,
+                        //    "commonSalaryReq": commonSalaryReq,
                             "commonReqEnv": commonReqEnv,
                             "dateReq": dateReq
                         }).save({}, {

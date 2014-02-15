@@ -28,7 +28,6 @@ REFERENCES separation(separation_id)
 create table invest(
 invest_id int not null primary key auto_increment,
 arenda int not null,
-common_salary_req int not null,
 common_req_env int not null,
 date_req date not null);
 

@@ -15,7 +15,6 @@ import java.sql.Date;
 public class InvestEntity {
     private int investId;
     private int arenda;
-    private int commonSalaryReq;
     private int commonReqEnv;
     private Date dateReq;
 
@@ -38,16 +37,6 @@ public class InvestEntity {
 
     public void setArenda(int arenda) {
         this.arenda = arenda;
-    }
-
-    @javax.persistence.Column(name = "common_salary_req", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
-    @Basic
-    public int getCommonSalaryReq() {
-        return commonSalaryReq;
-    }
-
-    public void setCommonSalaryReq(int commonSalaryReq) {
-        this.commonSalaryReq = commonSalaryReq;
     }
 
     @javax.persistence.Column(name = "common_req_env", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
@@ -79,7 +68,6 @@ public class InvestEntity {
 
         if (arenda != that.arenda) return false;
         if (commonReqEnv != that.commonReqEnv) return false;
-        if (commonSalaryReq != that.commonSalaryReq) return false;
         if (investId != that.investId) return false;
         if (dateReq != null ? !dateReq.equals(that.dateReq) : that.dateReq != null) return false;
 
@@ -90,7 +78,6 @@ public class InvestEntity {
     public int hashCode() {
         int result = investId;
         result = 31 * result + arenda;
-        result = 31 * result + commonSalaryReq;
         result = 31 * result + commonReqEnv;
         result = 31 * result + (dateReq != null ? dateReq.hashCode() : 0);
         return result;
