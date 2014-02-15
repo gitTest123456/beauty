@@ -28,12 +28,12 @@ $(document).ready(function () {
     $(document).oneTime("1s", function () {
         $("#invest-list-block").tablesorter();
         $("#invest-list-block").oneSimpleTablePagination({rowsPerPage: 5});
+        $('#datetimepicker3').datetimepicker({
+            pickTime: false
+        });
     })
-
-    $('#datetimepicker3').datetimepicker({
-        pickTime: false
-    });
 });
+
 
 function doSearch(searchText, targetTable) {
     var targetTableColCount;

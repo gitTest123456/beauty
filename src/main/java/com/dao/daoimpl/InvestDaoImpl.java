@@ -78,8 +78,9 @@ public class InvestDaoImpl implements InvestDao {
             JasperReportBuilder reportBuilder = report().setTemplate(Templates.reportTemplate)
                     .columns(
                             col.column("Общая сумма", "common", type.stringType()),
-                            col.column("Аренда", "cltData", type.stringType()),
-                            col.column("Оборудование", "emplSal", type.stringType()),
+                            col.column("Аренда", "arnd", type.stringType()),
+                            col.column("Оборудование", "env", type.stringType()),
+                            col.column("Зарплата сотрудников", "emplSal", type.stringType()),
                             col.column("Месяц", "dateReq", type.stringType()))
                     .title(Templates.createTitleComponent("Расход за месяц"))
                     .pageFooter(Templates.footerComponent)

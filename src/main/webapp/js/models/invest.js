@@ -192,7 +192,7 @@ $(function () {
             if (investView.model != null && investView.model.dateReq != null) {
                 $("#datetimepicker3").data('datetimepicker').setDate(investView.model.dateReq);
             }
-         },
+        },
         back: function () {
             window.location = "/mainMenu.html"
         }
