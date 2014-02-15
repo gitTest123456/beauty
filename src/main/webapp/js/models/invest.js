@@ -188,6 +188,10 @@ $(function () {
 
         edit: function (itemIndex) {
             investView.model = investCollection[itemIndex];
+
+            if (investView.model != null && investView.model.dateReq != null) {
+                $("#datetimepicker3").data('datetimepicker').setDate(investView.model.dateReq);
+            }
             investView.render();
         },
         back: function () {
