@@ -50,6 +50,7 @@
                 <value>com.model.Separation</value>
                 <value>com.model.ServiceModel</value>
                 <value>com.model.Statistic</value>
+                <value>com.model.InvestEntity</value>
             </list>
         </property>
         <property name="hibernateProperties">

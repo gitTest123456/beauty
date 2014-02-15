@@ -1,9 +1,6 @@
 package com.controller;
 
-import com.model.Client;
-import com.model.Employer;
 import com.model.InvestEntity;
-import com.service.ClientsService;
 import com.service.InvestService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

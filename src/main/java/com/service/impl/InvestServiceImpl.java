@@ -1,7 +1,6 @@
 package com.service.impl;
 
 import com.dao.InvestDao;
-import com.model.Client;
 import com.model.InvestEntity;
 import com.service.InvestService;
 import org.apache.log4j.Logger;
@@ -38,7 +37,6 @@ public class InvestServiceImpl implements InvestService {
     }
 
     public void addInvest(InvestEntity investEntity) {
-        log.info("Add client " + investEntity.toString());
         investDao.addInvest(investEntity);
     }
 

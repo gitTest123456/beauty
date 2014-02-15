@@ -92,6 +92,10 @@ $(function () {
                 $(this.el).html(this.template({
                     invest: this.model
                 }))
+
+                if (this.model != null && this.model.data != null) {
+                    $("#datetimepicker3").data('datetimepicker').setDate(this.model.dateReq);
+                }
             },
             deleteInvest: function (e) {
                 e.preventDefault();
@@ -142,7 +146,7 @@ $(function () {
             addInvest: function (e) {
                 if (jQuery("#invest-details-block").valid()) {
                     var arenda = $("#inputArenda").val();
-                    var commonReqEnv = $('#inputCommonReqEnv').val();
+                    var commonReqEnv = $('#inputСommonReqEnv').val();
                     var dateReq = $('#inputDateReq').val();
                     var id = $('#inputId').val();
                     var newInvest = new Invest(

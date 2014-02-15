@@ -1,6 +1,5 @@
 package com.dao;
 
-import com.model.Client;
 import com.model.InvestEntity;
 
 import java.util.List;
