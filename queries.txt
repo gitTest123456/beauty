@@ -81,6 +81,8 @@ left join employer e on(ststc.employer_id = e.employer_id)
 group by empData, serv.naming;
 
 
+alter table CLIENTS add column discount int not null default 0;
+#insert
 Insert into separation(separation_name) values('Nail');
 Insert into separation(separation_name) values('Hair style');
 Insert into separation(separation_name) values('Celebrity Hairstyles');

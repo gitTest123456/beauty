@@ -23,12 +23,25 @@ public class Client {
     private String lastName;
     private String telephone;
 
-    public Client(int id, String firstName, String surName, String lastName, String telephone) {
+    @javax.persistence.Column(name = "discount", nullable = false, insertable = true, updatable = true)
+    @Basic
+    public Integer getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Integer discount) {
+        this.discount = discount;
+    }
+
+    private Integer discount;
+
+    public Client(int id, String firstName, String surName, String lastName, String telephone, Integer discount) {
         this.clientId = id;
         this.firstName = firstName;
         this.surName = surName;
         this.lastName = lastName;
         this.telephone = telephone;
+        this.discount = discount;
     }
 
     public Client() {
@@ -109,6 +122,7 @@ public class Client {
             json.put("surName", surName);
             json.put("lastName", lastName);
             json.put("telephone", telephone);
+            json.put("discount", discount);
         } catch (JSONException e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }

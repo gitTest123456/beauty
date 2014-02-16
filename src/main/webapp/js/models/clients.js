@@ -23,7 +23,8 @@ $(function () {
                     firstName: null,
                     surName: null,
                     lastName: null,
-                    telephone: null
+                    telephone: null,
+                    discount: null
                 };
             }
         });
@@ -117,6 +118,7 @@ $(function () {
                     var surName = $('#inputSurName').val();
                     var lastName = $('#inputLastName').val();
                     var telephone = $('#inputPhone').val();
+                    var discount = $('#inputDiscount').val();
                     var id = $('#inputId').val();
 
                     var newClient = new Client(
@@ -124,7 +126,8 @@ $(function () {
                             "firstName": firstName,
                             "surName": surName,
                             "lastName": lastName,
-                            "telephone": telephone
+                            "telephone": telephone,
+                            "discount": discount
                         }).save({}, {
                             wait: true,
                             success: function (model, response) {

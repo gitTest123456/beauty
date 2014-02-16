@@ -75,67 +75,90 @@
 
 
 <script type="text/template" id="client-details-template">
+    <table>
+        <tr>
+            <td>
+                <input type="hidden" id="inputId" placeholder="name"
+                       value="<%=client.clientId==null?'0':client.clientId%>">
 
-    <input type="hidden" id="inputId" placeholder="name" value="<%=client.clientId==null?'0':client.clientId%>">
+                <div class="control-group">
+                    <label class="control-label" for="inputName">Имя:</label>
 
-    <div class="control-group">
-        <label class="control-label" for="inputName">Имя:</label>
+                    <div class="controls">
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-user"></i></span>
+                            <input type="text" id="inputName" name="inputName" placeholder="Имя"
+                                   value="<%=client.firstName==null?'':client.firstName%>">
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputSurName">Фамилия:</label>
 
-        <div class="controls">
-            <div class="input-prepend">
-                <span class="add-on"><i class="icon-user"></i></span>
-                <input type="text" id="inputName" name="inputName" placeholder="Имя"
-                       value="<%=client.firstName==null?'':client.firstName%>">
-            </div>
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="inputSurName">Фамилия:</label>
+                    <div class="controls">
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-user"></i></span>
+                            <input type="text" id="inputSurName" name="inputSurName" placeholder="Фамилия"
+                                   value="<%=client.surName==null?'':client.surName%>">
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputLastName">Отчество:</label>
 
-        <div class="controls">
-            <div class="input-prepend">
-                <span class="add-on"><i class="icon-user"></i></span>
-                <input type="text" id="inputSurName" name="inputSurName" placeholder="Фамилия"
-                       value="<%=client.surName==null?'':client.surName%>">
-            </div>
-        </div>
-    </div>
-    <div class="control-group">
-        <label class="control-label" for="inputLastName">Отчество:</label>
+                    <div class="controls">
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-user"></i></span>
+                            <input type="text" id="inputLastName" name="inputLastName" placeholder="Отчество"
+                                   value="<%=client.lastName==null?'':client.lastName%>">
+                        </div>
+                    </div>
+                </div>
+            </td>
 
-        <div class="controls">
-            <div class="input-prepend">
-                <span class="add-on"><i class="icon-user"></i></span>
-                <input type="text" id="inputLastName" name="inputLastName" placeholder="Отчество"
-                       value="<%=client.lastName==null?'':client.lastName%>">
-            </div>
-        </div>
-    </div>
 
-    <div class="control-group">
-        <label class="control-label" for="inputPhone">Телефон:</label>
+            <td>
+                <div class="control-group">
+                    <label class="control-label" for="inputDiscount">Скидка:</label>
 
-        <div class="controls">
-            <div class="input-prepend">
-                <span class="add-on"><i class="icon-th"></i></span>
-                <input type="text" id="inputPhone" name="inputPhone" placeholder="Телефон" class="error"
-                       value="<%=client.telephone==null?'':client.telephone%>">
-            </div>
-        </div>
-    </div>
+                    <div class="controls">
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-user"></i></span>
+                            <input type="text" id="inputDiscount" name="inputDiscount" placeholder="Скидка"
+                                   value="<%=client.discount==null?'':client.discount%>">
+                        </div>
+                    </div>
+                </div>
 
-    <div class="control-group">
-        <div class="controls">
-            <a class="btn btn-primary" id="form-btn-add">Сохранить</a>
-            <!-- <a class="btn btn-primary" href="">Update view</a>  -->
-            <a class="btn btn-danger" id="form-btn-remove" href="">Удалить</a>
-        </div>
-        <div class="controls">
-        </div>
-    </div>
+                <div class="control-group">
+                    <label class="control-label" for="inputPhone">Телефон:</label>
+
+                    <div class="controls">
+                        <div class="input-prepend">
+                            <span class="add-on"><i class="icon-th"></i></span>
+                            <input type="text" id="inputPhone" name="inputPhone" placeholder="Телефон" class="error"
+                                   value="<%=client.telephone==null?'':client.telephone%>">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <div class="controls">
+                        <a class="btn btn-primary" id="form-btn-add">Сохранить</a>
+                        <!-- <a class="btn btn-primary" href="">Update view</a>  -->
+                        <a class="btn btn-danger" id="form-btn-remove" href="">Удалить</a>
+                    </div>
+                    <div class="controls">
+                    </div>
+                </div>
+            </td>
+        </tr>
+    </table>
 </script>
 <div class="control-group_">
-    <input type="text" id="searchTerm" class="search_box" onkeyup="doSearch(document.getElementById('searchTerm').value,document.getElementById('client-list-block'))" alt="Search" />
+    <input type="text" id="searchTerm" class="search_box"
+           onkeyup="doSearch(document.getElementById('searchTerm').value,document.getElementById('client-list-block'))"
+           alt="Search"/>
     <table class="tablesorter" id="client-list-block" border="2">
 
     </table>
