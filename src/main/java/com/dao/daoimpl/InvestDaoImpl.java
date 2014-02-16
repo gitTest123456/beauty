@@ -99,10 +99,11 @@ public class InvestDaoImpl implements InvestDao {
 
     public void printReport() {
         String query = "select serv.naming, concat_ws(',',e.first_name, e.sur_name, e.last_name) empData, " +
-                " sum(serv.cost) commonCost         " +
+                " sum(serv.cost - cl.discount/100*serv.cost) commonCost         " +
                 " from statistic ststc" +
                 " left join service serv on(ststc.service_id = serv.service_id)" +
                 " left join employer e on(ststc.employer_id = e.employer_id)" +
+                " left join clients cl on(ststc.client_id = cl.client_id)"+
                 " group by empData, serv.naming   ";
         try {
             JasperReportBuilder reportBuilder = report().setTemplate(Templates.reportTemplate)
